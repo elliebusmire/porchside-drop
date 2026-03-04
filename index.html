@@ -506,13 +506,13 @@ background: #FDF6EC;
 
 .addon-option:hover { border-color: #C4622D; background: rgba(196,98,45,0.03); }
 
-.addon-option:has(input:checked) {
+.addon-option.selected {
 border-color: #C4622D;
 background: rgba(196,98,45,0.06);
 box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
 }
 
-.addon-option input[type=“checkbox”] { display: none; }
+.addon-option input[type="checkbox"] { display: none; }
 
 .addon-check {
 width: 20px;
@@ -524,12 +524,12 @@ transition: all 0.3s ease;
 position: relative;
 }
 
-.addon-option:has(input:checked) .addon-check {
+.addon-option.selected .addon-check {
 background: #C4622D;
 border-color: #C4622D;
 }
 
-.addon-option:has(input:checked) .addon-check::after {
+.addon-option.selected .addon-check::after {
 content: ‘’;
 position: absolute;
 top: 3px;
@@ -1043,7 +1043,10 @@ footer p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
 
   // Listen for addon checkbox changes
   document.querySelectorAll('input[name="addon"]').forEach(cb => {
-    cb.addEventListener('change', updateButton);
+    cb.addEventListener('change', function() {
+      this.closest('.addon-option').classList.toggle('selected', this.checked);
+      updateButton();
+    });
   });
 
   document.getElementById('signupForm').addEventListener('submit', async function(e) {
