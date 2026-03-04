@@ -9,24 +9,12 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-:root {
-–burnt-orange: #C4622D;
-–deep-green: #2D4A22;
-–warm-cream: #FDF6EC;
-–pumpkin: #E8853B;
-–sage: #8B9E6B;
-–bark: #3D2B1F;
-–gold: #D4A843;
-–soft-white: #F5EDE0;
-–muted-rust: #A3522A;
-}
-
 html { scroll-behavior: smooth; }
 
 body {
 font-family: ‘DM Sans’, sans-serif;
-background: var(–warm-cream);
-color: var(–bark);
+background: #FDF6EC;
+color: #3D2B1F;
 overflow-x: hidden;
 }
 
@@ -52,7 +40,7 @@ background:
 radial-gradient(ellipse at 20% 80%, rgba(196,98,45,0.12) 0%, transparent 50%),
 radial-gradient(ellipse at 80% 20%, rgba(139,158,107,0.1) 0%, transparent 50%),
 radial-gradient(ellipse at 50% 50%, rgba(212,168,67,0.06) 0%, transparent 70%),
-var(–warm-cream);
+#FDF6EC;
 }
 
 .hero::after {
@@ -60,7 +48,7 @@ content: ‘’;
 position: absolute;
 bottom: 0; left: 0; right: 0;
 height: 120px;
-background: linear-gradient(to bottom, transparent, var(–warm-cream));
+background: linear-gradient(to bottom, transparent, #FDF6EC);
 }
 
 .pumpkin-deco {
@@ -86,8 +74,8 @@ display: inline-block;
 font-size: 0.7rem;
 letter-spacing: 0.35em;
 text-transform: uppercase;
-color: var(–sage);
-border: 1px solid var(–sage);
+color: #8B9E6B;
+border: 1px solid #8B9E6B;
 padding: 0.4rem 1.2rem;
 border-radius: 50px;
 margin-bottom: 2rem;
@@ -100,20 +88,20 @@ font-family: ‘Playfair Display’, serif;
 font-weight: 900;
 font-size: clamp(3rem, 8vw, 7rem);
 line-height: 0.95;
-color: var(–bark);
+color: #3D2B1F;
 margin-bottom: 0.3em;
 animation: fadeDown 1s ease-out 0.15s both;
 }
 
 .hero h1 .accent {
-color: var(–burnt-orange);
+color: #C4622D;
 font-style: italic;
 font-weight: 400;
 }
 
 .hero-sub {
 font-size: clamp(1rem, 2vw, 1.25rem);
-color: var(–muted-rust);
+color: #A3522A;
 max-width: 500px;
 line-height: 1.6;
 margin-bottom: 2.5rem;
@@ -123,8 +111,8 @@ animation: fadeDown 1s ease-out 0.3s both;
 
 .cta-btn {
 display: inline-block;
-background: var(–burnt-orange);
-color: var(–warm-cream);
+background: #C4622D;
+color: #FDF6EC;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 0.85rem;
 font-weight: 600;
@@ -142,7 +130,7 @@ overflow: hidden;
 }
 
 .cta-btn:hover {
-background: var(–bark);
+background: #3D2B1F;
 transform: translateY(-2px);
 box-shadow: 0 12px 40px rgba(61,43,31,0.2);
 }
@@ -157,7 +145,7 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 0.5rem;
-color: var(–sage);
+color: #8B9E6B;
 font-size: 0.7rem;
 letter-spacing: 0.2em;
 text-transform: uppercase;
@@ -169,7 +157,7 @@ text-align: center;
 .scroll-hint .arrow {
 width: 1px;
 height: 30px;
-background: var(–sage);
+background: #8B9E6B;
 position: relative;
 animation: scrollPulse 2s ease-in-out infinite;
 }
@@ -186,8 +174,8 @@ to { opacity: 1; transform: translateY(0); }
 
 .how-section {
 padding: 5rem 2rem;
-background: var(–deep-green);
-color: var(–soft-white);
+background: #2D4A22;
+color: #F5EDE0;
 position: relative;
 }
 
@@ -196,7 +184,7 @@ content: ‘’;
 position: absolute;
 top: 0; left: 0; right: 0;
 height: 80px;
-background: linear-gradient(to top, transparent, var(–warm-cream));
+background: linear-gradient(to top, transparent, #FDF6EC);
 transform: translateY(-79px);
 }
 
@@ -243,7 +231,7 @@ background: rgba(255,255,255,0.08);
 font-family: ‘Playfair Display’, serif;
 font-size: 2.5rem;
 font-weight: 900;
-color: var(–gold);
+color: #D4A843;
 margin-bottom: 0.75rem;
 }
 
@@ -254,7 +242,7 @@ margin-bottom: 0.75rem;
 padding: 6rem 2rem;
 background:
 radial-gradient(ellipse at 30% 70%, rgba(196,98,45,0.06) 0%, transparent 50%),
-var(–warm-cream);
+#FDF6EC;
 }
 
 .signup-section h2 {
@@ -266,7 +254,7 @@ margin-bottom: 0.5rem;
 
 .signup-section .sub {
 text-align: center;
-color: var(–muted-rust);
+color: #A3522A;
 font-weight: 300;
 margin-bottom: 3rem;
 font-size: 1rem;
@@ -289,7 +277,7 @@ font-size: 0.72rem;
 font-weight: 600;
 letter-spacing: 0.15em;
 text-transform: uppercase;
-color: var(–bark);
+color: #3D2B1F;
 margin-bottom: 0.6rem;
 }
 
@@ -302,14 +290,14 @@ border: 1.5px solid #ddd3c7;
 border-radius: 12px;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 0.95rem;
-color: var(–bark);
-background: var(–warm-cream);
+color: #3D2B1F;
+background: #FDF6EC;
 transition: border-color 0.3s, box-shadow 0.3s;
 outline: none;
 }
 
 input:focus, textarea:focus {
-border-color: var(–burnt-orange);
+border-color: #C4622D;
 box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
 }
 
@@ -322,8 +310,8 @@ border: 1.5px solid #ddd3c7;
 border-radius: 12px;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 0.95rem;
-color: var(–bark);
-background: var(–warm-cream);
+color: #3D2B1F;
+background: #FDF6EC;
 transition: border-color 0.3s, box-shadow 0.3s;
 outline: none;
 cursor: pointer;
@@ -337,7 +325,7 @@ padding-right: 2.5rem;
 }
 
 select:focus {
-border-color: var(–burnt-orange);
+border-color: #C4622D;
 box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
 }
 
@@ -359,13 +347,13 @@ border: 1.5px solid #ddd3c7;
 border-radius: 12px;
 cursor: pointer;
 transition: all 0.3s ease;
-background: var(–warm-cream);
+background: #FDF6EC;
 }
 
-.color-option:hover { border-color: var(–burnt-orange); background: rgba(196,98,45,0.03); }
+.color-option:hover { border-color: #C4622D; background: rgba(196,98,45,0.03); }
 
 .color-option.selected {
-border-color: var(–burnt-orange);
+border-color: #C4622D;
 background: rgba(196,98,45,0.06);
 box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
 }
@@ -383,7 +371,7 @@ border: 1.5px solid rgba(61,43,31,0.15);
 .swatch.white { background: #F5F0E8; }
 .swatch.green { background: #5A7A3A; }
 .swatch.blue { background: #5B7FA5; }
-.color-label { font-size: 0.85rem; font-weight: 500; color: var(–bark); }
+.color-label { font-size: 0.85rem; font-weight: 500; color: #3D2B1F; }
 
 .count-options {
 display: grid;
@@ -405,16 +393,16 @@ border: 1.5px solid #ddd3c7;
 border-radius: 12px;
 cursor: pointer;
 transition: all 0.3s ease;
-background: var(–warm-cream);
+background: #FDF6EC;
 min-width: 0;
 overflow: visible;
 position: relative;
 }
 
-.count-option:hover { border-color: var(–burnt-orange); }
+.count-option:hover { border-color: #C4622D; }
 
 .count-option.selected {
-border-color: var(–burnt-orange);
+border-color: #C4622D;
 background: rgba(196,98,45,0.06);
 box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
 }
@@ -425,7 +413,7 @@ box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
 font-family: ‘Playfair Display’, serif;
 font-size: clamp(1.2rem, 3vw, 1.6rem);
 font-weight: 700;
-color: var(–burnt-orange);
+color: #C4622D;
 line-height: 1;
 }
 
@@ -442,7 +430,7 @@ font-weight: 500;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 0.75rem;
 font-weight: 600;
-color: var(–deep-green);
+color: #2D4A22;
 margin-top: 0.35rem;
 background: rgba(139,158,107,0.12);
 padding: 0.15rem 0.4rem;
@@ -452,7 +440,7 @@ display: inline-block;
 
 .count-option.popular {
 position: relative;
-border-color: var(–burnt-orange);
+border-color: #C4622D;
 background: rgba(196,98,45,0.04);
 }
 
@@ -461,7 +449,7 @@ position: absolute;
 top: -9px;
 left: 50%;
 transform: translateX(-50%);
-background: var(–burnt-orange);
+background: #C4622D;
 color: white;
 font-size: 0.5rem;
 font-weight: 600;
@@ -483,7 +471,7 @@ font-size: 0.65rem;
 font-weight: 600;
 letter-spacing: 0.12em;
 text-transform: uppercase;
-color: var(–deep-green);
+color: #2D4A22;
 background: rgba(139,158,107,0.12);
 padding: 0.35rem 1rem;
 border-radius: 50px;
@@ -492,7 +480,7 @@ border-radius: 50px;
 .includes-line {
 text-align: center;
 font-size: 0.8rem;
-color: var(–sage);
+color: #8B9E6B;
 font-weight: 400;
 margin-top: 0.75rem;
 font-style: italic;
@@ -513,13 +501,13 @@ border: 1.5px solid #ddd3c7;
 border-radius: 12px;
 cursor: pointer;
 transition: all 0.3s ease;
-background: var(–warm-cream);
+background: #FDF6EC;
 }
 
-.addon-option:hover { border-color: var(–burnt-orange); background: rgba(196,98,45,0.03); }
+.addon-option:hover { border-color: #C4622D; background: rgba(196,98,45,0.03); }
 
 .addon-option:has(input:checked) {
-border-color: var(–burnt-orange);
+border-color: #C4622D;
 background: rgba(196,98,45,0.06);
 box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
 }
@@ -537,8 +525,8 @@ position: relative;
 }
 
 .addon-option:has(input:checked) .addon-check {
-background: var(–burnt-orange);
-border-color: var(–burnt-orange);
+background: #C4622D;
+border-color: #C4622D;
 }
 
 .addon-option:has(input:checked) .addon-check::after {
@@ -563,7 +551,7 @@ gap: 0.15rem;
 .addon-name {
 font-size: 0.9rem;
 font-weight: 500;
-color: var(–bark);
+color: #3D2B1F;
 }
 
 .addon-desc {
@@ -576,7 +564,7 @@ font-weight: 300;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 0.8rem;
 font-weight: 600;
-color: var(–deep-green);
+color: #2D4A22;
 background: rgba(139,158,107,0.12);
 padding: 0.2rem 0.5rem;
 border-radius: 6px;
@@ -593,8 +581,8 @@ margin: 2rem 0;
 .submit-btn {
 width: 100%;
 padding: 1.1rem;
-background: var(–burnt-orange);
-color: var(–warm-cream);
+background: #C4622D;
+color: #FDF6EC;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 0.85rem;
 font-weight: 600;
@@ -607,7 +595,7 @@ transition: all 0.4s ease;
 }
 
 .submit-btn:hover {
-background: var(–bark);
+background: #3D2B1F;
 transform: translateY(-1px);
 box-shadow: 0 8px 30px rgba(61,43,31,0.2);
 }
@@ -625,7 +613,7 @@ box-shadow: none;
 display: inline-block;
 width: 18px; height: 18px;
 border: 2px solid rgba(253,246,236,0.3);
-border-top-color: var(–warm-cream);
+border-top-color: #FDF6EC;
 border-radius: 50%;
 animation: spin 0.6s linear infinite;
 vertical-align: middle;
@@ -662,14 +650,14 @@ padding: 3rem 2rem;
 font-family: ‘Playfair Display’, serif;
 font-size: 1.8rem;
 margin-bottom: 0.5rem;
-color: var(–deep-green);
+color: #2D4A22;
 }
 
-.success-message p { color: var(–muted-rust); font-weight: 300; line-height: 1.6; }
+.success-message p { color: #A3522A; font-weight: 300; line-height: 1.6; }
 
 footer {
-background: var(–bark);
-color: var(–soft-white);
+background: #3D2B1F;
+color: #F5EDE0;
 text-align: center;
 padding: 3rem 2rem;
 }
@@ -744,7 +732,7 @@ footer p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
 <!-- ── SIGN-UP FORM ── -->
 
 <section class="signup-section" id="signup">
-  <p class="section-label" style="color: var(--sage);">Fall 2026 Sign-Up</p>
+  <p class="section-label" style="color: #8B9E6B;">Fall 2026 Sign-Up</p>
   <h2>Reserve Your Porch</h2>
   <p class="sub">Sign-ups open in early August. Delivery begins the week after Labor Day.</p>
 
