@@ -679,6 +679,44 @@
     .count-option { padding: 0.6rem 0.15rem; border-radius: 10px; }
     .count-label { font-size: 0.55rem; }
   }
+
+  /* Google Places Autocomplete styling */
+  .pac-container {
+    border-radius: 12px;
+    border: 1.5px solid #ddd3c7;
+    box-shadow: 0 4px 16px rgba(61,43,31,0.1);
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 4px;
+    overflow: hidden;
+  }
+
+  .pac-item {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    color: #3D2B1F;
+    border-top: 1px solid #f0e9df;
+    cursor: pointer;
+  }
+
+  .pac-item:first-child {
+    border-top: none;
+  }
+
+  .pac-item:hover {
+    background: rgba(196,98,45,0.06);
+  }
+
+  .pac-item-selected {
+    background: rgba(196,98,45,0.08);
+  }
+
+  .pac-icon { display: none; }
+
+  .pac-item-query {
+    font-size: 0.9rem;
+    color: #3D2B1F;
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
@@ -763,7 +801,7 @@
       <!-- Address -->
       <div class="form-group">
         <label>Delivery Address</label>
-        <input type="text" id="address" placeholder="123 Maple Lane, Anytown, USA" required>
+        <input type="text" id="address" placeholder="Start typing your address..." autocomplete="off" required>
       </div>
 
       <div class="divider"></div>
@@ -1075,6 +1113,25 @@
     }
   });
 </script>
+
+<script>
+  function initAutocomplete() {
+    const addressInput = document.getElementById('address');
+    const autocomplete = new google.maps.places.Autocomplete(addressInput, {
+      types: ['address'],
+      componentRestrictions: { country: 'us' },
+      fields: ['formatted_address']
+    });
+
+    autocomplete.addListener('place_changed', function() {
+      const place = autocomplete.getPlace();
+      if (place.formatted_address) {
+        addressInput.value = place.formatted_address;
+      }
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr8xSFYzoI4qHcOIkNwGGYpHWV5XiXO8s&libraries=places&callback=initAutocomplete" async defer></script>
 
 </body>
 </html>
