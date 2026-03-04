@@ -982,30 +982,6 @@
 </footer>
 
 <script>
-  // =====================================================================
-  //  ZAPIER WEBHOOK URL
-  //  Paste your Zapier "Catch Hook" URL on the line below.
-  //  Example: 'https://hooks.zapier.com/hooks/catch/123456/abcdef/'
-  //
-  //  SETUP STEPS:
-  //  1. Go to zapier.com → Create a free account
-  //  2. Click "Create Zap"
-  //  3. TRIGGER: Choose "Webhooks by Zapier" → "Catch Hook" → Copy the URL
-  //  4. Paste that URL below replacing YOUR_ZAPIER_WEBHOOK_URL_HERE
-  //  5. Submit a test entry on your site so Zapier sees the field names
-  //  6. ACTION: Choose "Jobber" → "Create Client" (or "Create Request")
-  //  7. Map the fields:
-  //       firstName  →  First Name
-  //       lastName   →  Last Name
-  //       email      →  Email
-  //       phone      →  Phone
-  //       address    →  Street Address
-  //       colorPalette, pumpkinCount, notes  →  Notes / Custom Fields
-  //  8. Turn on your Zap — done!
-  // =====================================================================
-  const WEBHOOK_URL = 'YOUR_ZAPIER_WEBHOOK_URL_HERE';
-  // =====================================================================
-
   function selectColor(el) {
     document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
@@ -1045,7 +1021,6 @@
 
     const btn = document.getElementById('submitBtn');
     const errorMsg = document.getElementById('errorMsg');
-    const form = this;
 
     errorMsg.classList.remove('visible');
 
@@ -1073,36 +1048,27 @@
 
     // Loading state
     btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span>Submitting...';
+    btn.innerHTML = '<span class="spinner"></span>Redirecting to payment...';
 
     try {
-      if (WEBHOOK_URL === 'YOUR_ZAPIER_WEBHOOK_URL_HERE') {
-        // ── DEMO MODE ──
-        // No webhook configured yet — simulates a submission.
-        // Open your browser console to see the data that would be sent.
-        console.log('────────────────────────────────────────');
-        console.log('DEMO MODE — No webhook URL configured yet.');
-        console.log('This data would be sent to your Zapier webhook:');
-        console.table(formData);
-        console.log('Replace YOUR_ZAPIER_WEBHOOK_URL_HERE in the <script> tag to go live.');
-        console.log('────────────────────────────────────────');
-        await new Promise(r => setTimeout(r, 1200));
+      // Send to Netlify Function which creates Stripe Checkout
+      const response = await fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = result.url;
       } else {
-        // ── LIVE MODE ── Send to Zapier
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          mode: 'no-cors',
-          body: JSON.stringify(formData)
-        });
+        throw new Error(result.error || 'Failed to create checkout session');
       }
 
-      // Success!
-      form.style.display = 'none';
-      document.getElementById('successMsg').classList.add('visible');
-
     } catch (err) {
-      console.error('Submission error:', err);
+      console.error('Checkout error:', err);
       errorMsg.classList.add('visible');
       btn.disabled = false;
       btn.textContent = 'Reserve My Porch — $' + getTotal();
