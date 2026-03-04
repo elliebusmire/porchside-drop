@@ -1,0 +1,8 @@
+{
+  "name": "porchside-drop",
+  "version": "1.0.0",
+  "description": "Porchside Drop - Fall Porch Decor Delivery",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
