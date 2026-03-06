@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porchside Drop — Seasonal Porch Décor Delivery</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #FAF8F5;
+  color: #2C2C2C;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+}
+
+.hero {
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(196,98,45,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 40%, rgba(34,100,60,0.05) 0%, transparent 50%),
+    #FAF8F5;
+}
+
+.brand-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #888;
+  border: 1px solid #ccc;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  animation: fadeDown 1s ease-out;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  color: #2C2C2C;
+  margin-bottom: 0.4em;
+  animation: fadeDown 1s ease-out 0.15s both;
+}
+
+.hero h1 .accent {
+  color: #C4622D;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #777;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+  animation: fadeDown 1s ease-out 0.3s both;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SEASON CARDS ── */
+
+.seasons {
+  flex: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  animation: fadeDown 1s ease-out 0.45s both;
+}
+
+.season-card {
+  position: relative;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  border: 1.5px solid transparent;
+}
+
+.season-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.10);
+}
+
+/* Fall card */
+.season-card.fall {
+  background: linear-gradient(160deg, #FDF6EC 0%, #F5E6D0 100%);
+  border-color: #E8D5BC;
+}
+.season-card.fall:hover { border-color: #C4622D; }
+.season-card.fall .season-emoji { font-size: 3.5rem; margin-bottom: 1rem; }
+.season-card.fall .season-name { color: #C4622D; }
+.season-card.fall .season-cta {
+  background: #C4622D;
+  color: #FDF6EC;
+}
+.season-card.fall .season-cta:hover { background: #A34E20; }
+
+/* Winter card */
+.season-card.winter {
+  background: linear-gradient(160deg, #F0F4F8 0%, #DAE3ED 100%);
+  border-color: #C8D5E0;
+}
+.season-card.winter:hover { border-color: #B42828; }
+.season-card.winter .season-emoji { font-size: 3.5rem; margin-bottom: 1rem; }
+.season-card.winter .season-name { color: #B42828; }
+.season-card.winter .season-cta {
+  background: #B42828;
+  color: #F0F4F8;
+}
+.season-card.winter .season-cta:hover { background: #8E1F1F; }
+
+/* Spring card (coming soon) */
+.season-card.spring {
+  background: linear-gradient(160deg, #F5FAF0 0%, #E2F0D9 100%);
+  border-color: #D0E0C5;
+}
+.season-card.spring .season-emoji { font-size: 3.5rem; margin-bottom: 1rem; }
+.season-card.spring .season-name { color: #5A8A3A; }
+.season-card.spring .coming-soon-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #5A8A3A;
+  background: rgba(90,138,58,0.12);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  margin-top: 0.5rem;
+}
+
+.season-emoji {
+  line-height: 1;
+}
+
+.season-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.season-desc {
+  font-size: 0.88rem;
+  color: #777;
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  max-width: 260px;
+}
+
+.season-cta {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.season-tag {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.season-card.fall .season-tag {
+  color: #C4622D;
+  background: rgba(196,98,45,0.12);
+}
+
+.season-card.winter .season-tag {
+  color: #B42828;
+  background: rgba(180,40,40,0.1);
+}
+
+.season-card.spring .season-tag {
+  color: #5A8A3A;
+  background: rgba(90,138,58,0.1);
+}
+
+/* ── FOOTER ── */
+
+footer {
+  background: #2C2C2C;
+  color: #FAF8F5;
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+
+footer .footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
+
+@media (max-width: 600px) {
+  .hero { padding: 3.5rem 1.5rem 2rem; }
+  .seasons { padding: 1.5rem 1.25rem 3rem; gap: 1.25rem; }
+  .season-card { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+
+<section class="hero">
+  <span class="brand-tag">Est. 2026 — Seasonal Porch Décor</span>
+  <h1>Porchside<br><span class="accent">Drop</span></h1>
+  <p class="hero-sub">We deliver and artfully arrange beautiful seasonal displays on your porch — so you can enjoy the magic without the mess.</p>
+</section>
+
+<!-- ── SEASON CARDS ── -->
+
+<div class="seasons">
+
+  <!-- FALL -->
+  <div class="season-card fall">
+    <div class="season-emoji">🎃</div>
+    <span class="season-tag">Sep – Nov</span>
+    <div class="season-name">Fall</div>
+    <p class="season-desc">Gorgeous pumpkin displays in your favorite autumn colors, delivered and arranged on your porch.</p>
+    <a href="fall.html" class="season-cta">View Fall</a>
+  </div>
+
+  <!-- WINTER -->
+  <div class="season-card winter">
+    <div class="season-emoji">🎁</div>
+    <span class="season-tag">Nov – Jan</span>
+    <div class="season-name">Winter</div>
+    <p class="season-desc">Stunning holiday present displays with bows, ribbon, and greenery styled at your entryway.</p>
+    <a href="winter.html" class="season-cta">View Winter</a>
+  </div>
+
+  <!-- SPRING (Coming Soon) -->
+  <div class="season-card spring">
+    <div class="season-emoji">🌸</div>
+    <span class="season-tag">Mar – May</span>
+    <div class="season-name">Spring</div>
+    <p class="season-desc">Fresh planters, potted florals, and colorful arrangements to welcome the new season.</p>
+    <span class="coming-soon-tag">Coming 2027</span>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+
+<footer>
+  <div class="footer-brand">Porchside Drop</div>
+  <p>&copy; 2026 — Handcrafted seasonal joy, delivered to your door.</p>
+</footer>
+
+</body>
+</html>
