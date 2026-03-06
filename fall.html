@@ -723,7 +723,6 @@ footer p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
 .count-label { font-size: 0.55rem; }
 }
 
-/* Google Places Autocomplete styling */
 .pac-container {
 border-radius: 12px;
 border: 1.5px solid #ddd3c7;
@@ -741,31 +740,16 @@ border-top: 1px solid #f0e9df;
 cursor: pointer;
 }
 
-.pac-item:first-child {
-border-top: none;
-}
-
-.pac-item:hover {
-background: rgba(196,98,45,0.06);
-}
-
-.pac-item-selected {
-background: rgba(196,98,45,0.08);
-}
-
+.pac-item:first-child { border-top: none; }
+.pac-item:hover { background: rgba(196,98,45,0.06); }
+.pac-item-selected { background: rgba(196,98,45,0.08); }
 .pac-icon { display: none; }
-
-.pac-item-query {
-font-size: 0.9rem;
-color: #3D2B1F;
-font-weight: 500;
-}
+.pac-item-query { font-size: 0.9rem; color: #3D2B1F; font-weight: 500; }
 </style>
 
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav class="site-nav">
   <a href="index.html" class="nav-brand">Porchside Drop</a>
   <div class="nav-links">
@@ -774,7 +758,6 @@ font-weight: 500;
     <a href="winter.html" class="nav-link">Winter</a>
   </div>
 </nav>
-<!-- ── HERO ── -->
 
 <section class="hero">
   <div class="pumpkin-deco">🧡</div>
@@ -784,8 +767,7 @@ font-weight: 500;
   <div class="pumpkin-deco">🍂</div>
   <div class="pumpkin-deco">🍁</div>
 
-<span class="brand-tag">Est. 2026 — Seasonal Porch Décor</span>
-
+  <span class="brand-tag">Est. 2026 — Seasonal Porch Décor</span>
   <h1>Porchside<br><span class="accent">Drop</span></h1>
   <p class="hero-sub">We deliver and artfully arrange beautiful pumpkins on your porch — so you can skip the mess and enjoy the magic of fall.</p>
   <a href="#signup" class="cta-btn">Reserve Your Porch</a>
@@ -794,8 +776,6 @@ font-weight: 500;
     <div class="arrow"></div>
   </div>
 </section>
-
-<!-- ── HOW IT WORKS ── -->
 
 <section class="how-section">
   <p class="section-label">How It Works</p>
@@ -819,8 +799,6 @@ font-weight: 500;
   </div>
 </section>
 
-<!-- ── SIGN-UP FORM ── -->
-
 <section class="signup-section" id="signup">
   <p class="section-label" style="color: #8B9E6B;">Fall 2026 Sign-Up</p>
   <h2>Reserve Your Porch</h2>
@@ -829,250 +807,241 @@ font-weight: 500;
   <div class="form-container">
     <form id="signupForm">
 
-  <div class="error-message" id="errorMsg">Something went wrong. Please try again or contact us directly.</div>
+      <div class="error-message" id="errorMsg">Something went wrong. Please try again or contact us directly.</div>
 
-  <!-- Pumpkin Count -->
-  <div class="form-group">
-    <label>Number of Pumpkins</label>
-    <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
-    <div class="count-options">
-      <div class="count-option selected" onclick="selectCount(this)">
-        <input type="radio" name="count" value="6" data-price="79" checked>
-        <div class="count-num">6</div>
-        <div class="count-label">pumpkins</div>
-        <div class="count-price">$79</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="8" data-price="99">
-        <div class="count-num">8</div>
-        <div class="count-label">pumpkins</div>
-        <div class="count-price">$99</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="10" data-price="119">
-        <div class="count-num">10</div>
-        <div class="count-label">pumpkins</div>
-        <div class="count-price">$119</div>
-      </div>
-      <div class="count-option popular" onclick="selectCount(this)">
-        <input type="radio" name="count" value="12" data-price="149">
-        <div class="popular-tag">Most Popular</div>
-        <div class="count-num">12</div>
-        <div class="count-label">pumpkins</div>
-        <div class="count-price">$149</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="14" data-price="179">
-        <div class="count-num">14</div>
-        <div class="count-label">pumpkins</div>
-        <div class="count-price">$179</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="16" data-price="199">
-        <div class="count-num">16</div>
-        <div class="count-label">pumpkins</div>
-        <div class="count-price">$199</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="18" data-price="229">
-        <div class="count-num">18</div>
-        <div class="count-label">pumpkins</div>
-        <div class="count-price">$229</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="20" data-price="259">
-        <div class="count-num">20</div>
-        <div class="count-label">pumpkins</div>
-        <div class="count-price">$259</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="22" data-price="289">
-        <div class="count-num">22</div>
-        <div class="count-label">pumpkins</div>
-        <div class="count-price">$289</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="24" data-price="319">
-        <div class="count-num">24</div>
-        <div class="count-label">pumpkins</div>
-        <div class="count-price">$319</div>
-      </div>
-    </div>
-    <p class="includes-line">All packages include delivery, design, and end-of-season removal.</p>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Color Palette -->
-  <div class="form-group">
-    <label>Choose Your Color Palette</label>
-    <div class="color-options">
-      <div class="color-option selected" onclick="selectColor(this)">
-        <input type="radio" name="color" value="All Orange" checked>
-        <div class="color-swatches"><span class="swatch orange"></span></div>
-        <span class="color-label">All Orange</span>
-      </div>
-      <div class="color-option" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Orange & White">
-        <div class="color-swatches"><span class="swatch orange"></span><span class="swatch white"></span></div>
-        <span class="color-label">Orange & White</span>
-      </div>
-      <div class="color-option" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Orange & Green">
-        <div class="color-swatches"><span class="swatch orange"></span><span class="swatch green"></span></div>
-        <span class="color-label">Orange & Green</span>
-      </div>
-      <div class="color-option" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Orange, White & Green">
-        <div class="color-swatches"><span class="swatch orange"></span><span class="swatch white"></span><span class="swatch green"></span></div>
-        <span class="color-label">Orange, White & Green</span>
-      </div>
-      <div class="color-option" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Green & Blue">
-        <div class="color-swatches"><span class="swatch green"></span><span class="swatch blue"></span></div>
-        <span class="color-label">Green & Blue</span>
-      </div>
-      <div class="color-option" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Blue, Green & White">
-        <div class="color-swatches"><span class="swatch blue"></span><span class="swatch green"></span><span class="swatch white"></span></div>
-        <span class="color-label">Blue, Green & White</span>
-      </div>
-      <div class="color-option" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Blue, Green & Orange">
-        <div class="color-swatches"><span class="swatch blue"></span><span class="swatch green"></span><span class="swatch orange"></span></div>
-        <span class="color-label">Blue, Green & Orange</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Add-Ons -->
-  <div class="form-group">
-    <label>Extras <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
-    <div class="addon-options">
-      <label class="addon-option" onclick="">
-        <input type="checkbox" name="addon" value="Decorative Hay Bale" data-addon-price="25">
-        <div class="addon-check"></div>
-        <div class="addon-info">
-          <span class="addon-name">Decorative Hay Bale</span>
-          <span class="addon-desc">Rustic straw bale styled into your display</span>
+      <div class="form-group">
+        <label>Number of Pumpkins</label>
+        <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
+        <div class="count-options">
+          <div class="count-option selected" onclick="selectCount(this)">
+            <input type="radio" name="count" value="6" data-price="79" checked>
+            <div class="count-num">6</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$79</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="8" data-price="99">
+            <div class="count-num">8</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$99</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="10" data-price="119">
+            <div class="count-num">10</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$119</div>
+          </div>
+          <div class="count-option popular" onclick="selectCount(this)">
+            <input type="radio" name="count" value="12" data-price="149">
+            <div class="popular-tag">Most Popular</div>
+            <div class="count-num">12</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$149</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="14" data-price="179">
+            <div class="count-num">14</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$179</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="16" data-price="199">
+            <div class="count-num">16</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$199</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="18" data-price="229">
+            <div class="count-num">18</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$229</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="20" data-price="259">
+            <div class="count-num">20</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$259</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="22" data-price="289">
+            <div class="count-num">22</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$289</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="24" data-price="319">
+            <div class="count-num">24</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$319</div>
+          </div>
         </div>
-        <span class="addon-price">+$25</span>
-      </label>
-      <label class="addon-option" onclick="">
-        <input type="checkbox" name="addon" value="Potted Flower Arrangement" data-addon-price="39">
-        <div class="addon-check"></div>
-        <div class="addon-info">
-          <span class="addon-name">Potted Flower Arrangement</span>
-          <span class="addon-desc">Seasonal mums and florals in a planter</span>
+        <p class="includes-line">All packages include delivery, design, and end-of-season removal.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label>Choose Your Color Palette</label>
+        <div class="color-options">
+          <div class="color-option selected" onclick="selectColor(this)">
+            <input type="radio" name="color" value="All Orange" checked>
+            <div class="color-swatches"><span class="swatch orange"></span></div>
+            <span class="color-label">All Orange</span>
+          </div>
+          <div class="color-option" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Orange & White">
+            <div class="color-swatches"><span class="swatch orange"></span><span class="swatch white"></span></div>
+            <span class="color-label">Orange & White</span>
+          </div>
+          <div class="color-option" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Orange & Green">
+            <div class="color-swatches"><span class="swatch orange"></span><span class="swatch green"></span></div>
+            <span class="color-label">Orange & Green</span>
+          </div>
+          <div class="color-option" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Orange, White & Green">
+            <div class="color-swatches"><span class="swatch orange"></span><span class="swatch white"></span><span class="swatch green"></span></div>
+            <span class="color-label">Orange, White & Green</span>
+          </div>
+          <div class="color-option" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Green & Blue">
+            <div class="color-swatches"><span class="swatch green"></span><span class="swatch blue"></span></div>
+            <span class="color-label">Green & Blue</span>
+          </div>
+          <div class="color-option" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Blue, Green & White">
+            <div class="color-swatches"><span class="swatch blue"></span><span class="swatch green"></span><span class="swatch white"></span></div>
+            <span class="color-label">Blue, Green & White</span>
+          </div>
+          <div class="color-option" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Blue, Green & Orange">
+            <div class="color-swatches"><span class="swatch blue"></span><span class="swatch green"></span><span class="swatch orange"></span></div>
+            <span class="color-label">Blue, Green & Orange</span>
+          </div>
         </div>
-        <span class="addon-price">+$39</span>
-      </label>
-      <label class="addon-option" onclick="">
-        <input type="checkbox" name="addon" value="Harvest Wreath" data-addon-price="49">
-        <div class="addon-check"></div>
-        <div class="addon-info">
-          <span class="addon-name">Harvest Wreath</span>
-          <span class="addon-desc">Handcrafted autumn wreath for your door</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label>Extras <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
+        <div class="addon-options">
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Decorative Hay Bale" data-addon-price="25">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Decorative Hay Bale</span>
+              <span class="addon-desc">Rustic straw bale styled into your display</span>
+            </div>
+            <span class="addon-price">+$25</span>
+          </label>
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Potted Flower Arrangement" data-addon-price="39">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Potted Flower Arrangement</span>
+              <span class="addon-desc">Seasonal mums and florals in a planter</span>
+            </div>
+            <span class="addon-price">+$39</span>
+          </label>
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Harvest Wreath" data-addon-price="49">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Harvest Wreath</span>
+              <span class="addon-desc">Handcrafted autumn wreath for your door</span>
+            </div>
+            <span class="addon-price">+$49</span>
+          </label>
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Pumpkin Arch" data-addon-price="59">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Pumpkin Arch</span>
+              <span class="addon-desc">Stunning stacked pumpkin archway at your entry</span>
+            </div>
+            <span class="addon-price">+$59</span>
+          </label>
         </div>
-        <span class="addon-price">+$49</span>
-      </label>
-      <label class="addon-option" onclick="">
-        <input type="checkbox" name="addon" value="Pumpkin Arch" data-addon-price="59">
-        <div class="addon-check"></div>
-        <div class="addon-info">
-          <span class="addon-name">Pumpkin Arch</span>
-          <span class="addon-desc">Stunning stacked pumpkin archway at your entry</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label>Preferred 3-Day Delivery Window</label>
+        <select id="deliveryWindow" required>
+          <option value="" disabled selected>Select your delivery window...</option>
+          <optgroup label="September 2026">
+            <option value="Sep 8-10">Sep 8 – 10 (Week after Labor Day)</option>
+            <option value="Sep 11-13">Sep 11 – 13</option>
+            <option value="Sep 15-17">Sep 15 – 17</option>
+            <option value="Sep 18-20">Sep 18 – 20</option>
+            <option value="Sep 22-24">Sep 22 – 24</option>
+            <option value="Sep 25-27">Sep 25 – 27</option>
+            <option value="Sep 29 - Oct 1">Sep 29 – Oct 1</option>
+          </optgroup>
+          <optgroup label="October 2026">
+            <option value="Oct 2-4">Oct 2 – 4</option>
+            <option value="Oct 6-8">Oct 6 – 8</option>
+            <option value="Oct 9-11">Oct 9 – 11</option>
+            <option value="Oct 13-15">Oct 13 – 15</option>
+            <option value="Oct 16-18">Oct 16 – 18</option>
+            <option value="Oct 20-22">Oct 20 – 22</option>
+            <option value="Oct 23-25">Oct 23 – 25</option>
+            <option value="Oct 27-29">Oct 27 – 29</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label>Your Information</label>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="firstName" placeholder="Jane" required>
         </div>
-        <span class="addon-price">+$59</span>
-      </label>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" id="lastName" placeholder="Appleton" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="jane@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Delivery Address</label>
+        <input type="text" id="address" placeholder="Start typing your address..." autocomplete="off" required>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label>Special Instructions <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
+        <textarea id="notes" placeholder="Any porch details, gate codes, or arrangement preferences..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Reserve My Porch — $79</button>
+    </form>
+
+    <div class="success-message" id="successMsg">
+      <div class="success-icon">🎃</div>
+      <h3>You're on the list!</h3>
+      <p>We'll be in touch as Labor Day approaches with your delivery window details. Get ready for the most beautiful porch on the block.</p>
     </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Delivery Window -->
-  <div class="form-group">
-    <label>Preferred 3-Day Delivery Window</label>
-    <select id="deliveryWindow" required>
-      <option value="" disabled selected>Select your delivery window...</option>
-      <optgroup label="September 2026">
-        <option value="Sep 8-10">Sep 8 – 10 (Week after Labor Day)</option>
-        <option value="Sep 11-13">Sep 11 – 13</option>
-        <option value="Sep 15-17">Sep 15 – 17</option>
-        <option value="Sep 18-20">Sep 18 – 20</option>
-        <option value="Sep 22-24">Sep 22 – 24</option>
-        <option value="Sep 25-27">Sep 25 – 27</option>
-        <option value="Sep 29 - Oct 1">Sep 29 – Oct 1</option>
-      </optgroup>
-      <optgroup label="October 2026">
-        <option value="Oct 2-4">Oct 2 – 4</option>
-        <option value="Oct 6-8">Oct 6 – 8</option>
-        <option value="Oct 9-11">Oct 9 – 11</option>
-        <option value="Oct 13-15">Oct 13 – 15</option>
-        <option value="Oct 16-18">Oct 16 – 18</option>
-        <option value="Oct 20-22">Oct 20 – 22</option>
-        <option value="Oct 23-25">Oct 23 – 25</option>
-        <option value="Oct 27-29">Oct 27 – 29</option>
-      </optgroup>
-    </select>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Customer Info -->
-  <div class="form-group">
-    <label>Your Information</label>
-  </div>
-  <div class="form-row">
-    <div class="form-group">
-      <label>First Name</label>
-      <input type="text" id="firstName" placeholder="Jane" required>
-    </div>
-    <div class="form-group">
-      <label>Last Name</label>
-      <input type="text" id="lastName" placeholder="Appleton" required>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="email" placeholder="jane@email.com" required>
-    </div>
-    <div class="form-group">
-      <label>Phone</label>
-      <input type="tel" id="phone" placeholder="(555) 123-4567" required>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Delivery Address</label>
-    <input type="text" id="address" placeholder="Start typing your address..." autocomplete="off" required>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Notes -->
-  <div class="form-group">
-    <label>Special Instructions <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
-    <textarea id="notes" placeholder="Any porch details, gate codes, or arrangement preferences..."></textarea>
-  </div>
-
-  <button type="submit" class="submit-btn" id="submitBtn">Reserve My Porch — $79</button>
-</form>
-
-<div class="success-message" id="successMsg">
-  <div class="success-icon">🎃</div>
-  <h3>You're on the list!</h3>
-  <p>We'll be in touch as Labor Day approaches with your delivery window details. Get ready for the most beautiful porch on the block.</p>
-</div>
-
   </div>
 </section>
-
-<!-- ── FOOTER ── -->
 
 <footer>
   <div class="footer-brand">Porchside Drop</div>
@@ -1106,7 +1075,6 @@ font-weight: 500;
     updateButton();
   }
 
-  // Listen for addon checkbox changes
   document.querySelectorAll('input[name="addon"]').forEach(cb => {
     cb.addEventListener('change', function() {
       this.closest('.addon-option').classList.toggle('selected', this.checked);
@@ -1116,55 +1084,42 @@ font-weight: 500;
 
   document.getElementById('signupForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-
     const btn = document.getElementById('submitBtn');
     const errorMsg = document.getElementById('errorMsg');
-
     errorMsg.classList.remove('visible');
-
     const selectedCount = document.querySelector('input[name="count"]:checked');
     const selectedAddons = [];
     document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
       selectedAddons.push(cb.value);
     });
-
-    // Collect all form data
     const formData = {
-      firstName:    document.getElementById('firstName').value.trim(),
-      lastName:     document.getElementById('lastName').value.trim(),
-      email:        document.getElementById('email').value.trim(),
-      phone:        document.getElementById('phone').value.trim(),
-      address:      document.getElementById('address').value.trim(),
+      firstName: document.getElementById('firstName').value.trim(),
+      lastName: document.getElementById('lastName').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      address: document.getElementById('address').value.trim(),
       colorPalette: document.querySelector('input[name="color"]:checked').value,
       pumpkinCount: selectedCount.value,
-      addons:       selectedAddons.join(', ') || 'None',
-      totalPrice:   '$' + getTotal(),
+      addons: selectedAddons.join(', ') || 'None',
+      totalPrice: '$' + getTotal(),
       deliveryWindow: document.getElementById('deliveryWindow').value,
-      notes:        document.getElementById('notes').value.trim(),
-      submittedAt:  new Date().toISOString()
+      notes: document.getElementById('notes').value.trim(),
+      submittedAt: new Date().toISOString()
     };
-
-    // Loading state
     btn.disabled = true;
     btn.innerHTML = '<span class="spinner"></span>Redirecting to payment...';
-
     try {
-      // Send to Netlify Function which creates Stripe Checkout
       const response = await fetch('/.netlify/functions/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-
       const result = await response.json();
-
       if (result.url) {
-        // Redirect to Stripe Checkout
         window.location.href = result.url;
       } else {
         throw new Error(result.error || 'Failed to create checkout session');
       }
-
     } catch (err) {
       console.error('Checkout error:', err);
       errorMsg.classList.add('visible');
@@ -1182,7 +1137,6 @@ font-weight: 500;
       componentRestrictions: { country: 'us' },
       fields: ['formatted_address']
     });
-
     autocomplete.addListener('place_changed', function() {
       const place = autocomplete.getPlace();
       if (place.formatted_address) {
