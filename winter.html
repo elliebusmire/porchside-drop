@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porchside Drop — Winter Porch Décor Delivery</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: 'DM Sans', sans-serif;
+background: #F0F4F8;
+color: #1E2A38;
+overflow-x: hidden;
+}
+
+body::before {
+content: '';
+position: fixed;
+inset: 0;
+background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+pointer-events: none;
+z-index: 999;
+}
+
+.site-nav {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1rem 2rem;
+background: rgba(240,244,248,0.85);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(30,42,56,0.06);
+}
+
+.nav-brand {
+font-family: 'Playfair Display', serif;
+font-size: 1.1rem;
+font-weight: 700;
+color: #1E2A38;
+text-decoration: none;
+}
+
+.nav-links {
+display: flex;
+gap: 1.5rem;
+}
+
+.nav-link {
+font-family: 'DM Sans', sans-serif;
+font-size: 0.75rem;
+font-weight: 500;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: #1E2A38;
+text-decoration: none;
+opacity: 0.6;
+transition: opacity 0.3s ease;
+}
+
+.nav-link:hover { opacity: 1; }
+
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 5rem 2rem 2rem;
+position: relative;
+background:
+radial-gradient(ellipse at 20% 80%, rgba(180,40,40,0.10) 0%, transparent 50%),
+radial-gradient(ellipse at 80% 20%, rgba(34,100,60,0.08) 0%, transparent 50%),
+radial-gradient(ellipse at 50% 50%, rgba(200,180,140,0.06) 0%, transparent 70%),
+#F0F4F8;
+}
+
+.hero::after {
+content: '';
+position: absolute;
+bottom: 0; left: 0; right: 0;
+height: 120px;
+background: linear-gradient(to bottom, transparent, #F0F4F8);
+}
+
+.holiday-deco {
+position: absolute;
+font-size: 3rem;
+opacity: 0.12;
+animation: float 6s ease-in-out infinite;
+}
+.holiday-deco:nth-child(1) { top: 10%; left: 8%; animation-delay: 0s; font-size: 4rem; }
+.holiday-deco:nth-child(2) { top: 20%; right: 10%; animation-delay: 1.5s; font-size: 2.5rem; }
+.holiday-deco:nth-child(3) { bottom: 20%; left: 12%; animation-delay: 3s; font-size: 3.5rem; }
+.holiday-deco:nth-child(4) { bottom: 15%; right: 8%; animation-delay: 0.8s; }
+.holiday-deco:nth-child(5) { top: 45%; left: 4%; animation-delay: 2s; font-size: 2rem; }
+.holiday-deco:nth-child(6) { top: 60%; right: 5%; animation-delay: 4s; font-size: 2.8rem; }
+
+@keyframes float {
+0%, 100% { transform: translateY(0) rotate(0deg); }
+50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+.brand-tag {
+display: inline-block;
+font-size: 0.7rem;
+letter-spacing: 0.35em;
+text-transform: uppercase;
+color: #22643C;
+border: 1px solid #22643C;
+padding: 0.4rem 1.2rem;
+border-radius: 50px;
+margin-bottom: 2rem;
+font-weight: 500;
+animation: fadeDown 1s ease-out;
+}
+
+.hero h1 {
+font-family: 'Playfair Display', serif;
+font-weight: 900;
+font-size: clamp(3rem, 8vw, 7rem);
+line-height: 0.95;
+color: #1E2A38;
+margin-bottom: 0.3em;
+animation: fadeDown 1s ease-out 0.15s both;
+}
+
+.hero h1 .accent {
+color: #B42828;
+font-style: italic;
+font-weight: 400;
+}
+
+.hero-sub {
+font-size: clamp(1rem, 2vw, 1.25rem);
+color: #8B3A3A;
+max-width: 520px;
+line-height: 1.6;
+margin-bottom: 2.5rem;
+font-weight: 300;
+animation: fadeDown 1s ease-out 0.3s both;
+}
+
+.cta-btn {
+display: inline-block;
+background: #B42828;
+color: #F0F4F8;
+font-family: 'DM Sans', sans-serif;
+font-size: 0.85rem;
+font-weight: 600;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+padding: 1rem 3rem;
+border: none;
+border-radius: 50px;
+cursor: pointer;
+text-decoration: none;
+transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+animation: fadeDown 1s ease-out 0.45s both;
+position: relative;
+overflow: hidden;
+}
+
+.cta-btn:hover {
+background: #1E2A38;
+transform: translateY(-2px);
+box-shadow: 0 12px 40px rgba(30,42,56,0.2);
+}
+
+.scroll-hint {
+position: absolute;
+bottom: 40px;
+left: 0;
+right: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+color: #22643C;
+font-size: 0.7rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+animation: fadeDown 1s ease-out 0.6s both;
+z-index: 2;
+text-align: center;
+}
+
+.scroll-hint .arrow {
+width: 1px;
+height: 30px;
+background: #22643C;
+position: relative;
+animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+0%, 100% { opacity: 0.3; transform: scaleY(1); }
+50% { opacity: 1; transform: scaleY(1.3); }
+}
+
+@keyframes fadeDown {
+from { opacity: 0; transform: translateY(-20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.how-section {
+padding: 5rem 2rem;
+background: #1E2A38;
+color: #F0F4F8;
+position: relative;
+}
+
+.how-section::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 80px;
+background: linear-gradient(to top, transparent, #F0F4F8);
+transform: translateY(-79px);
+}
+
+.section-label {
+font-size: 0.65rem;
+letter-spacing: 0.4em;
+text-transform: uppercase;
+text-align: center;
+opacity: 0.5;
+margin-bottom: 1rem;
+}
+
+.how-section h2 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2rem, 5vw, 3.5rem);
+text-align: center;
+margin-bottom: 3.5rem;
+font-weight: 700;
+}
+
+.steps {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 2rem;
+max-width: 900px;
+margin: 0 auto;
+}
+
+.step {
+text-align: center;
+padding: 2rem 1.5rem;
+border-radius: 16px;
+background: rgba(255,255,255,0.05);
+border: 1px solid rgba(255,255,255,0.08);
+transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.step:hover {
+transform: translateY(-4px);
+background: rgba(255,255,255,0.08);
+}
+
+.step-num {
+font-family: 'Playfair Display', serif;
+font-size: 2.5rem;
+font-weight: 900;
+color: #D4A843;
+margin-bottom: 0.75rem;
+}
+
+.step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
+.step p { font-size: 0.85rem; line-height: 1.6; opacity: 0.7; font-weight: 300; }
+
+.signup-section {
+padding: 6rem 2rem;
+background:
+radial-gradient(ellipse at 30% 70%, rgba(180,40,40,0.05) 0%, transparent 50%),
+#F0F4F8;
+}
+
+.signup-section h2 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2rem, 5vw, 3.5rem);
+text-align: center;
+margin-bottom: 0.5rem;
+}
+
+.signup-section .sub {
+text-align: center;
+color: #8B3A3A;
+font-weight: 300;
+margin-bottom: 3rem;
+font-size: 1rem;
+}
+
+.form-container {
+max-width: 680px;
+margin: 0 auto;
+background: white;
+border-radius: 24px;
+padding: 3rem;
+box-shadow: 0 1px 2px rgba(30,42,56,0.04), 0 4px 16px rgba(30,42,56,0.06), 0 12px 40px rgba(30,42,56,0.04);
+}
+
+.form-group { margin-bottom: 1.75rem; }
+
+.form-group label {
+display: block;
+font-size: 0.72rem;
+font-weight: 600;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: #1E2A38;
+margin-bottom: 0.6rem;
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+width: 100%;
+padding: 0.9rem 1.1rem;
+border: 1.5px solid #D1D9E0;
+border-radius: 12px;
+font-family: 'DM Sans', sans-serif;
+font-size: 0.95rem;
+color: #1E2A38;
+background: #F0F4F8;
+transition: border-color 0.3s, box-shadow 0.3s;
+outline: none;
+}
+
+input:focus, textarea:focus {
+border-color: #B42828;
+box-shadow: 0 0 0 3px rgba(180,40,40,0.1);
+}
+
+textarea { resize: vertical; min-height: 80px; }
+
+select {
+width: 100%;
+padding: 0.9rem 1.1rem;
+border: 1.5px solid #D1D9E0;
+border-radius: 12px;
+font-family: 'DM Sans', sans-serif;
+font-size: 0.95rem;
+color: #1E2A38;
+background: #F0F4F8;
+transition: border-color 0.3s, box-shadow 0.3s;
+outline: none;
+cursor: pointer;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%231E2A38' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+background-repeat: no-repeat;
+background-position: right 1.1rem center;
+padding-right: 2.5rem;
+}
+
+select:focus {
+border-color: #B42828;
+box-shadow: 0 0 0 3px rgba(180,40,40,0.1);
+}
+
+select:invalid { color: #9BAAB8; }
+::placeholder { color: #9BAAB8; font-weight: 300; }
+
+.color-options {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 0.75rem;
+}
+
+.color-option {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+padding: 0.85rem 1rem;
+border: 1.5px solid #D1D9E0;
+border-radius: 12px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: #F0F4F8;
+}
+
+.color-option:hover { border-color: #B42828; background: rgba(180,40,40,0.03); }
+
+.color-option.selected {
+border-color: #B42828;
+background: rgba(180,40,40,0.06);
+box-shadow: 0 0 0 3px rgba(180,40,40,0.1);
+}
+
+.color-option input[type="radio"] { display: none; }
+.color-swatches { display: flex; gap: 3px; }
+
+.swatch {
+width: 18px; height: 18px;
+border-radius: 50%;
+border: 1.5px solid rgba(30,42,56,0.15);
+}
+
+.swatch.red { background: #B42828; }
+.swatch.green { background: #22643C; }
+.swatch.white { background: #F5F0E8; }
+.swatch.gold { background: #D4A843; }
+.swatch.plaid { background: repeating-linear-gradient(45deg, #B42828, #B42828 3px, #1E2A38 3px, #1E2A38 6px); }
+.swatch.silver { background: #A8B8C8; }
+.swatch.blue { background: #5B7FA5; }
+.swatch.kraft { background: #C4A876; }
+.color-label { font-size: 0.85rem; font-weight: 500; color: #1E2A38; }
+
+.count-options {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 0.6rem;
+width: 100%;
+overflow: visible;
+padding-top: 12px;
+}
+
+@media (max-width: 500px) {
+.count-options { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+}
+
+.count-option {
+text-align: center;
+padding: 0.75rem 0.25rem;
+border: 1.5px solid #D1D9E0;
+border-radius: 12px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: #F0F4F8;
+min-width: 0;
+overflow: visible;
+position: relative;
+}
+
+.count-option:hover { border-color: #B42828; }
+
+.count-option.selected {
+border-color: #B42828;
+background: rgba(180,40,40,0.06);
+box-shadow: 0 0 0 3px rgba(180,40,40,0.1);
+}
+
+.count-option input[type="radio"] { display: none; }
+
+.count-num {
+font-family: 'Playfair Display', serif;
+font-size: clamp(1.2rem, 3vw, 1.6rem);
+font-weight: 700;
+color: #B42828;
+line-height: 1;
+}
+
+.count-label {
+font-size: 0.55rem;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+color: #999;
+margin-top: 0.15rem;
+font-weight: 500;
+}
+
+.count-price {
+font-family: 'DM Sans', sans-serif;
+font-size: 0.75rem;
+font-weight: 600;
+color: #22643C;
+margin-top: 0.35rem;
+background: rgba(34,100,60,0.1);
+padding: 0.15rem 0.4rem;
+border-radius: 6px;
+display: inline-block;
+}
+
+.count-option.popular {
+position: relative;
+border-color: #B42828;
+background: rgba(180,40,40,0.04);
+}
+
+.popular-tag {
+position: absolute;
+top: -9px;
+left: 50%;
+transform: translateX(-50%);
+background: #B42828;
+color: white;
+font-size: 0.5rem;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+padding: 2px 6px;
+border-radius: 4px;
+white-space: nowrap;
+}
+
+.intro-badge {
+text-align: center;
+margin-bottom: 0.75rem;
+}
+
+.intro-badge span {
+display: inline-block;
+font-size: 0.65rem;
+font-weight: 600;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: #22643C;
+background: rgba(34,100,60,0.1);
+padding: 0.35rem 1rem;
+border-radius: 50px;
+}
+
+.includes-line {
+text-align: center;
+font-size: 0.8rem;
+color: #22643C;
+font-weight: 400;
+margin-top: 0.75rem;
+font-style: italic;
+}
+
+.addon-options {
+display: flex;
+flex-direction: column;
+gap: 0.6rem;
+}
+
+.addon-option {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+padding: 0.85rem 1rem;
+border: 1.5px solid #D1D9E0;
+border-radius: 12px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: #F0F4F8;
+}
+
+.addon-option:hover { border-color: #B42828; background: rgba(180,40,40,0.03); }
+
+.addon-option.selected {
+border-color: #B42828;
+background: rgba(180,40,40,0.06);
+box-shadow: 0 0 0 3px rgba(180,40,40,0.1);
+}
+
+.addon-option input[type="checkbox"] { display: none; }
+
+.addon-check {
+width: 20px;
+height: 20px;
+border: 2px solid #B8C4D0;
+border-radius: 6px;
+flex-shrink: 0;
+transition: all 0.3s ease;
+position: relative;
+}
+
+.addon-option.selected .addon-check {
+background: #B42828;
+border-color: #B42828;
+}
+
+.addon-option.selected .addon-check::after {
+content: '';
+position: absolute;
+top: 3px;
+left: 6px;
+width: 5px;
+height: 9px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+
+.addon-info {
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 0.15rem;
+}
+
+.addon-name {
+font-size: 0.9rem;
+font-weight: 500;
+color: #1E2A38;
+}
+
+.addon-desc {
+font-size: 0.72rem;
+color: #999;
+font-weight: 300;
+}
+
+.addon-price {
+font-family: 'DM Sans', sans-serif;
+font-size: 0.8rem;
+font-weight: 600;
+color: #22643C;
+background: rgba(34,100,60,0.1);
+padding: 0.2rem 0.5rem;
+border-radius: 6px;
+white-space: nowrap;
+flex-shrink: 0;
+}
+
+.divider {
+height: 1px;
+background: linear-gradient(to right, transparent, #D1D9E0, transparent);
+margin: 2rem 0;
+}
+
+.submit-btn {
+width: 100%;
+padding: 1.1rem;
+background: #B42828;
+color: #F0F4F8;
+font-family: 'DM Sans', sans-serif;
+font-size: 0.85rem;
+font-weight: 600;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+border: none;
+border-radius: 14px;
+cursor: pointer;
+transition: all 0.4s ease;
+}
+
+.submit-btn:hover {
+background: #1E2A38;
+transform: translateY(-1px);
+box-shadow: 0 8px 30px rgba(30,42,56,0.2);
+}
+
+.submit-btn:active { transform: translateY(0); }
+
+.submit-btn:disabled {
+opacity: 0.7;
+cursor: not-allowed;
+transform: none;
+box-shadow: none;
+}
+
+.spinner {
+display: inline-block;
+width: 18px; height: 18px;
+border: 2px solid rgba(240,244,248,0.3);
+border-top-color: #F0F4F8;
+border-radius: 50%;
+animation: spin 0.6s linear infinite;
+vertical-align: middle;
+margin-right: 0.5rem;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error-message {
+display: none;
+background: #fef2f2;
+border: 1px solid #fecaca;
+color: #991b1b;
+padding: 0.85rem 1.1rem;
+border-radius: 12px;
+font-size: 0.9rem;
+margin-bottom: 1.5rem;
+text-align: center;
+}
+
+.error-message.visible { display: block; animation: fadeDown 0.4s ease-out; }
+
+.success-message {
+display: none;
+text-align: center;
+padding: 3rem 2rem;
+}
+
+.success-message.visible { display: block; animation: fadeDown 0.6s ease-out; }
+
+.success-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+
+.success-message h3 {
+font-family: 'Playfair Display', serif;
+font-size: 1.8rem;
+margin-bottom: 0.5rem;
+color: #22643C;
+}
+
+.success-message p { color: #8B3A3A; font-weight: 300; line-height: 1.6; }
+
+footer {
+background: #1E2A38;
+color: #F0F4F8;
+text-align: center;
+padding: 3rem 2rem;
+}
+
+footer .footer-brand {
+font-family: 'Playfair Display', serif;
+font-size: 1.5rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+}
+
+footer p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
+
+@media (max-width: 600px) {
+.form-container { padding: 2rem 1.25rem; }
+.form-row { grid-template-columns: 1fr; }
+.color-options { grid-template-columns: 1fr; }
+.count-options { grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+.count-option { padding: 0.6rem 0.15rem; border-radius: 10px; }
+.count-label { font-size: 0.55rem; }
+}
+
+/* Google Places Autocomplete styling */
+.pac-container {
+border-radius: 12px;
+border: 1.5px solid #D1D9E0;
+box-shadow: 0 4px 16px rgba(30,42,56,0.1);
+font-family: 'DM Sans', sans-serif;
+margin-top: 4px;
+overflow: hidden;
+}
+
+.pac-item {
+padding: 0.6rem 1rem;
+font-size: 0.9rem;
+color: #1E2A38;
+border-top: 1px solid #E8ECF0;
+cursor: pointer;
+}
+
+.pac-item:first-child {
+border-top: none;
+}
+
+.pac-item:hover {
+background: rgba(180,40,40,0.06);
+}
+
+.pac-item-selected {
+background: rgba(180,40,40,0.08);
+}
+
+.pac-icon { display: none; }
+
+.pac-item-query {
+font-size: 0.9rem;
+color: #1E2A38;
+font-weight: 500;
+}
+</style>
+
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">Porchside Drop</a>
+  <div class="nav-links">
+    <a href="fall.html" class="nav-link">Fall</a>
+    <a href="winter.html" class="nav-link">Winter</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+
+<section class="hero">
+  <div class="holiday-deco">🎁</div>
+  <div class="holiday-deco">🎄</div>
+  <div class="holiday-deco">❄️</div>
+  <div class="holiday-deco">🎁</div>
+  <div class="holiday-deco">🎄</div>
+  <div class="holiday-deco">❄️</div>
+
+<span class="brand-tag">Est. 2026 — Seasonal Porch Décor</span>
+
+  <h1>Porchside<br><span class="accent">Drop</span></h1>
+  <p class="hero-sub">We deliver and artfully arrange stunning holiday present displays on your porch — so you can skip the hassle and enjoy the magic of the season.</p>
+  <a href="#signup" class="cta-btn">Reserve Your Porch</a>
+  <div class="scroll-hint">
+    <span>Discover</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+
+<section class="how-section">
+  <p class="section-label">How It Works</p>
+  <h2>Simple as Wrapping Paper</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Sign Up in October</h3>
+      <p>Choose your color palette, pick your display size, and reserve your spot before the season fills up.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>We Deliver & Design</h3>
+      <p>Within a 3-day window starting mid-November, our team arrives and arranges a gorgeous present display on your porch.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Enjoy the Season</h3>
+      <p>Sit back, sip your cocoa, and soak in the compliments all winter long. After New Year's, we come back and handle the removal for you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SIGN-UP FORM ── -->
+
+<section class="signup-section" id="signup">
+  <p class="section-label" style="color: #22643C;">Winter 2026 Sign-Up</p>
+  <h2>Reserve Your Porch</h2>
+  <p class="sub">Sign-ups open in early October. Delivery begins mid-November.</p>
+
+  <div class="form-container">
+    <form id="signupForm">
+
+  <div class="error-message" id="errorMsg">Something went wrong. Please try again or contact us directly.</div>
+
+  <!-- Display Size -->
+  <div class="form-group">
+    <label>Display Size</label>
+    <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
+    <div class="count-options">
+      <div class="count-option selected" onclick="selectCount(this)">
+        <input type="radio" name="count" value="2" data-price="79" checked>
+        <div class="count-num">2</div>
+        <div class="count-label">presents</div>
+        <div class="count-price">$79</div>
+      </div>
+      <div class="count-option" onclick="selectCount(this)">
+        <input type="radio" name="count" value="3" data-price="99">
+        <div class="count-num">3</div>
+        <div class="count-label">presents</div>
+        <div class="count-price">$99</div>
+      </div>
+      <div class="count-option popular" onclick="selectCount(this)">
+        <input type="radio" name="count" value="4" data-price="119">
+        <div class="popular-tag">Most Popular</div>
+        <div class="count-num">4</div>
+        <div class="count-label">presents</div>
+        <div class="count-price">$119</div>
+      </div>
+      <div class="count-option" onclick="selectCount(this)">
+        <input type="radio" name="count" value="5" data-price="179">
+        <div class="count-num">5</div>
+        <div class="count-label">presents</div>
+        <div class="count-price">$179</div>
+      </div>
+      <div class="count-option" onclick="selectCount(this)">
+        <input type="radio" name="count" value="6" data-price="229">
+        <div class="count-num">6</div>
+        <div class="count-label">presents</div>
+        <div class="count-price">$229</div>
+      </div>
+    </div>
+    <p class="includes-line">All packages include delivery, design, and post-New Year's removal.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Color Palette -->
+  <div class="form-group">
+    <label>Choose Your Color Palette</label>
+    <div class="color-options">
+      <div class="color-option selected" onclick="selectColor(this)">
+        <input type="radio" name="color" value="Classic Red & Green" checked>
+        <div class="color-swatches"><span class="swatch red"></span><span class="swatch green"></span></div>
+        <span class="color-label">Classic Red & Green</span>
+      </div>
+      <div class="color-option" onclick="selectColor(this)">
+        <input type="radio" name="color" value="Red & Black Buffalo Plaid">
+        <div class="color-swatches"><span class="swatch red"></span><span class="swatch plaid"></span></div>
+        <span class="color-label">Red & Black Buffalo Plaid</span>
+      </div>
+      <div class="color-option" onclick="selectColor(this)">
+        <input type="radio" name="color" value="Gold, White & Red">
+        <div class="color-swatches"><span class="swatch gold"></span><span class="swatch white"></span><span class="swatch red"></span></div>
+        <span class="color-label">Gold, White & Red</span>
+      </div>
+      <div class="color-option" onclick="selectColor(this)">
+        <input type="radio" name="color" value="Neutral Farmhouse">
+        <div class="color-swatches"><span class="swatch white"></span><span class="swatch kraft"></span><span class="swatch green"></span></div>
+        <span class="color-label">Neutral Farmhouse</span>
+      </div>
+      <div class="color-option" onclick="selectColor(this)">
+        <input type="radio" name="color" value="Blue & Silver">
+        <div class="color-swatches"><span class="swatch blue"></span><span class="swatch silver"></span></div>
+        <span class="color-label">Blue & Silver</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Add-Ons -->
+  <div class="form-group">
+    <label>Extras <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
+    <div class="addon-options">
+      <label class="addon-option" onclick="">
+        <input type="checkbox" name="addon" value="String Lights" data-addon-price="25">
+        <div class="addon-check"></div>
+        <div class="addon-info">
+          <span class="addon-name">String Lights</span>
+          <span class="addon-desc">Warm white string lights woven through your display</span>
+        </div>
+        <span class="addon-price">+$25</span>
+      </label>
+      <label class="addon-option" onclick="">
+        <input type="checkbox" name="addon" value="Evergreen Garland" data-addon-price="39">
+        <div class="addon-check"></div>
+        <div class="addon-info">
+          <span class="addon-name">Evergreen Garland</span>
+          <span class="addon-desc">Lush faux garland styled along your railing or entryway</span>
+        </div>
+        <span class="addon-price">+$39</span>
+      </label>
+      <label class="addon-option" onclick="">
+        <input type="checkbox" name="addon" value="Holiday Wreath" data-addon-price="49">
+        <div class="addon-check"></div>
+        <div class="addon-info">
+          <span class="addon-name">Holiday Wreath</span>
+          <span class="addon-desc">Handcrafted winter wreath with ribbon and greenery for your door</span>
+        </div>
+        <span class="addon-price">+$49</span>
+      </label>
+      <label class="addon-option" onclick="">
+        <input type="checkbox" name="addon" value="Ornament Topiary" data-addon-price="59">
+        <div class="addon-check"></div>
+        <div class="addon-info">
+          <span class="addon-name">Ornament Topiary</span>
+          <span class="addon-desc">Stacked ornament topiary accent piece for your entryway</span>
+        </div>
+        <span class="addon-price">+$59</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Delivery Window -->
+  <div class="form-group">
+    <label>Preferred 3-Day Delivery Window</label>
+    <select id="deliveryWindow" required>
+      <option value="" disabled selected>Select your delivery window...</option>
+      <optgroup label="November 2026">
+        <option value="Nov 16-18">Nov 16 – 18</option>
+        <option value="Nov 19-21">Nov 19 – 21</option>
+        <option value="Nov 23-25">Nov 23 – 25 (Thanksgiving Week)</option>
+        <option value="Nov 27-29">Nov 27 – 29</option>
+      </optgroup>
+      <optgroup label="December 2026">
+        <option value="Dec 1-3">Dec 1 – 3</option>
+        <option value="Dec 4-6">Dec 4 – 6</option>
+        <option value="Dec 7-9">Dec 7 – 9</option>
+        <option value="Dec 10-12">Dec 10 – 12</option>
+        <option value="Dec 14-16">Dec 14 – 16</option>
+        <option value="Dec 17-19">Dec 17 – 19</option>
+      </optgroup>
+    </select>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Customer Info -->
+  <div class="form-group">
+    <label>Your Information</label>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" id="firstName" placeholder="Jane" required>
+    </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" id="lastName" placeholder="Appleton" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="email" placeholder="jane@email.com" required>
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Delivery Address</label>
+    <input type="text" id="address" placeholder="Start typing your address..." autocomplete="off" required>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Notes -->
+  <div class="form-group">
+    <label>Special Instructions <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
+    <textarea id="notes" placeholder="Any porch details, gate codes, or arrangement preferences..."></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn" id="submitBtn">Reserve My Porch — $79</button>
+</form>
+
+<div class="success-message" id="successMsg">
+  <div class="success-icon">🎁</div>
+  <h3>You're on the list!</h3>
+  <p>We'll be in touch as the holidays approach with your delivery window details. Get ready for the most festive porch on the block.</p>
+</div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+
+<footer>
+  <div class="footer-brand">Porchside Drop</div>
+  <p>&copy; 2026 — Handcrafted seasonal joy, delivered to your door.</p>
+</footer>
+
+<script>
+  function selectColor(el) {
+    document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input').checked = true;
+  }
+
+  function getTotal() {
+    const basePrice = parseInt(document.querySelector('input[name="count"]:checked').getAttribute('data-price'));
+    let addonTotal = 0;
+    document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
+      addonTotal += parseInt(cb.getAttribute('data-addon-price'));
+    });
+    return basePrice + addonTotal;
+  }
+
+  function updateButton() {
+    document.getElementById('submitBtn').textContent = 'Reserve My Porch — $' + getTotal();
+  }
+
+  function selectCount(el) {
+    document.querySelectorAll('.count-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input').checked = true;
+    updateButton();
+  }
+
+  // Listen for addon checkbox changes
+  document.querySelectorAll('input[name="addon"]').forEach(cb => {
+    cb.addEventListener('change', function() {
+      this.closest('.addon-option').classList.toggle('selected', this.checked);
+      updateButton();
+    });
+  });
+
+  document.getElementById('signupForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('submitBtn');
+    const errorMsg = document.getElementById('errorMsg');
+
+    errorMsg.classList.remove('visible');
+
+    const selectedCount = document.querySelector('input[name="count"]:checked');
+    const selectedAddons = [];
+    document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
+      selectedAddons.push(cb.value);
+    });
+
+    // Collect all form data
+    const formData = {
+      firstName:    document.getElementById('firstName').value.trim(),
+      lastName:     document.getElementById('lastName').value.trim(),
+      email:        document.getElementById('email').value.trim(),
+      phone:        document.getElementById('phone').value.trim(),
+      address:      document.getElementById('address').value.trim(),
+      colorPalette: document.querySelector('input[name="color"]:checked').value,
+      presentCount: selectedCount.value,
+      addons:       selectedAddons.join(', ') || 'None',
+      totalPrice:   '$' + getTotal(),
+      deliveryWindow: document.getElementById('deliveryWindow').value,
+      notes:        document.getElementById('notes').value.trim(),
+      submittedAt:  new Date().toISOString()
+    };
+
+    // Loading state
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Redirecting to payment...';
+
+    try {
+      // Send to Netlify Function which creates Stripe Checkout
+      const response = await fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = result.url;
+      } else {
+        throw new Error(result.error || 'Failed to create checkout session');
+      }
+
+    } catch (err) {
+      console.error('Checkout error:', err);
+      errorMsg.classList.add('visible');
+      btn.disabled = false;
+      btn.textContent = 'Reserve My Porch — $' + getTotal();
+    }
+  });
+</script>
+
+<script>
+  function initAutocomplete() {
+    const addressInput = document.getElementById('address');
+    const autocomplete = new google.maps.places.Autocomplete(addressInput, {
+      types: ['address'],
+      componentRestrictions: { country: 'us' },
+      fields: ['formatted_address']
+    });
+
+    autocomplete.addListener('place_changed', function() {
+      const place = autocomplete.getPlace();
+      if (place.formatted_address) {
+        addressInput.value = place.formatted_address;
+      }
+    });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr8xSFYzoI4qHcOIkNwGGYpHWV5XiXO8s&libraries=places&callback=initAutocomplete" async defer></script>
+
+</body>
+</html>
