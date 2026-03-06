@@ -88,11 +88,11 @@ body::before {
 
 .seasons {
   flex: 1;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 2rem 2rem 4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
   width: 100%;
   animation: fadeDown 1s ease-out 0.45s both;
@@ -116,6 +116,46 @@ body::before {
 .season-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 48px rgba(0,0,0,0.10);
+}
+
+/* Spring card */
+.season-card.spring {
+  background: linear-gradient(160deg, #F5FAF0 0%, #E2F0D9 100%);
+  border-color: #D0E0C5;
+}
+.season-card.spring .season-emoji { font-size: 3.5rem; margin-bottom: 1rem; }
+.season-card.spring .season-name { color: #5A8A3A; }
+.season-card.spring .coming-soon-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #5A8A3A;
+  background: rgba(90,138,58,0.12);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  margin-top: 0.5rem;
+}
+
+/* Summer card */
+.season-card.summer {
+  background: linear-gradient(160deg, #FFF9F0 0%, #FDECD2 100%);
+  border-color: #F0DFC5;
+}
+.season-card.summer .season-emoji { font-size: 3.5rem; margin-bottom: 1rem; }
+.season-card.summer .season-name { color: #D4882B; }
+.season-card.summer .coming-soon-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #D4882B;
+  background: rgba(212,136,43,0.12);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  margin-top: 0.5rem;
 }
 
 /* Fall card */
@@ -145,26 +185,6 @@ body::before {
   color: #F0F4F8;
 }
 .season-card.winter .season-cta:hover { background: #8E1F1F; }
-
-/* Spring card (coming soon) */
-.season-card.spring {
-  background: linear-gradient(160deg, #F5FAF0 0%, #E2F0D9 100%);
-  border-color: #D0E0C5;
-}
-.season-card.spring .season-emoji { font-size: 3.5rem; margin-bottom: 1rem; }
-.season-card.spring .season-name { color: #5A8A3A; }
-.season-card.spring .coming-soon-tag {
-  display: inline-block;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #5A8A3A;
-  background: rgba(90,138,58,0.12);
-  padding: 0.3rem 0.8rem;
-  border-radius: 50px;
-  margin-top: 0.5rem;
-}
 
 .season-emoji {
   line-height: 1;
@@ -210,6 +230,16 @@ body::before {
   margin-bottom: 1rem;
 }
 
+.season-card.spring .season-tag {
+  color: #5A8A3A;
+  background: rgba(90,138,58,0.1);
+}
+
+.season-card.summer .season-tag {
+  color: #D4882B;
+  background: rgba(212,136,43,0.1);
+}
+
 .season-card.fall .season-tag {
   color: #C4622D;
   background: rgba(196,98,45,0.12);
@@ -218,11 +248,6 @@ body::before {
 .season-card.winter .season-tag {
   color: #B42828;
   background: rgba(180,40,40,0.1);
-}
-
-.season-card.spring .season-tag {
-  color: #5A8A3A;
-  background: rgba(90,138,58,0.1);
 }
 
 /* ── FOOTER ── */
@@ -245,8 +270,12 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
 
 @media (max-width: 600px) {
   .hero { padding: 3.5rem 1.5rem 2rem; }
-  .seasons { padding: 1.5rem 1.25rem 3rem; gap: 1.25rem; }
+  .seasons { padding: 1.5rem 1.25rem 3rem; gap: 1.25rem; grid-template-columns: 1fr 1fr; }
   .season-card { padding: 2rem 1.5rem; }
+}
+
+@media (max-width: 400px) {
+  .seasons { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -264,6 +293,24 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
 
 <div class="seasons">
 
+  <!-- SPRING -->
+  <div class="season-card spring">
+    <div class="season-emoji">🌸</div>
+    <span class="season-tag">Mar – May</span>
+    <div class="season-name">Spring</div>
+    <p class="season-desc">Fresh planters, potted florals, and colorful arrangements to welcome the new season.</p>
+    <span class="coming-soon-tag">Coming 2027</span>
+  </div>
+
+  <!-- SUMMER -->
+  <div class="season-card summer">
+    <div class="season-emoji">☀️</div>
+    <span class="season-tag">Jun – Aug</span>
+    <div class="season-name">Summer</div>
+    <p class="season-desc">Vibrant tropical planters, bold blooms, and sun-soaked porch styling all season long.</p>
+    <span class="coming-soon-tag">Coming 2027</span>
+  </div>
+
   <!-- FALL -->
   <div class="season-card fall">
     <div class="season-emoji">🎃</div>
@@ -280,15 +327,6 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
     <div class="season-name">Winter</div>
     <p class="season-desc">Stunning holiday present displays with bows, ribbon, and greenery styled at your entryway.</p>
     <a href="winter.html" class="season-cta">View Winter</a>
-  </div>
-
-  <!-- SPRING (Coming Soon) -->
-  <div class="season-card spring">
-    <div class="season-emoji">🌸</div>
-    <span class="season-tag">Mar – May</span>
-    <div class="season-name">Spring</div>
-    <p class="season-desc">Fresh planters, potted florals, and colorful arrangements to welcome the new season.</p>
-    <span class="coming-soon-tag">Coming 2027</span>
   </div>
 
 </div>
