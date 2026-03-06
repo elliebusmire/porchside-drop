@@ -727,7 +727,6 @@ footer p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
 .count-label { font-size: 0.55rem; }
 }
 
-/* Google Places Autocomplete styling */
 .pac-container {
 border-radius: 12px;
 border: 1.5px solid #D1D9E0;
@@ -745,40 +744,24 @@ border-top: 1px solid #E8ECF0;
 cursor: pointer;
 }
 
-.pac-item:first-child {
-border-top: none;
-}
-
-.pac-item:hover {
-background: rgba(180,40,40,0.06);
-}
-
-.pac-item-selected {
-background: rgba(180,40,40,0.08);
-}
-
+.pac-item:first-child { border-top: none; }
+.pac-item:hover { background: rgba(180,40,40,0.06); }
+.pac-item-selected { background: rgba(180,40,40,0.08); }
 .pac-icon { display: none; }
-
-.pac-item-query {
-font-size: 0.9rem;
-color: #1E2A38;
-font-weight: 500;
-}
+.pac-item-query { font-size: 0.9rem; color: #1E2A38; font-weight: 500; }
 </style>
 
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav class="site-nav">
   <a href="index.html" class="nav-brand">Porchside Drop</a>
   <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
     <a href="fall.html" class="nav-link">Fall</a>
     <a href="winter.html" class="nav-link">Winter</a>
   </div>
 </nav>
-
-<!-- ── HERO ── -->
 
 <section class="hero">
   <div class="holiday-deco">🎁</div>
@@ -788,8 +771,7 @@ font-weight: 500;
   <div class="holiday-deco">🎄</div>
   <div class="holiday-deco">❄️</div>
 
-<span class="brand-tag">Est. 2026 — Seasonal Porch Décor</span>
-
+  <span class="brand-tag">Est. 2026 — Seasonal Porch Décor</span>
   <h1>Porchside<br><span class="accent">Drop</span></h1>
   <p class="hero-sub">We deliver and artfully arrange stunning holiday present displays on your porch — so you can skip the hassle and enjoy the magic of the season.</p>
   <a href="#signup" class="cta-btn">Reserve Your Porch</a>
@@ -798,8 +780,6 @@ font-weight: 500;
     <div class="arrow"></div>
   </div>
 </section>
-
-<!-- ── HOW IT WORKS ── -->
 
 <section class="how-section">
   <p class="section-label">How It Works</p>
@@ -823,8 +803,6 @@ font-weight: 500;
   </div>
 </section>
 
-<!-- ── SIGN-UP FORM ── -->
-
 <section class="signup-section" id="signup">
   <p class="section-label" style="color: #22643C;">Winter 2026 Sign-Up</p>
   <h2>Reserve Your Porch</h2>
@@ -833,205 +811,196 @@ font-weight: 500;
   <div class="form-container">
     <form id="signupForm">
 
-  <div class="error-message" id="errorMsg">Something went wrong. Please try again or contact us directly.</div>
+      <div class="error-message" id="errorMsg">Something went wrong. Please try again or contact us directly.</div>
 
-  <!-- Display Size -->
-  <div class="form-group">
-    <label>Display Size</label>
-    <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
-    <div class="count-options">
-      <div class="count-option selected" onclick="selectCount(this)">
-        <input type="radio" name="count" value="2" data-price="79" checked>
-        <div class="count-num">2</div>
-        <div class="count-label">presents</div>
-        <div class="count-price">$79</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="3" data-price="99">
-        <div class="count-num">3</div>
-        <div class="count-label">presents</div>
-        <div class="count-price">$99</div>
-      </div>
-      <div class="count-option popular" onclick="selectCount(this)">
-        <input type="radio" name="count" value="4" data-price="119">
-        <div class="popular-tag">Most Popular</div>
-        <div class="count-num">4</div>
-        <div class="count-label">presents</div>
-        <div class="count-price">$119</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="5" data-price="179">
-        <div class="count-num">5</div>
-        <div class="count-label">presents</div>
-        <div class="count-price">$179</div>
-      </div>
-      <div class="count-option" onclick="selectCount(this)">
-        <input type="radio" name="count" value="6" data-price="229">
-        <div class="count-num">6</div>
-        <div class="count-label">presents</div>
-        <div class="count-price">$229</div>
-      </div>
-    </div>
-    <p class="includes-line">All packages include delivery, design, and post-New Year's removal.</p>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Color Palette -->
-  <div class="form-group">
-    <label>Choose Your Color Palette</label>
-    <div class="color-options">
-      <div class="color-option selected" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Classic Red & Green" checked>
-        <div class="color-swatches"><span class="swatch red"></span><span class="swatch green"></span></div>
-        <span class="color-label">Classic Red & Green</span>
-      </div>
-      <div class="color-option" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Red & Black Buffalo Plaid">
-        <div class="color-swatches"><span class="swatch red"></span><span class="swatch plaid"></span></div>
-        <span class="color-label">Red & Black Buffalo Plaid</span>
-      </div>
-      <div class="color-option" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Gold, White & Red">
-        <div class="color-swatches"><span class="swatch gold"></span><span class="swatch white"></span><span class="swatch red"></span></div>
-        <span class="color-label">Gold, White & Red</span>
-      </div>
-      <div class="color-option" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Neutral Farmhouse">
-        <div class="color-swatches"><span class="swatch white"></span><span class="swatch kraft"></span><span class="swatch green"></span></div>
-        <span class="color-label">Neutral Farmhouse</span>
-      </div>
-      <div class="color-option" onclick="selectColor(this)">
-        <input type="radio" name="color" value="Blue & Silver">
-        <div class="color-swatches"><span class="swatch blue"></span><span class="swatch silver"></span></div>
-        <span class="color-label">Blue & Silver</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Add-Ons -->
-  <div class="form-group">
-    <label>Extras <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
-    <div class="addon-options">
-      <label class="addon-option" onclick="">
-        <input type="checkbox" name="addon" value="String Lights" data-addon-price="25">
-        <div class="addon-check"></div>
-        <div class="addon-info">
-          <span class="addon-name">String Lights</span>
-          <span class="addon-desc">Warm white string lights woven through your display</span>
+      <div class="form-group">
+        <label>Display Size</label>
+        <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
+        <div class="count-options">
+          <div class="count-option selected" onclick="selectCount(this)">
+            <input type="radio" name="count" value="2" data-price="79" checked>
+            <div class="count-num">2</div>
+            <div class="count-label">presents</div>
+            <div class="count-price">$79</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="3" data-price="99">
+            <div class="count-num">3</div>
+            <div class="count-label">presents</div>
+            <div class="count-price">$99</div>
+          </div>
+          <div class="count-option popular" onclick="selectCount(this)">
+            <input type="radio" name="count" value="4" data-price="119">
+            <div class="popular-tag">Most Popular</div>
+            <div class="count-num">4</div>
+            <div class="count-label">presents</div>
+            <div class="count-price">$119</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="5" data-price="179">
+            <div class="count-num">5</div>
+            <div class="count-label">presents</div>
+            <div class="count-price">$179</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="6" data-price="229">
+            <div class="count-num">6</div>
+            <div class="count-label">presents</div>
+            <div class="count-price">$229</div>
+          </div>
         </div>
-        <span class="addon-price">+$25</span>
-      </label>
-      <label class="addon-option" onclick="">
-        <input type="checkbox" name="addon" value="Evergreen Garland" data-addon-price="39">
-        <div class="addon-check"></div>
-        <div class="addon-info">
-          <span class="addon-name">Evergreen Garland</span>
-          <span class="addon-desc">Lush faux garland styled along your railing or entryway</span>
+        <p class="includes-line">All packages include delivery, design, and post-New Year's removal.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label>Choose Your Color Palette</label>
+        <div class="color-options">
+          <div class="color-option selected" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Classic Red & Green" checked>
+            <div class="color-swatches"><span class="swatch red"></span><span class="swatch green"></span></div>
+            <span class="color-label">Classic Red & Green</span>
+          </div>
+          <div class="color-option" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Red & Black Buffalo Plaid">
+            <div class="color-swatches"><span class="swatch red"></span><span class="swatch plaid"></span></div>
+            <span class="color-label">Red & Black Buffalo Plaid</span>
+          </div>
+          <div class="color-option" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Gold, White & Red">
+            <div class="color-swatches"><span class="swatch gold"></span><span class="swatch white"></span><span class="swatch red"></span></div>
+            <span class="color-label">Gold, White & Red</span>
+          </div>
+          <div class="color-option" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Neutral Farmhouse">
+            <div class="color-swatches"><span class="swatch white"></span><span class="swatch kraft"></span><span class="swatch green"></span></div>
+            <span class="color-label">Neutral Farmhouse</span>
+          </div>
+          <div class="color-option" onclick="selectColor(this)">
+            <input type="radio" name="color" value="Blue & Silver">
+            <div class="color-swatches"><span class="swatch blue"></span><span class="swatch silver"></span></div>
+            <span class="color-label">Blue & Silver</span>
+          </div>
         </div>
-        <span class="addon-price">+$39</span>
-      </label>
-      <label class="addon-option" onclick="">
-        <input type="checkbox" name="addon" value="Holiday Wreath" data-addon-price="49">
-        <div class="addon-check"></div>
-        <div class="addon-info">
-          <span class="addon-name">Holiday Wreath</span>
-          <span class="addon-desc">Handcrafted winter wreath with ribbon and greenery for your door</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label>Extras <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
+        <div class="addon-options">
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="String Lights" data-addon-price="25">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">String Lights</span>
+              <span class="addon-desc">Warm white string lights woven through your display</span>
+            </div>
+            <span class="addon-price">+$25</span>
+          </label>
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Evergreen Garland" data-addon-price="39">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Evergreen Garland</span>
+              <span class="addon-desc">Lush faux garland styled along your railing or entryway</span>
+            </div>
+            <span class="addon-price">+$39</span>
+          </label>
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Holiday Wreath" data-addon-price="49">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Holiday Wreath</span>
+              <span class="addon-desc">Handcrafted winter wreath with ribbon and greenery for your door</span>
+            </div>
+            <span class="addon-price">+$49</span>
+          </label>
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Ornament Topiary" data-addon-price="59">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Ornament Topiary</span>
+              <span class="addon-desc">Stacked ornament topiary accent piece for your entryway</span>
+            </div>
+            <span class="addon-price">+$59</span>
+          </label>
         </div>
-        <span class="addon-price">+$49</span>
-      </label>
-      <label class="addon-option" onclick="">
-        <input type="checkbox" name="addon" value="Ornament Topiary" data-addon-price="59">
-        <div class="addon-check"></div>
-        <div class="addon-info">
-          <span class="addon-name">Ornament Topiary</span>
-          <span class="addon-desc">Stacked ornament topiary accent piece for your entryway</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label>Preferred 3-Day Delivery Window</label>
+        <select id="deliveryWindow" required>
+          <option value="" disabled selected>Select your delivery window...</option>
+          <optgroup label="November 2026">
+            <option value="Nov 16-18">Nov 16 – 18</option>
+            <option value="Nov 19-21">Nov 19 – 21</option>
+            <option value="Nov 23-25">Nov 23 – 25 (Thanksgiving Week)</option>
+            <option value="Nov 27-29">Nov 27 – 29</option>
+          </optgroup>
+          <optgroup label="December 2026">
+            <option value="Dec 1-3">Dec 1 – 3</option>
+            <option value="Dec 4-6">Dec 4 – 6</option>
+            <option value="Dec 7-9">Dec 7 – 9</option>
+            <option value="Dec 10-12">Dec 10 – 12</option>
+            <option value="Dec 14-16">Dec 14 – 16</option>
+            <option value="Dec 17-19">Dec 17 – 19</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label>Your Information</label>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="firstName" placeholder="Jane" required>
         </div>
-        <span class="addon-price">+$59</span>
-      </label>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" id="lastName" placeholder="Appleton" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="jane@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Delivery Address</label>
+        <input type="text" id="address" placeholder="Start typing your address..." autocomplete="off" required>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
+        <label>Special Instructions <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
+        <textarea id="notes" placeholder="Any porch details, gate codes, or arrangement preferences..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Reserve My Porch — $79</button>
+    </form>
+
+    <div class="success-message" id="successMsg">
+      <div class="success-icon">🎁</div>
+      <h3>You're on the list!</h3>
+      <p>We'll be in touch as the holidays approach with your delivery window details. Get ready for the most festive porch on the block.</p>
     </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Delivery Window -->
-  <div class="form-group">
-    <label>Preferred 3-Day Delivery Window</label>
-    <select id="deliveryWindow" required>
-      <option value="" disabled selected>Select your delivery window...</option>
-      <optgroup label="November 2026">
-        <option value="Nov 16-18">Nov 16 – 18</option>
-        <option value="Nov 19-21">Nov 19 – 21</option>
-        <option value="Nov 23-25">Nov 23 – 25 (Thanksgiving Week)</option>
-        <option value="Nov 27-29">Nov 27 – 29</option>
-      </optgroup>
-      <optgroup label="December 2026">
-        <option value="Dec 1-3">Dec 1 – 3</option>
-        <option value="Dec 4-6">Dec 4 – 6</option>
-        <option value="Dec 7-9">Dec 7 – 9</option>
-        <option value="Dec 10-12">Dec 10 – 12</option>
-        <option value="Dec 14-16">Dec 14 – 16</option>
-        <option value="Dec 17-19">Dec 17 – 19</option>
-      </optgroup>
-    </select>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Customer Info -->
-  <div class="form-group">
-    <label>Your Information</label>
-  </div>
-  <div class="form-row">
-    <div class="form-group">
-      <label>First Name</label>
-      <input type="text" id="firstName" placeholder="Jane" required>
-    </div>
-    <div class="form-group">
-      <label>Last Name</label>
-      <input type="text" id="lastName" placeholder="Appleton" required>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="email" placeholder="jane@email.com" required>
-    </div>
-    <div class="form-group">
-      <label>Phone</label>
-      <input type="tel" id="phone" placeholder="(555) 123-4567" required>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Delivery Address</label>
-    <input type="text" id="address" placeholder="Start typing your address..." autocomplete="off" required>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Notes -->
-  <div class="form-group">
-    <label>Special Instructions <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
-    <textarea id="notes" placeholder="Any porch details, gate codes, or arrangement preferences..."></textarea>
-  </div>
-
-  <button type="submit" class="submit-btn" id="submitBtn">Reserve My Porch — $79</button>
-</form>
-
-<div class="success-message" id="successMsg">
-  <div class="success-icon">🎁</div>
-  <h3>You're on the list!</h3>
-  <p>We'll be in touch as the holidays approach with your delivery window details. Get ready for the most festive porch on the block.</p>
-</div>
-
   </div>
 </section>
-
-<!-- ── FOOTER ── -->
 
 <footer>
   <div class="footer-brand">Porchside Drop</div>
@@ -1065,7 +1034,6 @@ font-weight: 500;
     updateButton();
   }
 
-  // Listen for addon checkbox changes
   document.querySelectorAll('input[name="addon"]').forEach(cb => {
     cb.addEventListener('change', function() {
       this.closest('.addon-option').classList.toggle('selected', this.checked);
@@ -1075,55 +1043,42 @@ font-weight: 500;
 
   document.getElementById('signupForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-
     const btn = document.getElementById('submitBtn');
     const errorMsg = document.getElementById('errorMsg');
-
     errorMsg.classList.remove('visible');
-
     const selectedCount = document.querySelector('input[name="count"]:checked');
     const selectedAddons = [];
     document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
       selectedAddons.push(cb.value);
     });
-
-    // Collect all form data
     const formData = {
-      firstName:    document.getElementById('firstName').value.trim(),
-      lastName:     document.getElementById('lastName').value.trim(),
-      email:        document.getElementById('email').value.trim(),
-      phone:        document.getElementById('phone').value.trim(),
-      address:      document.getElementById('address').value.trim(),
+      firstName: document.getElementById('firstName').value.trim(),
+      lastName: document.getElementById('lastName').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      address: document.getElementById('address').value.trim(),
       colorPalette: document.querySelector('input[name="color"]:checked').value,
       presentCount: selectedCount.value,
-      addons:       selectedAddons.join(', ') || 'None',
-      totalPrice:   '$' + getTotal(),
+      addons: selectedAddons.join(', ') || 'None',
+      totalPrice: '$' + getTotal(),
       deliveryWindow: document.getElementById('deliveryWindow').value,
-      notes:        document.getElementById('notes').value.trim(),
-      submittedAt:  new Date().toISOString()
+      notes: document.getElementById('notes').value.trim(),
+      submittedAt: new Date().toISOString()
     };
-
-    // Loading state
     btn.disabled = true;
     btn.innerHTML = '<span class="spinner"></span>Redirecting to payment...';
-
     try {
-      // Send to Netlify Function which creates Stripe Checkout
       const response = await fetch('/.netlify/functions/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-
       const result = await response.json();
-
       if (result.url) {
-        // Redirect to Stripe Checkout
         window.location.href = result.url;
       } else {
         throw new Error(result.error || 'Failed to create checkout session');
       }
-
     } catch (err) {
       console.error('Checkout error:', err);
       errorMsg.classList.add('visible');
@@ -1141,7 +1096,6 @@ font-weight: 500;
       componentRestrictions: { country: 'us' },
       fields: ['formatted_address']
     });
-
     autocomplete.addListener('place_changed', function() {
       const place = autocomplete.getPlace();
       if (place.formatted_address) {
