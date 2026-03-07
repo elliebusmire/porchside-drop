@@ -1,167 +1,414 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank You! - Porchside Drop</title>
+<title>Porchside Drop — You're Booked!</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: #FDF6EC;
-    color: #3D2B1F;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-  }
+html { scroll-behavior: smooth; }
 
-  .success-container {
-    max-width: 600px;
-    background: white;
-    border-radius: 24px;
-    padding: 3.5rem 2.5rem;
-    box-shadow: 0 1px 2px rgba(61,43,31,0.04), 0 4px 16px rgba(61,43,31,0.06), 0 12px 40px rgba(61,43,31,0.04);
-  }
+body {
+font-family: 'DM Sans', sans-serif;
+background: #FAF8F5;
+color: #2C2C2C;
+overflow-x: hidden;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
 
-  .success-icon {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-  }
+body::before {
+content: '';
+position: fixed;
+inset: 0;
+background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+pointer-events: none;
+z-index: 999;
+}
 
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: #2D4A22;
-    margin-bottom: 0.75rem;
-  }
+.success-hero {
+flex: 0;
+text-align: center;
+padding: 5rem 2rem 3rem;
+background:
+radial-gradient(ellipse at 30% 60%, rgba(45,74,34,0.06) 0%, transparent 50%),
+radial-gradient(ellipse at 70% 40%, rgba(196,98,45,0.05) 0%, transparent 50%),
+#FAF8F5;
+animation: fadeDown 0.8s ease-out;
+}
 
-  .subtitle {
-    font-size: 1.1rem;
-    color: #A3522A;
-    font-weight: 300;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
+.success-icon { font-size: 4rem; margin-bottom: 1rem; }
 
-  .details {
-    background: #FDF6EC;
-    border-radius: 16px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    text-align: left;
-  }
+.success-hero h1 {
+font-family: 'Playfair Display', serif;
+font-weight: 900;
+font-size: clamp(2rem, 5vw, 3.5rem);
+color: #2D4A22;
+margin-bottom: 0.5rem;
+}
 
-  .details h3 {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #8B9E6B;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-  }
+.success-hero p {
+font-size: clamp(0.95rem, 2vw, 1.15rem);
+color: #777;
+max-width: 500px;
+margin: 0 auto;
+line-height: 1.7;
+font-weight: 300;
+}
 
-  .details p {
-    font-size: 0.95rem;
-    color: #3D2B1F;
-    line-height: 1.7;
-    font-weight: 300;
-  }
+.success-hero .confetti-line {
+font-size: 1.5rem;
+margin-top: 1rem;
+letter-spacing: 0.3em;
+}
 
-  .contact-box {
-    background: #FDF6EC;
-    border-radius: 16px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
+/* ── PHOTO UPLOAD SECTION ── */
 
-  .contact-box h3 {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #8B9E6B;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-  }
+.upload-section {
+padding: 0 2rem 5rem;
+animation: fadeDown 0.8s ease-out 0.3s both;
+}
 
-  .contact-box p {
-    font-size: 0.95rem;
-    color: #3D2B1F;
-    line-height: 1.8;
-    font-weight: 300;
-  }
+.upload-container {
+max-width: 580px;
+margin: 0 auto;
+background: white;
+border-radius: 24px;
+padding: 2.5rem;
+box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+text-align: center;
+}
 
-  .contact-box a {
-    color: #C4622D;
-    text-decoration: none;
-    font-weight: 500;
-  }
+.upload-container h2 {
+font-family: 'Playfair Display', serif;
+font-size: 1.5rem;
+font-weight: 700;
+color: #2C2C2C;
+margin-bottom: 0.3rem;
+}
 
-  .contact-box a:hover {
-    text-decoration: underline;
-  }
+.upload-container .upload-sub {
+font-size: 0.9rem;
+color: #999;
+font-weight: 300;
+margin-bottom: 2rem;
+line-height: 1.5;
+}
 
-  .home-link {
-    display: inline-block;
-    background: #C4622D;
-    color: #FDF6EC;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.9rem 2.5rem;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
+.upload-container .upload-sub em {
+font-style: normal;
+color: #C4622D;
+font-weight: 500;
+}
 
-  .home-link:hover {
-    background: #3D2B1F;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(61,43,31,0.2);
-  }
+.upload-form-group { margin-bottom: 1.5rem; text-align: left; }
 
-  .brand {
-    margin-top: 2.5rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #3D2B1F;
-    opacity: 0.3;
-  }
+.upload-form-group label {
+display: block;
+font-size: 0.72rem;
+font-weight: 600;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: #2C2C2C;
+margin-bottom: 0.5rem;
+}
+
+.upload-form-group input[type="text"],
+.upload-form-group input[type="email"] {
+width: 100%;
+padding: 0.8rem 1rem;
+border: 1.5px solid #ddd;
+border-radius: 12px;
+font-family: 'DM Sans', sans-serif;
+font-size: 0.95rem;
+color: #2C2C2C;
+background: #FAF8F5;
+outline: none;
+transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.upload-form-group input:focus {
+border-color: #C4622D;
+box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
+}
+
+.drop-zone {
+border: 2px dashed #ddd;
+border-radius: 16px;
+padding: 2.5rem 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease;
+background: #FAF8F5;
+margin-bottom: 1.5rem;
+position: relative;
+}
+
+.drop-zone:hover {
+border-color: #C4622D;
+background: rgba(196,98,45,0.03);
+}
+
+.drop-zone.dragover {
+border-color: #C4622D;
+background: rgba(196,98,45,0.06);
+}
+
+.drop-zone.has-file {
+border-color: #2D4A22;
+background: rgba(45,74,34,0.04);
+}
+
+.drop-zone input[type="file"] {
+position: absolute;
+inset: 0;
+opacity: 0;
+cursor: pointer;
+}
+
+.drop-zone-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+.drop-zone-text {
+font-size: 0.85rem;
+color: #999;
+font-weight: 300;
+}
+
+.drop-zone-text strong {
+color: #C4622D;
+font-weight: 600;
+}
+
+.file-name {
+font-size: 0.85rem;
+color: #2D4A22;
+font-weight: 500;
+margin-top: 0.5rem;
+}
+
+.upload-btn {
+width: 100%;
+padding: 1rem;
+background: #C4622D;
+color: #FAF8F5;
+font-family: 'DM Sans', sans-serif;
+font-size: 0.85rem;
+font-weight: 600;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+border: none;
+border-radius: 14px;
+cursor: pointer;
+transition: all 0.4s ease;
+}
+
+.upload-btn:hover {
+background: #2C2C2C;
+transform: translateY(-1px);
+box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.upload-btn:disabled {
+opacity: 0.6;
+cursor: not-allowed;
+transform: none;
+box-shadow: none;
+}
+
+.skip-link {
+display: inline-block;
+margin-top: 1rem;
+font-size: 0.8rem;
+color: #999;
+text-decoration: none;
+font-weight: 400;
+transition: color 0.3s;
+}
+
+.skip-link:hover { color: #C4622D; }
+
+.upload-success {
+display: none;
+text-align: center;
+padding: 2rem 0;
+}
+
+.upload-success.visible { display: block; animation: fadeDown 0.5s ease-out; }
+
+.upload-success-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+
+.upload-success h3 {
+font-family: 'Playfair Display', serif;
+font-size: 1.3rem;
+color: #2D4A22;
+margin-bottom: 0.3rem;
+}
+
+.upload-success p {
+font-size: 0.85rem;
+color: #999;
+font-weight: 300;
+}
+
+.spinner {
+display: inline-block;
+width: 16px; height: 16px;
+border: 2px solid rgba(250,248,245,0.3);
+border-top-color: #FAF8F5;
+border-radius: 50%;
+animation: spin 0.6s linear infinite;
+vertical-align: middle;
+margin-right: 0.5rem;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes fadeDown {
+from { opacity: 0; transform: translateY(-15px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+footer {
+margin-top: auto;
+background: #2C2C2C;
+color: #FAF8F5;
+text-align: center;
+padding: 2.5rem 2rem;
+}
+
+footer .footer-brand {
+font-family: 'Playfair Display', serif;
+font-size: 1.3rem;
+font-weight: 700;
+margin-bottom: 0.4rem;
+}
+
+footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
+
+@media (max-width: 600px) {
+.upload-container { padding: 2rem 1.25rem; }
+.success-hero { padding: 4rem 1.5rem 2rem; }
+}
 </style>
 </head>
 <body>
-  <div class="success-container">
-    <div class="success-icon">🎉</div>
-    <h1>You're All Set!</h1>
-    <p class="subtitle">Payment confirmed! Your porch is officially reserved for fall. We can't wait to make it beautiful.</p>
 
-    <div class="details">
-      <h3>What Happens Next</h3>
-      <p>We'll send you a confirmation email with your order details. As your delivery window approaches, we'll reach out to confirm timing and any last-minute details. Get ready for the best-looking porch on the block!</p>
+<!-- ── SUCCESS MESSAGE ── -->
+<section class="success-hero">
+  <div class="success-icon">🎉</div>
+  <h1>You're on the list!</h1>
+  <p>Payment confirmed. We'll be in touch as your delivery window approaches with all the details. Get ready for the most beautiful porch on the block.</p>
+  <div class="confetti-line">🎃 🍂 🎁 ❄️</div>
+</section>
+
+<!-- ── OPTIONAL PHOTO UPLOAD ── -->
+<section class="upload-section">
+  <div class="upload-container">
+    <h2>Help Us Design Your Display</h2>
+    <p class="upload-sub">Want us to nail the look? Upload a photo of your front porch and we'll design your arrangement with <em>your space in mind</em>. Totally optional!</p>
+
+    <form id="porchUploadForm" name="porch-photos" method="POST" data-netlify="true" enctype="multipart/form-data">
+      <input type="hidden" name="form-name" value="porch-photos">
+
+      <div class="upload-form-group">
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="Jane Appleton" required>
+      </div>
+
+      <div class="upload-form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="jane@email.com" required>
+      </div>
+
+      <div class="drop-zone" id="dropZone">
+        <input type="file" name="porch-photo" id="porchPhoto" accept="image/*" required>
+        <div class="drop-zone-icon">📸</div>
+        <div class="drop-zone-text"><strong>Tap to upload</strong> or drag & drop your porch photo</div>
+        <div class="file-name" id="fileName"></div>
+      </div>
+
+      <button type="submit" class="upload-btn" id="uploadBtn">Send My Porch Photo</button>
+    </form>
+
+    <div class="upload-success" id="uploadSuccess">
+      <div class="upload-success-icon">✅</div>
+      <h3>Photo received!</h3>
+      <p>We'll use this to custom-design your display. You're going to love it.</p>
     </div>
 
-    <div class="contact-box">
-      <h3>Questions? We're Here to Help</h3>
-      <p>
-        <a href="mailto:hello@porchsidedrop.com">hello@porchsidedrop.com</a><br>
-        <a href="tel:+15303916765">(530) 391-6765</a>
-      </p>
-    </div>
-
-    <a href="/" class="home-link">Back to Home</a>
+    <a href="index.html" class="skip-link">Skip — take me back home →</a>
   </div>
-  <div class="brand">Porchside Drop</div>
+</section>
+
+<footer>
+  <div class="footer-brand">Porchside Drop</div>
+  <p>&copy; 2026 — Handcrafted seasonal joy, delivered to your door.</p>
+</footer>
+
+<script>
+  const dropZone = document.getElementById('dropZone');
+  const fileInput = document.getElementById('porchPhoto');
+  const fileNameDisplay = document.getElementById('fileName');
+
+  // Show file name when selected
+  fileInput.addEventListener('change', function() {
+    if (this.files.length > 0) {
+      fileNameDisplay.textContent = '📎 ' + this.files[0].name;
+      dropZone.classList.add('has-file');
+    }
+  });
+
+  // Drag and drop styling
+  dropZone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    this.classList.add('dragover');
+  });
+
+  dropZone.addEventListener('dragleave', function() {
+    this.classList.remove('dragover');
+  });
+
+  dropZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    this.classList.remove('dragover');
+    if (e.dataTransfer.files.length > 0) {
+      fileInput.files = e.dataTransfer.files;
+      fileNameDisplay.textContent = '📎 ' + e.dataTransfer.files[0].name;
+      dropZone.classList.add('has-file');
+    }
+  });
+
+  // Form submit
+  document.getElementById('porchUploadForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('uploadBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Uploading...';
+
+    try {
+      const formData = new FormData(this);
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        this.style.display = 'none';
+        document.getElementById('uploadSuccess').classList.add('visible');
+      } else {
+        throw new Error('Upload failed');
+      }
+    } catch (err) {
+      console.error('Upload error:', err);
+      btn.disabled = false;
+      btn.textContent = 'Send My Porch Photo';
+      alert('Something went wrong. Please try again or email your photo directly.');
+    }
+  });
+</script>
+
 </body>
 </html>
