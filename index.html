@@ -84,11 +84,83 @@ body::before {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ── HOW IT WORKS ── */
+
+.how-section {
+  padding: 4rem 2rem;
+  background: #2C2C2C;
+  color: #FAF8F5;
+  position: relative;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.5;
+  margin-bottom: 1rem;
+}
+
+.how-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.step {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.08);
+}
+
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #D4A843;
+  margin-bottom: 0.75rem;
+}
+
+.step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
+.step p { font-size: 0.85rem; line-height: 1.6; opacity: 0.7; font-weight: 300; }
+
+/* ── SEASON CARDS ── */
+
+.seasons-header {
+  text-align: center;
+  padding: 4rem 2rem 1rem;
+}
+
+.seasons-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #2C2C2C;
+}
+
 .seasons {
-  flex: 1;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem 2rem 4rem;
+  padding: 1.5rem 2rem 4rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
@@ -134,8 +206,7 @@ body::before {
   background: rgba(90,138,58,0.12);
   padding: 0.3rem 0.8rem;
   border-radius: 50px;
-  margin-top: 0.5rem;
- margin-top: auto;
+  margin-top: auto;
 }
 
 .season-card.summer {
@@ -154,8 +225,7 @@ body::before {
   background: rgba(212,136,43,0.12);
   padding: 0.3rem 0.8rem;
   border-radius: 50px;
-  margin-top: 0.5rem;
- margin-top: auto;
+  margin-top: auto;
 }
 
 .season-card.fall {
@@ -184,9 +254,7 @@ body::before {
 }
 .season-card.winter .season-cta:hover { background: #8E1F1F; }
 
-.season-emoji {
-  line-height: 1;
-}
+.season-emoji { line-height: 1; }
 
 .season-name {
   font-family: 'Playfair Display', serif;
@@ -229,25 +297,10 @@ body::before {
   margin-bottom: 1rem;
 }
 
-.season-card.spring .season-tag {
-  color: #5A8A3A;
-  background: rgba(90,138,58,0.1);
-}
-
-.season-card.summer .season-tag {
-  color: #D4882B;
-  background: rgba(212,136,43,0.1);
-}
-
-.season-card.fall .season-tag {
-  color: #C4622D;
-  background: rgba(196,98,45,0.12);
-}
-
-.season-card.winter .season-tag {
-  color: #B42828;
-  background: rgba(180,40,40,0.1);
-}
+.season-card.spring .season-tag { color: #5A8A3A; background: rgba(90,138,58,0.1); }
+.season-card.summer .season-tag { color: #D4882B; background: rgba(212,136,43,0.1); }
+.season-card.fall .season-tag { color: #C4622D; background: rgba(196,98,45,0.12); }
+.season-card.winter .season-tag { color: #B42828; background: rgba(180,40,40,0.1); }
 
 footer {
   background: #2C2C2C;
@@ -284,8 +337,35 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
   <p class="hero-sub">We deliver and artfully arrange beautiful seasonal displays on your porch — so you can enjoy the magic without the mess.</p>
 </section>
 
-<div class="seasons">
+<!-- ── HOW IT WORKS ── -->
+<section class="how-section">
+  <p class="section-label">How It Works</p>
+  <h2>Simple as Can Be</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Pick Your Season</h3>
+      <p>Choose the season, select your package and color palette, and reserve your spot before it fills up.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>We Deliver & Design</h3>
+      <p>Within your chosen delivery window, our team arrives and artfully arranges a gorgeous display on your porch.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Enjoy the Season</h3>
+      <p>Sit back, soak in the compliments, and enjoy. When the season ends, we come back and handle the removal for you.</p>
+    </div>
+  </div>
+</section>
 
+<!-- ── SEASON CARDS ── -->
+<div class="seasons-header">
+  <h2>Choose Your Season</h2>
+</div>
+
+<div class="seasons">
   <div class="season-card spring">
     <div class="season-emoji">🌸</div>
     <span class="season-tag">Mar – May</span>
@@ -317,7 +397,6 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
     <p class="season-desc">Stunning holiday present displays with bows, ribbon, and greenery styled at your entryway.</p>
     <a href="winter.html" class="season-cta">View Winter</a>
   </div>
-
 </div>
 
 <footer>
