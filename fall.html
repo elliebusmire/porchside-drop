@@ -416,91 +416,112 @@ border: 1.5px solid rgba(61,43,31,0.15);
 .swatch.blue { background: #5B7FA5; }
 .color-label { font-size: 0.85rem; font-weight: 500; color: #3D2B1F; }
 
-.count-options {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-gap: 0.6rem;
-width: 100%;
-overflow: visible;
-padding-top: 12px;
+.package-options {
+display: flex;
+flex-direction: column;
+gap: 0.75rem;
+padding-top: 0.5rem;
 }
 
-@media (max-width: 500px) {
-.count-options { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-}
-
-.count-option {
-text-align: center;
-padding: 0.75rem 0.25rem;
+.package-option {
+display: flex;
+align-items: center;
+gap: 1rem;
+padding: 1.1rem 1.25rem;
 border: 1.5px solid #ddd3c7;
-border-radius: 12px;
+border-radius: 14px;
 cursor: pointer;
 transition: all 0.3s ease;
 background: #FDF6EC;
-min-width: 0;
-overflow: visible;
 position: relative;
 }
 
-.count-option:hover { border-color: #C4622D; }
+.package-option:hover { border-color: #C4622D; background: rgba(196,98,45,0.03); }
 
-.count-option.selected {
+.package-option.selected {
 border-color: #C4622D;
 background: rgba(196,98,45,0.06);
 box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
 }
 
-.count-option input[type="radio"] { display: none; }
+.package-option input[type="radio"] { display: none; }
 
-.count-num {
-font-family: 'Playfair Display', serif;
-font-size: clamp(1.2rem, 3vw, 1.6rem);
-font-weight: 700;
-color: #C4622D;
-line-height: 1;
-}
-
-.count-label {
-font-size: 0.55rem;
-text-transform: uppercase;
-letter-spacing: 0.1em;
-color: #999;
-margin-top: 0.15rem;
-font-weight: 500;
-}
-
-.count-price {
-font-family: 'DM Sans', sans-serif;
-font-size: 0.75rem;
-font-weight: 600;
-color: #2D4A22;
-margin-top: 0.35rem;
-background: rgba(139,158,107,0.12);
-padding: 0.15rem 0.4rem;
-border-radius: 6px;
-display: inline-block;
-}
-
-.count-option.popular {
-position: relative;
+.package-option.popular {
 border-color: #C4622D;
 background: rgba(196,98,45,0.04);
 }
 
-.popular-tag {
+.package-option .popular-tag {
 position: absolute;
 top: -9px;
-left: 50%;
-transform: translateX(-50%);
+right: 16px;
 background: #C4622D;
 color: white;
 font-size: 0.5rem;
 font-weight: 600;
 letter-spacing: 0.08em;
 text-transform: uppercase;
-padding: 2px 6px;
+padding: 2px 8px;
 border-radius: 4px;
 white-space: nowrap;
+}
+
+.package-radio {
+width: 20px;
+height: 20px;
+border: 2px solid #ccc3b5;
+border-radius: 50%;
+flex-shrink: 0;
+transition: all 0.3s ease;
+position: relative;
+}
+
+.package-option.selected .package-radio {
+border-color: #C4622D;
+}
+
+.package-option.selected .package-radio::after {
+content: '';
+position: absolute;
+top: 4px;
+left: 4px;
+width: 8px;
+height: 8px;
+background: #C4622D;
+border-radius: 50%;
+}
+
+.package-info {
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 0.15rem;
+}
+
+.package-name {
+font-family: 'Playfair Display', serif;
+font-size: 1.05rem;
+font-weight: 700;
+color: #3D2B1F;
+}
+
+.package-desc {
+font-size: 0.75rem;
+color: #999;
+font-weight: 300;
+line-height: 1.4;
+}
+
+.package-price {
+font-family: 'DM Sans', sans-serif;
+font-size: 1rem;
+font-weight: 700;
+color: #2D4A22;
+background: rgba(139,158,107,0.12);
+padding: 0.3rem 0.7rem;
+border-radius: 8px;
+white-space: nowrap;
+flex-shrink: 0;
 }
 
 .intro-badge {
@@ -718,9 +739,9 @@ footer p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
 .form-container { padding: 2rem 1.25rem; }
 .form-row { grid-template-columns: 1fr; }
 .color-options { grid-template-columns: 1fr; }
-.count-options { grid-template-columns: repeat(5, 1fr); gap: 0.4rem; }
-.count-option { padding: 0.6rem 0.15rem; border-radius: 10px; }
-.count-label { font-size: 0.55rem; }
+.package-option { padding: 0.9rem 1rem; }
+.package-name { font-size: 0.95rem; }
+.package-price { font-size: 0.9rem; }
 }
 
 .pac-container {
@@ -784,7 +805,7 @@ cursor: pointer;
     <div class="step">
       <div class="step-num">1</div>
       <h3>Sign Up in August</h3>
-      <p>Choose your color palette, pick your pumpkin count, and reserve your spot before the season fills up.</p>
+      <p>Choose your color palette, pick your package, and reserve your spot before the season fills up.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
@@ -809,70 +830,56 @@ cursor: pointer;
 
       <div class="error-message" id="errorMsg">Something went wrong. Please try again or contact us directly.</div>
 
+      <!-- Package Selection -->
       <div class="form-group">
-        <label>Number of Pumpkins</label>
+        <label>Choose Your Package</label>
         <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
-        <div class="count-options">
-          <div class="count-option selected" onclick="selectCount(this)">
-            <input type="radio" name="count" value="6" data-price="79" checked>
-            <div class="count-num">6</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$79</div>
+        <div class="package-options">
+          <div class="package-option selected" onclick="selectPackage(this)">
+            <input type="radio" name="package" value="Petite Porch" data-price="79" checked>
+            <div class="package-radio"></div>
+            <div class="package-info">
+              <span class="package-name">Petite Porch</span>
+              <span class="package-desc">A charming small arrangement for your doorstep</span>
+            </div>
+            <span class="package-price">$79</span>
           </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="8" data-price="99">
-            <div class="count-num">8</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$99</div>
+          <div class="package-option" onclick="selectPackage(this)">
+            <input type="radio" name="package" value="Classic Display" data-price="99">
+            <div class="package-radio"></div>
+            <div class="package-info">
+              <span class="package-name">Classic Display</span>
+              <span class="package-desc">A beautiful spread that fills your porch with autumn warmth</span>
+            </div>
+            <span class="package-price">$99</span>
           </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="10" data-price="119">
-            <div class="count-num">10</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$119</div>
-          </div>
-          <div class="count-option popular" onclick="selectCount(this)">
-            <input type="radio" name="count" value="12" data-price="149">
+          <div class="package-option popular" onclick="selectPackage(this)">
             <div class="popular-tag">Most Popular</div>
-            <div class="count-num">12</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$149</div>
+            <input type="radio" name="package" value="Statement Porch" data-price="149">
+            <div class="package-radio"></div>
+            <div class="package-info">
+              <span class="package-name">Statement Porch</span>
+              <span class="package-desc">A head-turning arrangement that commands attention</span>
+            </div>
+            <span class="package-price">$149</span>
           </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="14" data-price="179">
-            <div class="count-num">14</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$179</div>
+          <div class="package-option" onclick="selectPackage(this)">
+            <input type="radio" name="package" value="Grand Display" data-price="229">
+            <div class="package-radio"></div>
+            <div class="package-info">
+              <span class="package-name">Grand Display</span>
+              <span class="package-desc">A full porch transformation your neighbors will envy</span>
+            </div>
+            <span class="package-price">$229</span>
           </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="16" data-price="199">
-            <div class="count-num">16</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$199</div>
-          </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="18" data-price="229">
-            <div class="count-num">18</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$229</div>
-          </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="20" data-price="259">
-            <div class="count-num">20</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$259</div>
-          </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="22" data-price="289">
-            <div class="count-num">22</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$289</div>
-          </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="24" data-price="319">
-            <div class="count-num">24</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$319</div>
+          <div class="package-option" onclick="selectPackage(this)">
+            <input type="radio" name="package" value="Over the Top" data-price="319">
+            <div class="package-radio"></div>
+            <div class="package-info">
+              <span class="package-name">Over the Top</span>
+              <span class="package-desc">The ultimate fall experience — every inch of your entryway styled to perfection</span>
+            </div>
+            <span class="package-price">$319</span>
           </div>
         </div>
         <p class="includes-line">All packages include delivery, design, and end-of-season removal.</p>
@@ -880,6 +887,7 @@ cursor: pointer;
 
       <div class="divider"></div>
 
+      <!-- Color Palette -->
       <div class="form-group">
         <label>Choose Your Color Palette</label>
         <div class="color-options">
@@ -923,6 +931,7 @@ cursor: pointer;
 
       <div class="divider"></div>
 
+      <!-- Add-Ons -->
       <div class="form-group">
         <label>Extras <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
         <div class="addon-options">
@@ -967,6 +976,7 @@ cursor: pointer;
 
       <div class="divider"></div>
 
+      <!-- Delivery Window -->
       <div class="form-group">
         <label>Preferred 3-Day Delivery Window</label>
         <select id="deliveryWindow" required>
@@ -995,6 +1005,7 @@ cursor: pointer;
 
       <div class="divider"></div>
 
+      <!-- Customer Info -->
       <div class="form-group">
         <label>Your Information</label>
       </div>
@@ -1027,6 +1038,7 @@ cursor: pointer;
 
       <div class="divider"></div>
 
+      <!-- Notes -->
       <div class="form-group">
         <label>Special Instructions <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
         <textarea id="notes" placeholder="Any porch details, gate codes, or arrangement preferences..."></textarea>
@@ -1055,8 +1067,15 @@ cursor: pointer;
     el.querySelector('input').checked = true;
   }
 
+  function selectPackage(el) {
+    document.querySelectorAll('.package-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input').checked = true;
+    updateButton();
+  }
+
   function getTotal() {
-    const basePrice = parseInt(document.querySelector('input[name="count"]:checked').getAttribute('data-price'));
+    const basePrice = parseInt(document.querySelector('input[name="package"]:checked').getAttribute('data-price'));
     let addonTotal = 0;
     document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
       addonTotal += parseInt(cb.getAttribute('data-addon-price'));
@@ -1066,13 +1085,6 @@ cursor: pointer;
 
   function updateButton() {
     document.getElementById('submitBtn').textContent = 'Reserve My Porch — $' + getTotal();
-  }
-
-  function selectCount(el) {
-    document.querySelectorAll('.count-option').forEach(o => o.classList.remove('selected'));
-    el.classList.add('selected');
-    el.querySelector('input').checked = true;
-    updateButton();
   }
 
   document.querySelectorAll('input[name="addon"]').forEach(cb => {
@@ -1087,7 +1099,7 @@ cursor: pointer;
     const btn = document.getElementById('submitBtn');
     const errorMsg = document.getElementById('errorMsg');
     errorMsg.classList.remove('visible');
-    const selectedCount = document.querySelector('input[name="count"]:checked');
+    const selectedPackage = document.querySelector('input[name="package"]:checked');
     const selectedAddons = [];
     document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
       selectedAddons.push(cb.value);
@@ -1099,7 +1111,7 @@ cursor: pointer;
       phone: document.getElementById('phone').value.trim(),
       address: document.getElementById('address').value.trim(),
       colorPalette: document.querySelector('input[name="color"]:checked').value,
-      pumpkinCount: selectedCount.value,
+      package: selectedPackage.value,
       addons: selectedAddons.join(', ') || 'None',
       totalPrice: '$' + getTotal(),
       deliveryWindow: document.getElementById('deliveryWindow').value,
