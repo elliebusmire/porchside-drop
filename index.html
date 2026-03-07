@@ -30,9 +30,52 @@ body::before {
   z-index: 999;
 }
 
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(250,248,245,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(44,44,44,0.06);
+}
+
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2C2C2C;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2C2C2C;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover { opacity: 1; }
+
 .hero {
   text-align: center;
-  padding: 5rem 2rem 3rem;
+  padding: 6rem 2rem 3rem;
   background:
     radial-gradient(ellipse at 30% 60%, rgba(196,98,45,0.06) 0%, transparent 50%),
     radial-gradient(ellipse at 70% 40%, rgba(34,100,60,0.05) 0%, transparent 50%),
@@ -83,8 +126,6 @@ body::before {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-/* ── HOW IT WORKS ── */
 
 .how-section {
   padding: 4rem 2rem;
@@ -143,8 +184,6 @@ body::before {
 .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
 .step p { font-size: 0.85rem; line-height: 1.6; opacity: 0.7; font-weight: 300; }
 
-/* ── SEASON CARDS ── */
-
 .seasons-header {
   text-align: center;
   padding: 4rem 2rem 1rem;
@@ -158,11 +197,11 @@ body::before {
 }
 
 .seasons {
-  max-width: 1100px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 1.5rem 2rem 4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   width: 100%;
   animation: fadeDown 1s ease-out 0.45s both;
@@ -182,50 +221,12 @@ body::before {
   overflow: hidden;
   border: 1.5px solid transparent;
   justify-content: flex-start;
-  min-height: 380px;
+  min-height: 340px;
 }
 
 .season-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 48px rgba(0,0,0,0.10);
-}
-
-.season-card.spring {
-  background: linear-gradient(160deg, #F5FAF0 0%, #E2F0D9 100%);
-  border-color: #D0E0C5;
-}
-.season-card.spring .season-emoji { font-size: 3.5rem; margin-bottom: 1rem; }
-.season-card.spring .season-name { color: #5A8A3A; }
-.season-card.spring .coming-soon-tag {
-  display: inline-block;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #5A8A3A;
-  background: rgba(90,138,58,0.12);
-  padding: 0.3rem 0.8rem;
-  border-radius: 50px;
-  margin-top: auto;
-}
-
-.season-card.summer {
-  background: linear-gradient(160deg, #FFF9F0 0%, #FDECD2 100%);
-  border-color: #F0DFC5;
-}
-.season-card.summer .season-emoji { font-size: 3.5rem; margin-bottom: 1rem; }
-.season-card.summer .season-name { color: #D4882B; }
-.season-card.summer .coming-soon-tag {
-  display: inline-block;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #D4882B;
-  background: rgba(212,136,43,0.12);
-  padding: 0.3rem 0.8rem;
-  border-radius: 50px;
-  margin-top: auto;
 }
 
 .season-card.fall {
@@ -297,8 +298,6 @@ body::before {
   margin-bottom: 1rem;
 }
 
-.season-card.spring .season-tag { color: #5A8A3A; background: rgba(90,138,58,0.1); }
-.season-card.summer .season-tag { color: #D4882B; background: rgba(212,136,43,0.1); }
 .season-card.fall .season-tag { color: #C4622D; background: rgba(196,98,45,0.12); }
 .season-card.winter .season-tag { color: #B42828; background: rgba(180,40,40,0.1); }
 
@@ -319,17 +318,21 @@ footer .footer-brand {
 footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
 
 @media (max-width: 600px) {
-  .hero { padding: 3.5rem 1.5rem 2rem; }
-  .seasons { padding: 1.5rem 1.25rem 3rem; gap: 1.25rem; grid-template-columns: 1fr 1fr; }
+  .hero { padding: 5rem 1.5rem 2rem; }
+  .seasons { padding: 1.5rem 1.25rem 3rem; gap: 1.25rem; }
   .season-card { padding: 2rem 1.5rem; }
-}
-
-@media (max-width: 400px) {
-  .seasons { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">Porchside Drop</a>
+  <div class="nav-links">
+    <a href="fall.html" class="nav-link">Fall</a>
+    <a href="winter.html" class="nav-link">Winter</a>
+  </div>
+</nav>
 
 <section class="hero">
   <span class="brand-tag">Est. 2026 — Seasonal Porch Décor</span>
@@ -337,7 +340,6 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
   <p class="hero-sub">We deliver and artfully arrange beautiful seasonal displays on your porch — so you can enjoy the magic without the mess.</p>
 </section>
 
-<!-- ── HOW IT WORKS ── -->
 <section class="how-section">
   <p class="section-label">How It Works</p>
   <h2>Simple as Can Be</h2>
@@ -360,27 +362,11 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
   </div>
 </section>
 
-<!-- ── SEASON CARDS ── -->
 <div class="seasons-header">
   <h2>Choose Your Season</h2>
 </div>
 
 <div class="seasons">
-  <div class="season-card spring">
-    <div class="season-emoji">🌸</div>
-    <span class="season-tag">Mar – May</span>
-    <div class="season-name">Spring</div>
-    <p class="season-desc">Fresh planters, potted florals, and colorful arrangements to welcome the new season.</p>
-    <span class="coming-soon-tag">Coming 2027</span>
-  </div>
-
-  <div class="season-card summer">
-    <div class="season-emoji">☀️</div>
-    <span class="season-tag">Jun – Aug</span>
-    <div class="season-name">Summer</div>
-    <p class="season-desc">Vibrant tropical planters, bold blooms, and sun-soaked porch styling all season long.</p>
-    <span class="coming-soon-tag">Coming 2027</span>
-  </div>
 
   <div class="season-card fall">
     <div class="season-emoji">🎃</div>
@@ -397,6 +383,7 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
     <p class="season-desc">Stunning holiday present displays with bows, ribbon, and greenery styled at your entryway.</p>
     <a href="winter.html" class="season-cta">View Winter</a>
   </div>
+
 </div>
 
 <footer>
