@@ -51,10 +51,7 @@ color: #3D2B1F;
 text-decoration: none;
 }
 
-.nav-links {
-display: flex;
-gap: 1.5rem;
-}
+.nav-links { display: flex; gap: 1.5rem; }
 
 .nav-link {
 font-family: 'DM Sans', sans-serif;
@@ -190,6 +187,8 @@ box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
 select:invalid { color: #b5a899; }
 ::placeholder { color: #b5a899; font-weight: 300; }
 
+/* ── COLOR OPTIONS ── */
+
 .color-options {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -231,6 +230,8 @@ border: 1.5px solid rgba(61,43,31,0.15);
 .swatch.blue { background: #5B7FA5; }
 .color-label { font-size: 0.85rem; font-weight: 500; color: #3D2B1F; }
 
+/* ── PACKAGE OPTIONS ── */
+
 .package-options {
 display: flex;
 flex-direction: column;
@@ -240,9 +241,9 @@ padding-top: 0.5rem;
 
 .package-option {
 display: flex;
-align-items: center;
+align-items: flex-start;
 gap: 1rem;
-padding: 1.1rem 1.25rem;
+padding: 1.25rem;
 border: 1.5px solid #ddd3c7;
 border-radius: 14px;
 cursor: pointer;
@@ -289,26 +290,23 @@ border-radius: 50%;
 flex-shrink: 0;
 transition: all 0.3s ease;
 position: relative;
+margin-top: 2px;
 }
 
-.package-option.selected .package-radio {
-border-color: #C4622D;
-}
+.package-option.selected .package-radio { border-color: #C4622D; }
 
 .package-option.selected .package-radio::after {
 content: '';
 position: absolute;
-top: 4px;
-left: 4px;
-width: 8px;
-height: 8px;
+top: 4px; left: 4px;
+width: 8px; height: 8px;
 background: #C4622D;
 border-radius: 50%;
 }
 
 .package-img {
-width: 60px;
-height: 60px;
+width: 70px;
+height: 70px;
 border-radius: 10px;
 object-fit: cover;
 flex-shrink: 0;
@@ -319,21 +317,21 @@ border: 1px solid rgba(61,43,31,0.08);
 flex: 1;
 display: flex;
 flex-direction: column;
-gap: 0.15rem;
+gap: 0.2rem;
+}
+
+.package-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 0.5rem;
 }
 
 .package-name {
 font-family: 'Playfair Display', serif;
-font-size: 1.05rem;
+font-size: 1.1rem;
 font-weight: 700;
 color: #3D2B1F;
-}
-
-.package-desc {
-font-size: 0.75rem;
-color: #999;
-font-weight: 300;
-line-height: 1.4;
 }
 
 .package-price {
@@ -342,10 +340,37 @@ font-size: 1rem;
 font-weight: 700;
 color: #2D4A22;
 background: rgba(139,158,107,0.12);
-padding: 0.3rem 0.7rem;
+padding: 0.25rem 0.6rem;
 border-radius: 8px;
 white-space: nowrap;
 flex-shrink: 0;
+}
+
+.package-desc {
+font-size: 0.8rem;
+color: #999;
+font-weight: 300;
+line-height: 1.5;
+margin-top: 0.15rem;
+}
+
+.package-includes {
+list-style: none;
+margin-top: 0.4rem;
+display: flex;
+flex-wrap: wrap;
+gap: 0.3rem 0.75rem;
+}
+
+.package-includes li {
+font-size: 0.7rem;
+color: #8B9E6B;
+font-weight: 500;
+}
+
+.package-includes li::before {
+content: '✓ ';
+font-weight: 700;
 }
 
 .intro-badge {
@@ -374,6 +399,8 @@ margin-top: 0.75rem;
 font-style: italic;
 }
 
+/* ── ADD-ONS ── */
+
 .addon-options {
 display: flex;
 flex-direction: column;
@@ -400,6 +427,8 @@ background: rgba(196,98,45,0.06);
 box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
 }
 
+.addon-option.hidden { display: none; }
+
 .addon-option input[type="checkbox"] { display: none; }
 
 .addon-check {
@@ -420,10 +449,8 @@ border-color: #C4622D;
 .addon-option.selected .addon-check::after {
 content: '';
 position: absolute;
-top: 3px;
-left: 6px;
-width: 5px;
-height: 9px;
+top: 3px; left: 6px;
+width: 5px; height: 9px;
 border: solid white;
 border-width: 0 2px 2px 0;
 transform: rotate(45deg);
@@ -450,6 +477,59 @@ border-radius: 6px;
 white-space: nowrap;
 flex-shrink: 0;
 }
+
+/* ── NEIGHBORHOOD BUNDLE ── */
+
+.bundle-callout {
+background: linear-gradient(135deg, rgba(139,158,107,0.1) 0%, rgba(196,98,45,0.06) 100%);
+border: 1.5px solid rgba(139,158,107,0.25);
+border-radius: 14px;
+padding: 1.25rem 1.5rem;
+text-align: center;
+margin-bottom: 1.75rem;
+}
+
+.bundle-callout .bundle-emoji { font-size: 1.3rem; margin-bottom: 0.4rem; }
+
+.bundle-callout h4 {
+font-family: 'Playfair Display', serif;
+font-size: 1rem;
+font-weight: 700;
+color: #2D4A22;
+margin-bottom: 0.25rem;
+}
+
+.bundle-callout p {
+font-size: 0.8rem;
+color: #777;
+font-weight: 300;
+line-height: 1.5;
+}
+
+/* ── SPOTS COUNTER ── */
+
+.spots-counter {
+text-align: center;
+margin-bottom: 1rem;
+}
+
+.spots-counter span {
+display: inline-block;
+font-size: 0.72rem;
+font-weight: 600;
+letter-spacing: 0.08em;
+color: #B42828;
+background: rgba(180,40,40,0.08);
+padding: 0.4rem 1rem;
+border-radius: 50px;
+}
+
+.spots-counter span em {
+font-style: normal;
+font-weight: 700;
+}
+
+/* ── DIVIDER & BUTTONS ── */
 
 .divider {
 height: 1px;
@@ -540,10 +620,11 @@ footer p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
 .form-container { padding: 2rem 1.25rem; }
 .form-row { grid-template-columns: 1fr; }
 .color-options { grid-template-columns: 1fr; }
-.package-option { padding: 0.9rem 1rem; gap: 0.75rem; }
+.package-option { padding: 1rem; gap: 0.75rem; }
 .package-name { font-size: 0.95rem; }
 .package-price { font-size: 0.9rem; }
-.package-img { width: 50px; height: 50px; border-radius: 8px; }
+.package-img { width: 55px; height: 55px; border-radius: 8px; }
+.package-header { flex-wrap: wrap; }
 }
 
 .pac-container {
@@ -582,7 +663,6 @@ cursor: pointer;
   </div>
 </nav>
 
-<!-- ── COMPACT HEADER ── -->
 <div class="page-header">
   <div class="season-icon">🎃</div>
   <p class="section-label" style="color: #8B9E6B;">Fall 2026</p>
@@ -590,74 +670,106 @@ cursor: pointer;
   <p class="sub">Sign-ups open in early August. Delivery begins the week after Labor Day.</p>
 </div>
 
-<!-- ── FORM ── -->
 <section class="signup-section">
   <div class="form-container">
     <form id="signupForm">
 
       <div class="error-message" id="errorMsg">Something went wrong. Please try again or contact us directly.</div>
 
+      <!-- ── NEIGHBORHOOD BUNDLE ── -->
+      <div class="bundle-callout">
+        <div class="bundle-emoji">🏘️</div>
+        <h4>Neighborhood Bundle — Save 15%</h4>
+        <p>3 or more houses on the same street? Everyone saves 15%. Mention your neighbors' names below!</p>
+      </div>
+
+      <!-- ── PACKAGES ── -->
       <div class="form-group">
         <label>Choose Your Package</label>
         <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
         <div class="package-options">
+
           <div class="package-option selected" onclick="selectPackage(this)">
-            <input type="radio" name="package" value="Petite Porch" data-price="79" checked>
+            <input type="radio" name="package" value="Petite Porch" data-price="79" data-tier="petite" checked>
             <div class="package-radio"></div>
             <img src="petite.png" class="package-img" alt="Petite Porch">
             <div class="package-info">
-              <span class="package-name">Petite Porch</span>
-              <span class="package-desc">A charming small arrangement for your doorstep</span>
+              <div class="package-header">
+                <span class="package-name">Petite Porch</span>
+                <span class="package-price">$79</span>
+              </div>
+              <p class="package-desc">A charming doorstep arrangement to welcome the season.</p>
+              <ul class="package-includes">
+                <li>Curated pumpkin grouping</li>
+                <li>Up to 2 hay bales</li>
+                <li>Small potted mums</li>
+              </ul>
             </div>
-            <span class="package-price">$79</span>
           </div>
+
           <div class="package-option" onclick="selectPackage(this)">
-            <input type="radio" name="package" value="Classic Display" data-price="99">
+            <input type="radio" name="package" value="Classic Display" data-price="99" data-tier="classic">
             <div class="package-radio"></div>
             <img src="classic.png" class="package-img" alt="Classic Display">
             <div class="package-info">
-              <span class="package-name">Classic Display</span>
-              <span class="package-desc">A beautiful spread that fills your porch with autumn warmth</span>
+              <div class="package-header">
+                <span class="package-name">Classic Display</span>
+                <span class="package-price">$99</span>
+              </div>
+              <p class="package-desc">A beautiful spread that fills your porch with autumn warmth.</p>
+              <ul class="package-includes">
+                <li>Mix of pumpkin sizes</li>
+                <li>Up to 3 hay bales</li>
+                <li>Potted mum arrangement</li>
+              </ul>
             </div>
-            <span class="package-price">$99</span>
           </div>
+
           <div class="package-option popular" onclick="selectPackage(this)">
             <div class="popular-tag">Most Popular</div>
-            <input type="radio" name="package" value="Statement Porch" data-price="149">
+            <input type="radio" name="package" value="Statement Porch" data-price="149" data-tier="statement">
             <div class="package-radio"></div>
             <img src="statement.png" class="package-img" alt="Statement Porch">
             <div class="package-info">
-              <span class="package-name">Statement Porch</span>
-              <span class="package-desc">A head-turning arrangement that commands attention</span>
+              <div class="package-header">
+                <span class="package-name">Statement Porch</span>
+                <span class="package-price">$149</span>
+              </div>
+              <p class="package-desc">A head-turning arrangement with assorted pumpkins, gourds & squash.</p>
+              <ul class="package-includes">
+                <li>Assorted pumpkins, gourds & squash</li>
+                <li>Up to 4 hay bales</li>
+                <li>Potted mum arrangement</li>
+              </ul>
             </div>
-            <span class="package-price">$149</span>
           </div>
+
           <div class="package-option" onclick="selectPackage(this)">
-            <input type="radio" name="package" value="Grand Display" data-price="229">
+            <input type="radio" name="package" value="Grand Display" data-price="249" data-tier="grand">
             <div class="package-radio"></div>
             <img src="grand.png" class="package-img" alt="Grand Display">
             <div class="package-info">
-              <span class="package-name">Grand Display</span>
-              <span class="package-desc">A full porch transformation your neighbors will envy</span>
+              <div class="package-header">
+                <span class="package-name">Grand Display</span>
+                <span class="package-price">$249</span>
+              </div>
+              <p class="package-desc">Premium heirloom pumpkins, gourds, squash & ornamental accents — our most complete package.</p>
+              <ul class="package-includes">
+                <li>Heirloom pumpkins & ornamentals</li>
+                <li>Up to 5 hay bales</li>
+                <li>Potted mum arrangement</li>
+                <li>Harvest wreath included</li>
+              </ul>
             </div>
-            <span class="package-price">$229</span>
           </div>
-          <div class="package-option" onclick="selectPackage(this)">
-            <input type="radio" name="package" value="Over the Top" data-price="319">
-            <div class="package-radio"></div>
-            <img src="over the top.png" class="package-img" alt="Over the Top">
-            <div class="package-info">
-              <span class="package-name">Over the Top</span>
-              <span class="package-desc">The ultimate fall experience — every inch of your entryway styled to perfection</span>
-            </div>
-            <span class="package-price">$319</span>
-          </div>
+
         </div>
         <p class="includes-line">All packages include delivery, design, and end-of-season removal.</p>
       </div>
 
       <div class="divider"></div>
 
+      <!-- ── COLOR PALETTE ── -->
       <div class="form-group">
         <label>Choose Your Color Palette</label>
         <div class="color-options">
@@ -701,28 +813,11 @@ cursor: pointer;
 
       <div class="divider"></div>
 
-      <div class="form-group">
+      <!-- ── ADD-ONS ── -->
+      <div class="form-group" id="addonsSection">
         <label>Extras <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
         <div class="addon-options">
-          <label class="addon-option" onclick="">
-            <input type="checkbox" name="addon" value="Decorative Hay Bale" data-addon-price="25">
-            <div class="addon-check"></div>
-            <div class="addon-info">
-              <span class="addon-name">Decorative Hay Bale</span>
-              <span class="addon-desc">Rustic straw bale styled into your display</span>
-            </div>
-            <span class="addon-price">+$25</span>
-          </label>
-          <label class="addon-option" onclick="">
-            <input type="checkbox" name="addon" value="Potted Flower Arrangement" data-addon-price="39">
-            <div class="addon-check"></div>
-            <div class="addon-info">
-              <span class="addon-name">Potted Flower Arrangement</span>
-              <span class="addon-desc">Seasonal mums and florals in a planter</span>
-            </div>
-            <span class="addon-price">+$39</span>
-          </label>
-          <label class="addon-option" onclick="">
+          <label class="addon-option" id="addon-wreath" onclick="">
             <input type="checkbox" name="addon" value="Harvest Wreath" data-addon-price="49">
             <div class="addon-check"></div>
             <div class="addon-info">
@@ -731,7 +826,16 @@ cursor: pointer;
             </div>
             <span class="addon-price">+$49</span>
           </label>
-          <label class="addon-option" onclick="">
+          <label class="addon-option" id="addon-extra-wreath" class="hidden" onclick="">
+            <input type="checkbox" name="addon" value="Additional Wreath" data-addon-price="49">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Additional Wreath</span>
+              <span class="addon-desc">A second wreath for a side door, garage, or back porch</span>
+            </div>
+            <span class="addon-price">+$49</span>
+          </label>
+          <label class="addon-option" id="addon-arch" onclick="">
             <input type="checkbox" name="addon" value="Pumpkin Arch" data-addon-price="59">
             <div class="addon-check"></div>
             <div class="addon-info">
@@ -745,6 +849,7 @@ cursor: pointer;
 
       <div class="divider"></div>
 
+      <!-- ── DELIVERY WINDOW ── -->
       <div class="form-group">
         <label>Preferred 3-Day Delivery Window</label>
         <select id="deliveryWindow" required>
@@ -773,6 +878,7 @@ cursor: pointer;
 
       <div class="divider"></div>
 
+      <!-- ── CUSTOMER INFO ── -->
       <div class="form-group"><label>Your Information</label></div>
       <div class="form-row">
         <div class="form-group">
@@ -801,9 +907,21 @@ cursor: pointer;
 
       <div class="divider"></div>
 
+      <!-- ── NEIGHBORS ── -->
+      <div class="form-group">
+        <label>Neighbors Also Ordering? <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(for 15% neighborhood bundle)</span></label>
+        <textarea id="neighbors" placeholder="List neighbor names or addresses for the bundle discount..."></textarea>
+      </div>
+
+      <!-- ── NOTES ── -->
       <div class="form-group">
         <label>Special Instructions <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
         <textarea id="notes" placeholder="Any porch details, gate codes, or arrangement preferences..."></textarea>
+      </div>
+
+      <!-- ── SPOTS COUNTER ── -->
+      <div class="spots-counter">
+        <span>🔥 Only <em>38 spots</em> remaining for Fall 2026</span>
       </div>
 
       <button type="submit" class="submit-btn" id="submitBtn">Reserve My Porch — $79</button>
@@ -827,14 +945,40 @@ cursor: pointer;
     document.querySelectorAll('.package-option').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
     el.querySelector('input').checked = true;
+
+    // Reset addon checkboxes when switching packages
+    document.querySelectorAll('input[name="addon"]').forEach(cb => {
+      cb.checked = false;
+      cb.closest('.addon-option').classList.remove('selected');
+    });
+
+    updateAddons();
     updateButton();
+  }
+
+  function updateAddons() {
+    const tier = document.querySelector('input[name="package"]:checked').getAttribute('data-tier');
+    const wreathAddon = document.getElementById('addon-wreath');
+    const extraWreathAddon = document.getElementById('addon-extra-wreath');
+
+    if (tier === 'grand') {
+      // Grand includes wreath — hide first wreath, show "additional wreath"
+      wreathAddon.classList.add('hidden');
+      extraWreathAddon.classList.remove('hidden');
+    } else {
+      // All others — show first wreath, hide "additional wreath"
+      wreathAddon.classList.remove('hidden');
+      extraWreathAddon.classList.add('hidden');
+    }
   }
 
   function getTotal() {
     const basePrice = parseInt(document.querySelector('input[name="package"]:checked').getAttribute('data-price'));
     let addonTotal = 0;
     document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
-      addonTotal += parseInt(cb.getAttribute('data-addon-price'));
+      if (!cb.closest('.addon-option').classList.contains('hidden')) {
+        addonTotal += parseInt(cb.getAttribute('data-addon-price'));
+      }
     });
     return basePrice + addonTotal;
   }
@@ -850,6 +994,9 @@ cursor: pointer;
     });
   });
 
+  // Initialize addons on load
+  updateAddons();
+
   document.getElementById('signupForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
@@ -857,7 +1004,11 @@ cursor: pointer;
     errorMsg.classList.remove('visible');
     const selectedPackage = document.querySelector('input[name="package"]:checked');
     const selectedAddons = [];
-    document.querySelectorAll('input[name="addon"]:checked').forEach(cb => { selectedAddons.push(cb.value); });
+    document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
+      if (!cb.closest('.addon-option').classList.contains('hidden')) {
+        selectedAddons.push(cb.value);
+      }
+    });
     const formData = {
       firstName: document.getElementById('firstName').value.trim(),
       lastName: document.getElementById('lastName').value.trim(),
@@ -869,6 +1020,7 @@ cursor: pointer;
       addons: selectedAddons.join(', ') || 'None',
       totalPrice: '$' + getTotal(),
       deliveryWindow: document.getElementById('deliveryWindow').value,
+      neighbors: document.getElementById('neighbors').value.trim(),
       notes: document.getElementById('notes').value.trim(),
       submittedAt: new Date().toISOString()
     };
