@@ -127,11 +127,12 @@ body::before {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ── HOW IT WORKS ── */
+
 .how-section {
   padding: 4rem 2rem;
   background: #2C2C2C;
   color: #FAF8F5;
-  position: relative;
 }
 
 .section-label {
@@ -181,8 +182,10 @@ body::before {
   margin-bottom: 0.75rem;
 }
 
-.step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
+.step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
 .step p { font-size: 0.85rem; line-height: 1.6; opacity: 0.7; font-weight: 300; }
+
+/* ── SEASON CARDS ── */
 
 .seasons-header {
   text-align: center;
@@ -204,7 +207,6 @@ body::before {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   width: 100%;
-  animation: fadeDown 1s ease-out 0.45s both;
 }
 
 .season-card {
@@ -236,10 +238,7 @@ body::before {
 .season-card.fall:hover { border-color: #C4622D; }
 .season-card.fall .season-emoji { font-size: 3.5rem; margin-bottom: 1rem; }
 .season-card.fall .season-name { color: #C4622D; }
-.season-card.fall .season-cta {
-  background: #C4622D;
-  color: #FDF6EC;
-}
+.season-card.fall .season-cta { background: #C4622D; color: #FDF6EC; }
 .season-card.fall .season-cta:hover { background: #A34E20; }
 
 .season-card.winter {
@@ -249,10 +248,7 @@ body::before {
 .season-card.winter:hover { border-color: #B42828; }
 .season-card.winter .season-emoji { font-size: 3.5rem; margin-bottom: 1rem; }
 .season-card.winter .season-name { color: #B42828; }
-.season-card.winter .season-cta {
-  background: #B42828;
-  color: #F0F4F8;
-}
+.season-card.winter .season-cta { background: #B42828; color: #F0F4F8; }
 .season-card.winter .season-cta:hover { background: #8E1F1F; }
 
 .season-emoji { line-height: 1; }
@@ -301,11 +297,180 @@ body::before {
 .season-card.fall .season-tag { color: #C4622D; background: rgba(196,98,45,0.12); }
 .season-card.winter .season-tag { color: #B42828; background: rgba(180,40,40,0.1); }
 
+/* ── FAQ ── */
+
+.faq-section {
+  padding: 4rem 2rem;
+  max-width: 750px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.faq-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #2C2C2C;
+}
+
+.faq-item {
+  border-bottom: 1px solid #E8E4DF;
+  padding: 1.25rem 0;
+  cursor: pointer;
+}
+
+.faq-item:first-of-type {
+  border-top: 1px solid #E8E4DF;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.faq-question h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2C2C2C;
+  line-height: 1.4;
+}
+
+.faq-toggle {
+  font-size: 1.2rem;
+  color: #C4622D;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  font-weight: 300;
+}
+
+.faq-item.open .faq-toggle {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding-top: 0.75rem;
+}
+
+.faq-answer p {
+  font-size: 0.88rem;
+  color: #777;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── EMAIL CAPTURE ── */
+
+.notify-section {
+  padding: 4rem 2rem;
+  background: #2C2C2C;
+  color: #FAF8F5;
+  text-align: center;
+}
+
+.notify-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.notify-section .notify-sub {
+  font-size: 0.95rem;
+  opacity: 0.6;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.notify-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 460px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.notify-form input[type="email"] {
+  flex: 1;
+  min-width: 220px;
+  padding: 0.85rem 1.1rem;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #FAF8F5;
+  background: rgba(255,255,255,0.08);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.notify-form input[type="email"]::placeholder { color: rgba(250,248,245,0.4); }
+
+.notify-form input[type="email"]:focus {
+  border-color: #D4A843;
+  box-shadow: 0 0 0 3px rgba(212,168,67,0.2);
+}
+
+.notify-form button {
+  padding: 0.85rem 2rem;
+  background: #C4622D;
+  color: #FAF8F5;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.notify-form button:hover {
+  background: #D4A843;
+  transform: translateY(-1px);
+}
+
+.notify-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.notify-success {
+  display: none;
+  font-size: 0.9rem;
+  color: #D4A843;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.notify-success.visible { display: block; animation: fadeDown 0.5s ease-out; }
+
+/* ── FOOTER ── */
+
 footer {
   background: #2C2C2C;
   color: #FAF8F5;
   text-align: center;
   padding: 2.5rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
 footer .footer-brand {
@@ -321,6 +486,9 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
   .hero { padding: 5rem 1.5rem 2rem; }
   .seasons { padding: 1.5rem 1.25rem 3rem; gap: 1.25rem; }
   .season-card { padding: 2rem 1.5rem; }
+  .notify-form { flex-direction: column; }
+  .notify-form input[type="email"] { min-width: 100%; }
+  .notify-form button { width: 100%; }
 }
 </style>
 </head>
@@ -367,7 +535,6 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
 </div>
 
 <div class="seasons">
-
   <div class="season-card fall">
     <div class="season-emoji">🎃</div>
     <span class="season-tag">Sep – Nov</span>
@@ -375,7 +542,6 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
     <p class="season-desc">Gorgeous pumpkin displays in your favorite autumn colors, delivered and arranged on your porch.</p>
     <a href="fall.html" class="season-cta">View Fall</a>
   </div>
-
   <div class="season-card winter">
     <div class="season-emoji">🎁</div>
     <span class="season-tag">Nov – Jan</span>
@@ -383,13 +549,127 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
     <p class="season-desc">Stunning holiday present displays with bows, ribbon, and greenery styled at your entryway.</p>
     <a href="winter.html" class="season-cta">View Winter</a>
   </div>
-
 </div>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+  <h2>Questions? We've Got You.</h2>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">
+      <h3>What area do you serve?</h3>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <p>We serve the greater Sacramento area within 40 miles of Roseville, including Rocklin, Lincoln, Granite Bay, Loomis, Folsom, El Dorado Hills, Auburn, Cameron Park, Sacramento, Elk Grove, Rancho Cordova, Citrus Heights, Davis, Woodland, and West Sacramento.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">
+      <h3>What if my pumpkins rot or get damaged?</h3>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <p>We've got you covered! If any pumpkins go bad during the season, let us know and we'll swing by to replace them at no extra charge.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">
+      <h3>Do I need to be home during delivery?</h3>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <p>Nope! We handle everything outside. Just make sure we can access your porch and we'll take care of the rest. We'll send you a photo when we're done so you can see the magic.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">
+      <h3>When does removal happen?</h3>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <p>For fall displays, we handle removal the week after Thanksgiving. For winter displays, removal happens the week after New Year's. It's all included in your package — no extra charge.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">
+      <h3>Can I customize my display?</h3>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <p>Absolutely! You choose your color palette when you order, and there's a special instructions field where you can tell us about your porch layout, preferences, or any specific vision you have. You can also upload a photo of your porch after checkout so we can design with your space in mind.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">
+      <h3>Do you offer a neighborhood discount?</h3>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <p>Yes! If 3 or more houses on the same street all book, everyone saves 15%. Just mention your neighbors' names when you order and we'll apply the discount. The more the merrier — and your whole street will look incredible.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">
+      <h3>How do I pay?</h3>
+      <span class="faq-toggle">+</span>
+    </div>
+    <div class="faq-answer">
+      <p>Payment is handled securely through Stripe when you reserve your spot. Your card is charged at the time of booking to lock in your delivery window.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── EMAIL CAPTURE ── -->
+<section class="notify-section">
+  <h2>Not Ready Yet?</h2>
+  <p class="notify-sub">Sign-ups open in August. Drop your email and we'll let you know the moment spots go live.</p>
+  <form class="notify-form" name="email-notify" method="POST" data-netlify="true" id="notifyForm">
+    <input type="hidden" name="form-name" value="email-notify">
+    <input type="email" name="email" placeholder="your@email.com" required>
+    <button type="submit" id="notifyBtn">Notify Me</button>
+  </form>
+  <div class="notify-success" id="notifySuccess">🎉 You're on the list! We'll email you when sign-ups open.</div>
+</section>
 
 <footer>
   <div class="footer-brand">Porchside Drop</div>
   <p>&copy; 2026 — Handcrafted seasonal joy, delivered to your door.</p>
 </footer>
+
+<script>
+  function toggleFaq(el) {
+    document.querySelectorAll('.faq-item').forEach(item => {
+      if (item !== el) item.classList.remove('open');
+    });
+    el.classList.toggle('open');
+  }
+
+  document.getElementById('notifyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('notifyBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    try {
+      const formData = new FormData(this);
+      const response = await fetch('/', { method: 'POST', body: formData });
+      if (response.ok) {
+        this.style.display = 'none';
+        document.getElementById('notifySuccess').classList.add('visible');
+      } else { throw new Error('Failed'); }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Notify Me';
+      alert('Something went wrong. Please try again.');
+    }
+  });
+</script>
 
 </body>
 </html>
