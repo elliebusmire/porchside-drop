@@ -8,13 +8,26 @@ exports.handler = async (event) => {
   try {
     const data = JSON.parse(event.body);
 
+    // Determine season from the page that submitted
+    const season = data.package ? 'Winter' : 'Fall';
+
     // Build line items description
-    const description = [
-      `${data.pumpkinCount} Pumpkins - ${data.colorPalette}`,
-      data.addons && data.addons !== 'None' ? `Add-ons: ${data.addons}` : null,
-      `Delivery: ${data.deliveryWindow}`,
-      data.notes ? `Notes: ${data.notes}` : null
-    ].filter(Boolean).join(' | ');
+    let description;
+    if (season === 'Winter') {
+      description = [
+        `${data.package} Package - ${data.colorPalette}`,
+        data.addons && data.addons !== 'None' ? `Add-ons: ${data.addons}` : null,
+        `Delivery: ${data.deliveryWindow}`,
+        data.notes ? `Notes: ${data.notes}` : null
+      ].filter(Boolean).join(' | ');
+    } else {
+      description = [
+        `${data.pumpkinCount} Pumpkins - ${data.colorPalette}`,
+        data.addons && data.addons !== 'None' ? `Add-ons: ${data.addons}` : null,
+        `Delivery: ${data.deliveryWindow}`,
+        data.notes ? `Notes: ${data.notes}` : null
+      ].filter(Boolean).join(' | ');
+    }
 
     // Calculate total in cents
     const totalCents = parseInt(data.totalPrice.replace('$', '')) * 100;
@@ -29,7 +42,7 @@ exports.handler = async (event) => {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: 'Porchside Drop - Fall Porch Package',
+              name: `Porchside Drop - ${season} Porch Package`,
               description: description,
             },
             unit_amount: totalCents,
@@ -38,13 +51,15 @@ exports.handler = async (event) => {
         },
       ],
       metadata: {
+        season: season,
         firstName: data.firstName,
         lastName: data.lastName,
         phone: data.phone,
         address: data.address,
         colorPalette: data.colorPalette,
-        pumpkinCount: data.pumpkinCount,
-        addons: data.addons,
+        package: data.package || '',
+        pumpkinCount: data.pumpkinCount || '',
+        addons: data.addons || '',
         deliveryWindow: data.deliveryWindow,
         notes: data.notes || '',
       },
@@ -60,6 +75,7 @@ exports.handler = async (event) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
+          season: season,
           stripeSessionId: session.id,
           paymentStatus: 'pending',
         }),
