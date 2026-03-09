@@ -353,6 +353,83 @@ margin-top: 0.75rem;
 font-style: italic;
 }
 
+.addon-options {
+display: flex;
+flex-direction: column;
+gap: 0.6rem;
+}
+
+.addon-option {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+padding: 0.85rem 1rem;
+border: 1.5px solid #D1D9E0;
+border-radius: 12px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: #F0F4F8;
+}
+
+.addon-option:hover { border-color: #B42828; background: rgba(180,40,40,0.03); }
+
+.addon-option.selected {
+border-color: #B42828;
+background: rgba(180,40,40,0.06);
+box-shadow: 0 0 0 3px rgba(180,40,40,0.1);
+}
+
+.addon-option input[type="checkbox"] { display: none; }
+
+.addon-check {
+width: 20px;
+height: 20px;
+border: 2px solid #B8C4D0;
+border-radius: 6px;
+flex-shrink: 0;
+transition: all 0.3s ease;
+position: relative;
+}
+
+.addon-option.selected .addon-check {
+background: #B42828;
+border-color: #B42828;
+}
+
+.addon-option.selected .addon-check::after {
+content: '';
+position: absolute;
+top: 3px;
+left: 6px;
+width: 5px;
+height: 9px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+
+.addon-info {
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 0.15rem;
+}
+
+.addon-name { font-size: 0.9rem; font-weight: 500; color: #1E2A38; }
+.addon-desc { font-size: 0.72rem; color: #999; font-weight: 300; }
+
+.addon-price {
+font-family: 'DM Sans', sans-serif;
+font-size: 0.8rem;
+font-weight: 600;
+color: #22643C;
+background: rgba(34,100,60,0.1);
+padding: 0.2rem 0.5rem;
+border-radius: 6px;
+white-space: nowrap;
+flex-shrink: 0;
+}
+
 .divider {
 height: 1px;
 background: linear-gradient(to right, transparent, #D1D9E0, transparent);
@@ -570,6 +647,50 @@ cursor: pointer;
       <div class="divider"></div>
 
       <div class="form-group">
+        <label>Extras <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
+        <div class="addon-options">
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="String Lights" data-addon-price="25">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">String Lights</span>
+              <span class="addon-desc">Warm white string lights woven through your display</span>
+            </div>
+            <span class="addon-price">+$25</span>
+          </label>
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Evergreen Garland" data-addon-price="39">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Evergreen Garland</span>
+              <span class="addon-desc">Lush faux garland styled along your railing or entryway</span>
+            </div>
+            <span class="addon-price">+$39</span>
+          </label>
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Holiday Wreath" data-addon-price="49">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Holiday Wreath</span>
+              <span class="addon-desc">Handcrafted winter wreath with ribbon and greenery for your door</span>
+            </div>
+            <span class="addon-price">+$49</span>
+          </label>
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Ornament Topiary" data-addon-price="59">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Ornament Topiary</span>
+              <span class="addon-desc">Stacked ornament topiary accent piece for your entryway</span>
+            </div>
+            <span class="addon-price">+$59</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="form-group">
         <label>Preferred 3-Day Delivery Window</label>
         <select id="deliveryWindow" required>
           <option value="" disabled selected>Select your delivery window...</option>
@@ -650,12 +771,24 @@ cursor: pointer;
   }
 
   function getTotal() {
-    return parseInt(document.querySelector('input[name="package"]:checked').getAttribute('data-price'));
+    const basePrice = parseInt(document.querySelector('input[name="package"]:checked').getAttribute('data-price'));
+    let addonTotal = 0;
+    document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
+      addonTotal += parseInt(cb.getAttribute('data-addon-price'));
+    });
+    return basePrice + addonTotal;
   }
 
   function updateButton() {
     document.getElementById('submitBtn').textContent = 'Reserve My Porch — $' + getTotal();
   }
+
+  document.querySelectorAll('input[name="addon"]').forEach(cb => {
+    cb.addEventListener('change', function() {
+      this.closest('.addon-option').classList.toggle('selected', this.checked);
+      updateButton();
+    });
+  });
 
   document.getElementById('signupForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -663,6 +796,8 @@ cursor: pointer;
     const errorMsg = document.getElementById('errorMsg');
     errorMsg.classList.remove('visible');
     const selectedPackage = document.querySelector('input[name="package"]:checked');
+    const selectedAddons = [];
+    document.querySelectorAll('input[name="addon"]:checked').forEach(cb => { selectedAddons.push(cb.value); });
     const formData = {
       firstName: document.getElementById('firstName').value.trim(),
       lastName: document.getElementById('lastName').value.trim(),
@@ -671,6 +806,7 @@ cursor: pointer;
       address: document.getElementById('address').value.trim(),
       colorPalette: document.querySelector('input[name="color"]:checked').value,
       package: selectedPackage.value,
+      addons: selectedAddons.join(', ') || 'None',
       totalPrice: '$' + getTotal(),
       deliveryWindow: document.getElementById('deliveryWindow').value,
       notes: document.getElementById('notes').value.trim(),
