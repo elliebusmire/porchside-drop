@@ -190,6 +190,98 @@ box-shadow: 0 0 0 3px rgba(180,40,40,0.1);
 select:invalid { color: #9BAAB8; }
 ::placeholder { color: #9BAAB8; font-weight: 300; }
 
+.package-options {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 0.75rem;
+padding-top: 12px;
+}
+
+@media (max-width: 500px) {
+.package-options { grid-template-columns: 1fr; }
+}
+
+.package-option {
+text-align: center;
+padding: 1.25rem 0.75rem;
+border: 1.5px solid #D1D9E0;
+border-radius: 12px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: #F0F4F8;
+position: relative;
+}
+
+.package-option:hover { border-color: #B42828; }
+
+.package-option.selected {
+border-color: #B42828;
+background: rgba(180,40,40,0.06);
+box-shadow: 0 0 0 3px rgba(180,40,40,0.1);
+}
+
+.package-option input[type="radio"] { display: none; }
+
+.package-option.popular {
+position: relative;
+border-color: #B42828;
+background: rgba(180,40,40,0.04);
+}
+
+.popular-tag {
+position: absolute;
+top: -9px;
+left: 50%;
+transform: translateX(-50%);
+background: #B42828;
+color: white;
+font-size: 0.5rem;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+padding: 2px 6px;
+border-radius: 4px;
+white-space: nowrap;
+}
+
+.package-icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+
+.package-name {
+font-family: 'Playfair Display', serif;
+font-size: 1.1rem;
+font-weight: 700;
+color: #1E2A38;
+line-height: 1.2;
+}
+
+.package-desc {
+font-size: 0.7rem;
+color: #999;
+margin-top: 0.3rem;
+font-weight: 300;
+line-height: 1.4;
+}
+
+.package-price {
+font-family: 'DM Sans', sans-serif;
+font-size: 0.85rem;
+font-weight: 600;
+color: #22643C;
+margin-top: 0.5rem;
+background: rgba(34,100,60,0.1);
+padding: 0.2rem 0.5rem;
+border-radius: 6px;
+display: inline-block;
+}
+
+.package-img {
+width: 100%;
+border-radius: 8px;
+margin-top: 0.75rem;
+object-fit: cover;
+max-height: 140px;
+}
+
 .color-options {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -235,93 +327,6 @@ border: 1.5px solid rgba(30,42,56,0.15);
 .swatch.kraft { background: #C4A876; }
 .color-label { font-size: 0.85rem; font-weight: 500; color: #1E2A38; }
 
-.count-options {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-gap: 0.6rem;
-width: 100%;
-overflow: visible;
-padding-top: 12px;
-}
-
-@media (max-width: 500px) {
-.count-options { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-}
-
-.count-option {
-text-align: center;
-padding: 0.75rem 0.25rem;
-border: 1.5px solid #D1D9E0;
-border-radius: 12px;
-cursor: pointer;
-transition: all 0.3s ease;
-background: #F0F4F8;
-min-width: 0;
-overflow: visible;
-position: relative;
-}
-
-.count-option:hover { border-color: #B42828; }
-
-.count-option.selected {
-border-color: #B42828;
-background: rgba(180,40,40,0.06);
-box-shadow: 0 0 0 3px rgba(180,40,40,0.1);
-}
-
-.count-option input[type="radio"] { display: none; }
-
-.count-num {
-font-family: 'Playfair Display', serif;
-font-size: clamp(1.2rem, 3vw, 1.6rem);
-font-weight: 700;
-color: #B42828;
-line-height: 1;
-}
-
-.count-label {
-font-size: 0.55rem;
-text-transform: uppercase;
-letter-spacing: 0.1em;
-color: #999;
-margin-top: 0.15rem;
-font-weight: 500;
-}
-
-.count-price {
-font-family: 'DM Sans', sans-serif;
-font-size: 0.75rem;
-font-weight: 600;
-color: #22643C;
-margin-top: 0.35rem;
-background: rgba(34,100,60,0.1);
-padding: 0.15rem 0.4rem;
-border-radius: 6px;
-display: inline-block;
-}
-
-.count-option.popular {
-position: relative;
-border-color: #B42828;
-background: rgba(180,40,40,0.04);
-}
-
-.popular-tag {
-position: absolute;
-top: -9px;
-left: 50%;
-transform: translateX(-50%);
-background: #B42828;
-color: white;
-font-size: 0.5rem;
-font-weight: 600;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-padding: 2px 6px;
-border-radius: 4px;
-white-space: nowrap;
-}
-
 .intro-badge {
 text-align: center;
 margin-bottom: 0.75rem;
@@ -346,83 +351,6 @@ color: #22643C;
 font-weight: 400;
 margin-top: 0.75rem;
 font-style: italic;
-}
-
-.addon-options {
-display: flex;
-flex-direction: column;
-gap: 0.6rem;
-}
-
-.addon-option {
-display: flex;
-align-items: center;
-gap: 0.75rem;
-padding: 0.85rem 1rem;
-border: 1.5px solid #D1D9E0;
-border-radius: 12px;
-cursor: pointer;
-transition: all 0.3s ease;
-background: #F0F4F8;
-}
-
-.addon-option:hover { border-color: #B42828; background: rgba(180,40,40,0.03); }
-
-.addon-option.selected {
-border-color: #B42828;
-background: rgba(180,40,40,0.06);
-box-shadow: 0 0 0 3px rgba(180,40,40,0.1);
-}
-
-.addon-option input[type="checkbox"] { display: none; }
-
-.addon-check {
-width: 20px;
-height: 20px;
-border: 2px solid #B8C4D0;
-border-radius: 6px;
-flex-shrink: 0;
-transition: all 0.3s ease;
-position: relative;
-}
-
-.addon-option.selected .addon-check {
-background: #B42828;
-border-color: #B42828;
-}
-
-.addon-option.selected .addon-check::after {
-content: '';
-position: absolute;
-top: 3px;
-left: 6px;
-width: 5px;
-height: 9px;
-border: solid white;
-border-width: 0 2px 2px 0;
-transform: rotate(45deg);
-}
-
-.addon-info {
-flex: 1;
-display: flex;
-flex-direction: column;
-gap: 0.15rem;
-}
-
-.addon-name { font-size: 0.9rem; font-weight: 500; color: #1E2A38; }
-.addon-desc { font-size: 0.72rem; color: #999; font-weight: 300; }
-
-.addon-price {
-font-family: 'DM Sans', sans-serif;
-font-size: 0.8rem;
-font-weight: 600;
-color: #22643C;
-background: rgba(34,100,60,0.1);
-padding: 0.2rem 0.5rem;
-border-radius: 6px;
-white-space: nowrap;
-flex-shrink: 0;
 }
 
 .divider {
@@ -514,9 +442,6 @@ footer p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
 .form-container { padding: 2rem 1.25rem; }
 .form-row { grid-template-columns: 1fr; }
 .color-options { grid-template-columns: 1fr; }
-.count-options { grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
-.count-option { padding: 0.6rem 0.15rem; border-radius: 10px; }
-.count-label { font-size: 0.55rem; }
 }
 
 .pac-container {
@@ -569,39 +494,41 @@ cursor: pointer;
       <div class="error-message" id="errorMsg">Something went wrong. Please try again or contact us directly.</div>
 
       <div class="form-group">
-        <label>Display Size</label>
+        <label>Choose Your Package</label>
         <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
-        <div class="count-options">
-          <div class="count-option selected" onclick="selectCount(this)">
-            <input type="radio" name="count" value="2" data-price="79" checked>
-            <div class="count-num">2</div>
-            <div class="count-label">presents</div>
-            <div class="count-price">$79</div>
+        <div class="package-options">
+          <div class="package-option" onclick="selectPackage(this)">
+            <input type="radio" name="package" value="Petite" data-price="79">
+            <div class="package-icon">❄️</div>
+            <div class="package-name">Petite</div>
+            <div class="package-desc">One-sided arrangement with wrapped presents, evergreen, holly & lantern</div>
+            <div class="package-price">$79</div>
+            <img class="package-img" src="images/petite winter.png" alt="Petite package">
           </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="3" data-price="99">
-            <div class="count-num">3</div>
-            <div class="count-label">presents</div>
-            <div class="count-price">$99</div>
-          </div>
-          <div class="count-option popular" onclick="selectCount(this)">
-            <input type="radio" name="count" value="4" data-price="119">
+          <div class="package-option popular selected" onclick="selectPackage(this)">
+            <input type="radio" name="package" value="Classic" data-price="149" checked>
             <div class="popular-tag">Most Popular</div>
-            <div class="count-num">4</div>
-            <div class="count-label">presents</div>
-            <div class="count-price">$119</div>
+            <div class="package-icon">🎄</div>
+            <div class="package-name">Classic</div>
+            <div class="package-desc">Balanced two-sided display with presents, topiaries, garland & wreath</div>
+            <div class="package-price">$149</div>
+            <img class="package-img" src="images/classic winter.png" alt="Classic package">
           </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="5" data-price="179">
-            <div class="count-num">5</div>
-            <div class="count-label">presents</div>
-            <div class="count-price">$179</div>
+          <div class="package-option" onclick="selectPackage(this)">
+            <input type="radio" name="package" value="Statement" data-price="249">
+            <div class="package-icon">🎁</div>
+            <div class="package-name">Statement</div>
+            <div class="package-desc">Fuller display with stacked presents, birch branches, winterberry & garland</div>
+            <div class="package-price">$249</div>
+            <img class="package-img" src="images/statement winter.png" alt="Statement package">
           </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="6" data-price="229">
-            <div class="count-num">6</div>
-            <div class="count-label">presents</div>
-            <div class="count-price">$229</div>
+          <div class="package-option" onclick="selectPackage(this)">
+            <input type="radio" name="package" value="Grand" data-price="449">
+            <div class="package-icon">✨</div>
+            <div class="package-name">Grand</div>
+            <div class="package-desc">Full porch-to-walkway winter wonderland with nutcrackers, lit birch trees & lanterns</div>
+            <div class="package-price">$449</div>
+            <img class="package-img" src="images/grand winter.png" alt="Grand package">
           </div>
         </div>
         <p class="includes-line">All packages include delivery, design, and post-New Year's removal.</p>
@@ -637,50 +564,6 @@ cursor: pointer;
             <div class="color-swatches"><span class="swatch blue"></span><span class="swatch silver"></span></div>
             <span class="color-label">Blue & Silver</span>
           </div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="form-group">
-        <label>Extras <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
-        <div class="addon-options">
-          <label class="addon-option" onclick="">
-            <input type="checkbox" name="addon" value="String Lights" data-addon-price="25">
-            <div class="addon-check"></div>
-            <div class="addon-info">
-              <span class="addon-name">String Lights</span>
-              <span class="addon-desc">Warm white string lights woven through your display</span>
-            </div>
-            <span class="addon-price">+$25</span>
-          </label>
-          <label class="addon-option" onclick="">
-            <input type="checkbox" name="addon" value="Evergreen Garland" data-addon-price="39">
-            <div class="addon-check"></div>
-            <div class="addon-info">
-              <span class="addon-name">Evergreen Garland</span>
-              <span class="addon-desc">Lush faux garland styled along your railing or entryway</span>
-            </div>
-            <span class="addon-price">+$39</span>
-          </label>
-          <label class="addon-option" onclick="">
-            <input type="checkbox" name="addon" value="Holiday Wreath" data-addon-price="49">
-            <div class="addon-check"></div>
-            <div class="addon-info">
-              <span class="addon-name">Holiday Wreath</span>
-              <span class="addon-desc">Handcrafted winter wreath with ribbon and greenery for your door</span>
-            </div>
-            <span class="addon-price">+$49</span>
-          </label>
-          <label class="addon-option" onclick="">
-            <input type="checkbox" name="addon" value="Ornament Topiary" data-addon-price="59">
-            <div class="addon-check"></div>
-            <div class="addon-info">
-              <span class="addon-name">Ornament Topiary</span>
-              <span class="addon-desc">Stacked ornament topiary accent piece for your entryway</span>
-            </div>
-            <span class="addon-price">+$59</span>
-          </label>
         </div>
       </div>
 
@@ -742,7 +625,7 @@ cursor: pointer;
         <textarea id="notes" placeholder="Any porch details, gate codes, or arrangement preferences..."></textarea>
       </div>
 
-      <button type="submit" class="submit-btn" id="submitBtn">Reserve My Porch — $79</button>
+      <button type="submit" class="submit-btn" id="submitBtn">Reserve My Porch — $149</button>
     </form>
   </div>
 </section>
@@ -753,6 +636,13 @@ cursor: pointer;
 </footer>
 
 <script>
+  function selectPackage(el) {
+    document.querySelectorAll('.package-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input').checked = true;
+    updateButton();
+  }
+
   function selectColor(el) {
     document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
@@ -760,40 +650,19 @@ cursor: pointer;
   }
 
   function getTotal() {
-    const basePrice = parseInt(document.querySelector('input[name="count"]:checked').getAttribute('data-price'));
-    let addonTotal = 0;
-    document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
-      addonTotal += parseInt(cb.getAttribute('data-addon-price'));
-    });
-    return basePrice + addonTotal;
+    return parseInt(document.querySelector('input[name="package"]:checked').getAttribute('data-price'));
   }
 
   function updateButton() {
     document.getElementById('submitBtn').textContent = 'Reserve My Porch — $' + getTotal();
   }
 
-  function selectCount(el) {
-    document.querySelectorAll('.count-option').forEach(o => o.classList.remove('selected'));
-    el.classList.add('selected');
-    el.querySelector('input').checked = true;
-    updateButton();
-  }
-
-  document.querySelectorAll('input[name="addon"]').forEach(cb => {
-    cb.addEventListener('change', function() {
-      this.closest('.addon-option').classList.toggle('selected', this.checked);
-      updateButton();
-    });
-  });
-
   document.getElementById('signupForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
     const errorMsg = document.getElementById('errorMsg');
     errorMsg.classList.remove('visible');
-    const selectedCount = document.querySelector('input[name="count"]:checked');
-    const selectedAddons = [];
-    document.querySelectorAll('input[name="addon"]:checked').forEach(cb => { selectedAddons.push(cb.value); });
+    const selectedPackage = document.querySelector('input[name="package"]:checked');
     const formData = {
       firstName: document.getElementById('firstName').value.trim(),
       lastName: document.getElementById('lastName').value.trim(),
@@ -801,8 +670,7 @@ cursor: pointer;
       phone: document.getElementById('phone').value.trim(),
       address: document.getElementById('address').value.trim(),
       colorPalette: document.querySelector('input[name="color"]:checked').value,
-      presentCount: selectedCount.value,
-      addons: selectedAddons.join(', ') || 'None',
+      package: selectedPackage.value,
       totalPrice: '$' + getTotal(),
       deliveryWindow: document.getElementById('deliveryWindow').value,
       notes: document.getElementById('notes').value.trim(),
