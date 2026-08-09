@@ -373,91 +373,103 @@
   .swatch.blue { background: #5B7FA5; }
   .color-label { font-size: 0.85rem; font-weight: 500; color: #3D2B1F; }
 
-  .count-options {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0.6rem;
-    width: 100%;
-    overflow: visible;
-    padding-top: 12px;
+  .package-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  @media (max-width: 500px) {
-    .count-options { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-  }
-
-  .count-option {
-    text-align: center;
-    padding: 0.75rem 0.25rem;
+  .package-card {
+    display: flex;
     border: 1.5px solid #ddd3c7;
-    border-radius: 12px;
+    border-radius: 16px;
+    overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
     background: #FDF6EC;
-    min-width: 0;
-    overflow: visible;
     position: relative;
   }
 
-  .count-option:hover { border-color: #C4622D; }
-
-  .count-option.selected {
+  .package-card:hover {
     border-color: #C4622D;
-    background: rgba(196,98,45,0.06);
+    box-shadow: 0 4px 16px rgba(196,98,45,0.1);
+  }
+
+  .package-card.selected {
+    border-color: #C4622D;
+    background: rgba(196,98,45,0.04);
     box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
   }
 
-  .count-option input[type="radio"] { display: none; }
+  .package-card input[type="radio"] { display: none; }
 
-  .count-num {
+  .package-img {
+    width: 140px;
+    min-height: 140px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .package-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .package-details {
+    flex: 1;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .package-name {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+    font-size: 1.2rem;
     font-weight: 700;
-    color: #C4622D;
-    line-height: 1;
+    color: #3D2B1F;
+    margin-bottom: 0.35rem;
   }
 
-  .count-label {
-    font-size: 0.55rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #999;
-    margin-top: 0.15rem;
-    font-weight: 500;
+  .package-desc {
+    font-size: 0.82rem;
+    color: #777;
+    line-height: 1.5;
+    font-weight: 300;
+    margin-bottom: 0.6rem;
   }
 
-  .count-price {
+  .package-price {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: #2D4A22;
-    margin-top: 0.35rem;
-    background: rgba(139,158,107,0.12);
-    padding: 0.15rem 0.4rem;
-    border-radius: 6px;
-    display: inline-block;
   }
 
-  .count-option.popular {
-    position: relative;
-    border-color: #C4622D;
-    background: rgba(196,98,45,0.04);
-  }
-
-  .popular-tag {
+  .package-popular {
     position: absolute;
-    top: -9px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 10px;
+    right: 10px;
     background: #C4622D;
     color: white;
-    font-size: 0.5rem;
+    font-size: 0.55rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 2px 6px;
-    border-radius: 4px;
-    white-space: nowrap;
+    padding: 3px 8px;
+    border-radius: 6px;
+    z-index: 2;
+  }
+
+  @media (max-width: 500px) {
+    .package-img {
+      width: 110px;
+      min-height: 120px;
+    }
+    .package-details { padding: 1rem; }
+    .package-name { font-size: 1.05rem; }
+    .package-desc { font-size: 0.78rem; }
   }
 
   .intro-badge {
@@ -714,9 +726,6 @@
     .form-container { padding: 2rem 1.25rem; }
     .form-row { grid-template-columns: 1fr; }
     .color-options { grid-template-columns: 1fr; }
-    .count-options { grid-template-columns: repeat(5, 1fr); gap: 0.4rem; }
-    .count-option { padding: 0.6rem 0.15rem; border-radius: 10px; }
-    .count-label { font-size: 0.55rem; }
   }
 
   /* Google Places Autocomplete styling */
@@ -759,6 +768,7 @@
 </style>
 </head>
 <body>
+
 <!-- ── SIGN-UP FORM ── -->
 <section class="signup-section" id="signup">
   <p class="section-label" style="color: #8B9E6B;">Fall 2026 Sign-Up</p>
@@ -814,72 +824,61 @@
 
       <div class="divider"></div>
 
-      <!-- Pumpkin Count -->
+      <!-- Package Selection -->
       <div class="form-group">
-        <label>Number of Pumpkins</label>
+        <label>Choose Your Package</label>
         <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
-        <div class="count-options">
-          <div class="count-option selected" onclick="selectCount(this)">
-            <input type="radio" name="count" value="5-7" data-price="79" checked>
-            <div class="count-num">5-7</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$79</div>
+        <div class="package-options">
+
+          <div class="package-card selected" onclick="selectPackage(this)">
+            <input type="radio" name="count" value="5-8 pumpkins (The Classic)" data-price="79" checked>
+            <div class="package-img">
+              <img src="petite.png" alt="The Classic porch display">
+            </div>
+            <div class="package-details">
+              <div class="package-name">The Classic</div>
+              <div class="package-desc">5-8 pumpkins with small hay bales, arranged at your entryway. A warm, simple touch of fall.</div>
+              <div class="package-price">$79</div>
+            </div>
           </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="7-9" data-price="99">
-            <div class="count-num">7-9</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$99</div>
+
+          <div class="package-card" onclick="selectPackage(this)">
+            <input type="radio" name="count" value="9-14 pumpkins (The Statement)" data-price="149">
+            <div class="package-popular">Most Popular</div>
+            <div class="package-img">
+              <img src="classic.png" alt="The Statement porch display">
+            </div>
+            <div class="package-details">
+              <div class="package-name">The Statement</div>
+              <div class="package-desc">9-14 pumpkins with small hay bales, designed to fill your porch with gorgeous fall color and texture.</div>
+              <div class="package-price">$149</div>
+            </div>
           </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="9-11" data-price="119">
-            <div class="count-num">9-11</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$119</div>
+
+          <div class="package-card" onclick="selectPackage(this)">
+            <input type="radio" name="count" value="15-20 pumpkins (The Grand)" data-price="229">
+            <div class="package-img">
+              <img src="statement.png" alt="The Grand porch display">
+            </div>
+            <div class="package-details">
+              <div class="package-name">The Grand</div>
+              <div class="package-desc">15-20 pumpkins with small hay bales, a full porch transformation that turns heads from the street.</div>
+              <div class="package-price">$229</div>
+            </div>
           </div>
-          <div class="count-option popular" onclick="selectCount(this)">
-            <input type="radio" name="count" value="11-14" data-price="149">
-            <div class="popular-tag">Most Popular</div>
-            <div class="count-num">11-14</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$149</div>
+
+          <div class="package-card" onclick="selectPackage(this)">
+            <input type="radio" name="count" value="21-26 pumpkins (The Showstopper)" data-price="319">
+            <div class="package-img">
+              <img src="over%20the%20top.png" alt="The Showstopper porch display">
+            </div>
+            <div class="package-details">
+              <div class="package-name">The Showstopper</div>
+              <div class="package-desc">21-26 pumpkins with small hay bales, the full works. A jaw-dropping display that covers your entire entryway.</div>
+              <div class="package-price">$319</div>
+            </div>
           </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="13-16" data-price="179">
-            <div class="count-num">13-16</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$179</div>
-          </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="15-18" data-price="199">
-            <div class="count-num">15-18</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$199</div>
-          </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="17-20" data-price="229">
-            <div class="count-num">17-20</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$229</div>
-          </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="19-22" data-price="259">
-            <div class="count-num">19-22</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$259</div>
-          </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="21-24" data-price="289">
-            <div class="count-num">21-24</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$289</div>
-          </div>
-          <div class="count-option" onclick="selectCount(this)">
-            <input type="radio" name="count" value="23-26" data-price="319">
-            <div class="count-num">23-26</div>
-            <div class="count-label">pumpkins</div>
-            <div class="count-price">$319</div>
-          </div>
+
         </div>
         <p class="includes-line">All packages include delivery, small hay bales, design, and end-of-season removal. Pumpkin count varies by size and availability.</p>
       </div>
@@ -1072,8 +1071,8 @@
     document.getElementById('submitBtn').textContent = 'Reserve My Porch — $' + getTotal();
   }
 
-  function selectCount(el) {
-    document.querySelectorAll('.count-option').forEach(o => o.classList.remove('selected'));
+  function selectPackage(el) {
+    document.querySelectorAll('.package-card').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
     el.querySelector('input').checked = true;
     updateButton();
