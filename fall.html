@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,767 +8,789 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
-
-body {
-font-family: 'DM Sans', sans-serif;
-background: #FDF6EC;
-color: #3D2B1F;
-overflow-x: hidden;
-}
-
-body::before {
-content: '';
-position: fixed;
-inset: 0;
-background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-pointer-events: none;
-z-index: 999;
-}
-
-.site-nav {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-z-index: 100;
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 1rem 2rem;
-background: rgba(253,246,236,0.85);
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
-border-bottom: 1px solid rgba(61,43,31,0.06);
-}
-
-.nav-brand {
-font-family: 'Playfair Display', serif;
-font-size: 1.1rem;
-font-weight: 700;
-color: #3D2B1F;
-text-decoration: none;
-}
-
-.nav-links { display: flex; gap: 1.5rem; }
-
-.nav-link {
-font-family: 'DM Sans', sans-serif;
-font-size: 0.75rem;
-font-weight: 500;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: #3D2B1F;
-text-decoration: none;
-opacity: 0.6;
-transition: opacity 0.3s ease;
-}
-
-.nav-link:hover { opacity: 1; }
-
-.page-header {
-text-align: center;
-padding: 6rem 2rem 2rem;
-background:
-radial-gradient(ellipse at 30% 70%, rgba(196,98,45,0.08) 0%, transparent 50%),
-radial-gradient(ellipse at 70% 30%, rgba(139,158,107,0.06) 0%, transparent 50%),
-#FDF6EC;
-}
-
-.page-header .season-icon { font-size: 3rem; margin-bottom: 0.75rem; }
-
-.page-header h1 {
-font-family: 'Playfair Display', serif;
-font-weight: 900;
-font-size: clamp(2rem, 5vw, 3rem);
-color: #3D2B1F;
-margin-bottom: 0.3rem;
-}
-
-.page-header h1 .accent {
-color: #C4622D;
-font-style: italic;
-font-weight: 400;
-}
-
-.page-header .sub {
-color: #A3522A;
-font-weight: 300;
-font-size: 1rem;
-max-width: 480px;
-margin: 0 auto;
-line-height: 1.6;
-}
-
-.section-label {
-font-size: 0.65rem;
-letter-spacing: 0.4em;
-text-transform: uppercase;
-text-align: center;
-opacity: 0.5;
-margin-bottom: 0.5rem;
-}
-
-.signup-section {
-padding: 3rem 2rem 6rem;
-background: #FDF6EC;
-}
-
-.form-container {
-max-width: 680px;
-margin: 0 auto;
-background: white;
-border-radius: 24px;
-padding: 3rem;
-box-shadow: 0 1px 2px rgba(61,43,31,0.04), 0 4px 16px rgba(61,43,31,0.06), 0 12px 40px rgba(61,43,31,0.04);
-}
-
-.form-group { margin-bottom: 1.75rem; }
-
-.form-group label {
-display: block;
-font-size: 0.72rem;
-font-weight: 600;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-color: #3D2B1F;
-margin-bottom: 0.6rem;
-}
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-input[type="text"], input[type="email"], input[type="tel"], textarea {
-width: 100%;
-padding: 0.9rem 1.1rem;
-border: 1.5px solid #ddd3c7;
-border-radius: 12px;
-font-family: 'DM Sans', sans-serif;
-font-size: 0.95rem;
-color: #3D2B1F;
-background: #FDF6EC;
-transition: border-color 0.3s, box-shadow 0.3s;
-outline: none;
-}
-
-input:focus, textarea:focus {
-border-color: #C4622D;
-box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
-}
-
-textarea { resize: vertical; min-height: 80px; }
-
-select {
-width: 100%;
-padding: 0.9rem 1.1rem;
-border: 1.5px solid #ddd3c7;
-border-radius: 12px;
-font-family: 'DM Sans', sans-serif;
-font-size: 0.95rem;
-color: #3D2B1F;
-background: #FDF6EC;
-transition: border-color 0.3s, box-shadow 0.3s;
-outline: none;
-cursor: pointer;
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%233D2B1F' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
-background-repeat: no-repeat;
-background-position: right 1.1rem center;
-padding-right: 2.5rem;
-}
-
-select:focus {
-border-color: #C4622D;
-box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
-}
-
-select:invalid { color: #b5a899; }
-::placeholder { color: #b5a899; font-weight: 300; }
-
-/* ── COLOR OPTIONS ── */
-
-.color-options {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-gap: 0.75rem;
-}
-
-.color-option {
-display: flex;
-align-items: center;
-gap: 0.75rem;
-padding: 0.85rem 1rem;
-border: 1.5px solid #ddd3c7;
-border-radius: 12px;
-cursor: pointer;
-transition: all 0.3s ease;
-background: #FDF6EC;
-}
-
-.color-option:hover { border-color: #C4622D; background: rgba(196,98,45,0.03); }
-
-.color-option.selected {
-border-color: #C4622D;
-background: rgba(196,98,45,0.06);
-box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
-}
-
-.color-option input[type="radio"] { display: none; }
-.color-swatches { display: flex; gap: 3px; }
-
-.swatch {
-width: 18px; height: 18px;
-border-radius: 50%;
-border: 1.5px solid rgba(61,43,31,0.15);
-}
-
-.swatch.orange { background: #E8853B; }
-.swatch.white { background: #F5F0E8; }
-.swatch.green { background: #5A7A3A; }
-.swatch.blue { background: #5B7FA5; }
-.color-label { font-size: 0.85rem; font-weight: 500; color: #3D2B1F; }
-
-/* ── PACKAGE OPTIONS ── */
-
-.package-options {
-display: flex;
-flex-direction: column;
-gap: 0.75rem;
-padding-top: 0.5rem;
-}
-
-.package-option {
-display: flex;
-align-items: flex-start;
-gap: 1rem;
-padding: 1.25rem;
-border: 1.5px solid #ddd3c7;
-border-radius: 14px;
-cursor: pointer;
-transition: all 0.3s ease;
-background: #FDF6EC;
-position: relative;
-}
-
-.package-option:hover { border-color: #C4622D; background: rgba(196,98,45,0.03); }
-
-.package-option.selected {
-border-color: #C4622D;
-background: rgba(196,98,45,0.06);
-box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
-}
-
-.package-option input[type="radio"] { display: none; }
-
-.package-option.popular {
-border-color: #C4622D;
-background: rgba(196,98,45,0.04);
-}
-
-.package-option .popular-tag {
-position: absolute;
-top: -9px;
-right: 16px;
-background: #C4622D;
-color: white;
-font-size: 0.5rem;
-font-weight: 600;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-padding: 2px 8px;
-border-radius: 4px;
-white-space: nowrap;
-}
-
-.package-radio {
-width: 20px;
-height: 20px;
-border: 2px solid #ccc3b5;
-border-radius: 50%;
-flex-shrink: 0;
-transition: all 0.3s ease;
-position: relative;
-margin-top: 2px;
-}
-
-.package-option.selected .package-radio { border-color: #C4622D; }
-
-.package-option.selected .package-radio::after {
-content: '';
-position: absolute;
-top: 4px; left: 4px;
-width: 8px; height: 8px;
-background: #C4622D;
-border-radius: 50%;
-}
-
-.package-img {
-width: 70px;
-height: 70px;
-border-radius: 10px;
-object-fit: cover;
-flex-shrink: 0;
-border: 1px solid rgba(61,43,31,0.08);
-}
-
-.package-info {
-flex: 1;
-display: flex;
-flex-direction: column;
-gap: 0.2rem;
-}
-
-.package-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-gap: 0.5rem;
-}
-
-.package-name {
-font-family: 'Playfair Display', serif;
-font-size: 1.1rem;
-font-weight: 700;
-color: #3D2B1F;
-}
-
-.package-price {
-font-family: 'DM Sans', sans-serif;
-font-size: 1rem;
-font-weight: 700;
-color: #2D4A22;
-background: rgba(139,158,107,0.12);
-padding: 0.25rem 0.6rem;
-border-radius: 8px;
-white-space: nowrap;
-flex-shrink: 0;
-}
-
-.package-desc {
-font-size: 0.8rem;
-color: #999;
-font-weight: 300;
-line-height: 1.5;
-margin-top: 0.15rem;
-}
-
-.package-includes {
-list-style: none;
-margin-top: 0.4rem;
-display: flex;
-flex-wrap: wrap;
-gap: 0.3rem 0.75rem;
-}
-
-.package-includes li {
-font-size: 0.7rem;
-color: #8B9E6B;
-font-weight: 500;
-}
-
-.package-includes li::before {
-content: '✓ ';
-font-weight: 700;
-}
-
-.intro-badge {
-text-align: center;
-margin-bottom: 0.75rem;
-}
-
-.intro-badge span {
-display: inline-block;
-font-size: 0.65rem;
-font-weight: 600;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-color: #2D4A22;
-background: rgba(139,158,107,0.12);
-padding: 0.35rem 1rem;
-border-radius: 50px;
-}
-
-.includes-line {
-text-align: center;
-font-size: 0.8rem;
-color: #8B9E6B;
-font-weight: 400;
-margin-top: 0.75rem;
-font-style: italic;
-}
-
-/* ── ADD-ONS ── */
-
-.addon-options {
-display: flex;
-flex-direction: column;
-gap: 0.6rem;
-}
-
-.addon-option {
-display: flex;
-align-items: center;
-gap: 0.75rem;
-padding: 0.85rem 1rem;
-border: 1.5px solid #ddd3c7;
-border-radius: 12px;
-cursor: pointer;
-transition: all 0.3s ease;
-background: #FDF6EC;
-}
-
-.addon-option:hover { border-color: #C4622D; background: rgba(196,98,45,0.03); }
-
-.addon-option.selected {
-border-color: #C4622D;
-background: rgba(196,98,45,0.06);
-box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
-}
-
-.addon-option.hidden { display: none; }
-
-.addon-option input[type="checkbox"] { display: none; }
-
-.addon-check {
-width: 20px;
-height: 20px;
-border: 2px solid #ccc3b5;
-border-radius: 6px;
-flex-shrink: 0;
-transition: all 0.3s ease;
-position: relative;
-}
-
-.addon-option.selected .addon-check {
-background: #C4622D;
-border-color: #C4622D;
-}
-
-.addon-option.selected .addon-check::after {
-content: '';
-position: absolute;
-top: 3px; left: 6px;
-width: 5px; height: 9px;
-border: solid white;
-border-width: 0 2px 2px 0;
-transform: rotate(45deg);
-}
-
-.addon-info {
-flex: 1;
-display: flex;
-flex-direction: column;
-gap: 0.15rem;
-}
-
-.addon-name { font-size: 0.9rem; font-weight: 500; color: #3D2B1F; }
-.addon-desc { font-size: 0.72rem; color: #999; font-weight: 300; }
-
-.addon-price {
-font-family: 'DM Sans', sans-serif;
-font-size: 0.8rem;
-font-weight: 600;
-color: #2D4A22;
-background: rgba(139,158,107,0.12);
-padding: 0.2rem 0.5rem;
-border-radius: 6px;
-white-space: nowrap;
-flex-shrink: 0;
-}
-
-/* ── NEIGHBORHOOD BUNDLE ── */
-
-.bundle-callout {
-background: linear-gradient(135deg, rgba(139,158,107,0.1) 0%, rgba(196,98,45,0.06) 100%);
-border: 1.5px solid rgba(139,158,107,0.25);
-border-radius: 14px;
-padding: 1.25rem 1.5rem;
-text-align: center;
-margin-bottom: 1.75rem;
-}
-
-.bundle-callout .bundle-emoji { font-size: 1.3rem; margin-bottom: 0.4rem; }
-
-.bundle-callout h4 {
-font-family: 'Playfair Display', serif;
-font-size: 1rem;
-font-weight: 700;
-color: #2D4A22;
-margin-bottom: 0.25rem;
-}
-
-.bundle-callout p {
-font-size: 0.8rem;
-color: #777;
-font-weight: 300;
-line-height: 1.5;
-}
-
-/* ── SPOTS COUNTER ── */
-
-.spots-counter {
-text-align: center;
-margin-bottom: 1rem;
-}
-
-.spots-counter span {
-display: inline-block;
-font-size: 0.72rem;
-font-weight: 600;
-letter-spacing: 0.08em;
-color: #B42828;
-background: rgba(180,40,40,0.08);
-padding: 0.4rem 1rem;
-border-radius: 50px;
-}
-
-.spots-counter span em {
-font-style: normal;
-font-weight: 700;
-}
-
-/* ── DIVIDER & BUTTONS ── */
-
-.divider {
-height: 1px;
-background: linear-gradient(to right, transparent, #ddd3c7, transparent);
-margin: 2rem 0;
-}
-
-.submit-btn {
-width: 100%;
-padding: 1.1rem;
-background: #C4622D;
-color: #FDF6EC;
-font-family: 'DM Sans', sans-serif;
-font-size: 0.85rem;
-font-weight: 600;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-border: none;
-border-radius: 14px;
-cursor: pointer;
-transition: all 0.4s ease;
-}
-
-.submit-btn:hover {
-background: #3D2B1F;
-transform: translateY(-1px);
-box-shadow: 0 8px 30px rgba(61,43,31,0.2);
-}
-
-.submit-btn:active { transform: translateY(0); }
-
-.submit-btn:disabled {
-opacity: 0.7;
-cursor: not-allowed;
-transform: none;
-box-shadow: none;
-}
-
-.spinner {
-display: inline-block;
-width: 18px; height: 18px;
-border: 2px solid rgba(253,246,236,0.3);
-border-top-color: #FDF6EC;
-border-radius: 50%;
-animation: spin 0.6s linear infinite;
-vertical-align: middle;
-margin-right: 0.5rem;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-@keyframes fadeDown {
-from { opacity: 0; transform: translateY(-20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-.error-message {
-display: none;
-background: #fef2f2;
-border: 1px solid #fecaca;
-color: #991b1b;
-padding: 0.85rem 1.1rem;
-border-radius: 12px;
-font-size: 0.9rem;
-margin-bottom: 1.5rem;
-text-align: center;
-}
-
-.error-message.visible { display: block; animation: fadeDown 0.4s ease-out; }
-
-footer {
-background: #3D2B1F;
-color: #F5EDE0;
-text-align: center;
-padding: 3rem 2rem;
-}
-
-footer .footer-brand {
-font-family: 'Playfair Display', serif;
-font-size: 1.5rem;
-font-weight: 700;
-margin-bottom: 0.5rem;
-}
-
-footer p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
-
-@media (max-width: 600px) {
-.form-container { padding: 2rem 1.25rem; }
-.form-row { grid-template-columns: 1fr; }
-.color-options { grid-template-columns: 1fr; }
-.package-option { padding: 1rem; gap: 0.75rem; }
-.package-name { font-size: 0.95rem; }
-.package-price { font-size: 0.9rem; }
-.package-img { width: 55px; height: 55px; border-radius: 8px; }
-.package-header { flex-wrap: wrap; }
-}
-
-.pac-container {
-border-radius: 12px;
-border: 1.5px solid #ddd3c7;
-box-shadow: 0 4px 16px rgba(61,43,31,0.1);
-font-family: 'DM Sans', sans-serif;
-margin-top: 4px;
-overflow: hidden;
-}
-
-.pac-item {
-padding: 0.6rem 1rem;
-font-size: 0.9rem;
-color: #3D2B1F;
-border-top: 1px solid #f0e9df;
-cursor: pointer;
-}
-
-.pac-item:first-child { border-top: none; }
-.pac-item:hover { background: rgba(196,98,45,0.06); }
-.pac-item-selected { background: rgba(196,98,45,0.08); }
-.pac-icon { display: none; }
-.pac-item-query { font-size: 0.9rem; color: #3D2B1F; font-weight: 500; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #FDF6EC;
+    color: #3D2B1F;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(196,98,45,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(139,158,107,0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(212,168,67,0.06) 0%, transparent 70%),
+      #FDF6EC;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, #FDF6EC);
+  }
+
+  .pumpkin-deco {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.12;
+    animation: float 6s ease-in-out infinite;
+  }
+  .pumpkin-deco:nth-child(1) { top: 10%; left: 8%; animation-delay: 0s; font-size: 4rem; }
+  .pumpkin-deco:nth-child(2) { top: 20%; right: 10%; animation-delay: 1.5s; font-size: 2.5rem; }
+  .pumpkin-deco:nth-child(3) { bottom: 20%; left: 12%; animation-delay: 3s; font-size: 3.5rem; }
+  .pumpkin-deco:nth-child(4) { bottom: 15%; right: 8%; animation-delay: 0.8s; }
+  .pumpkin-deco:nth-child(5) { top: 45%; left: 4%; animation-delay: 2s; font-size: 2rem; }
+  .pumpkin-deco:nth-child(6) { top: 60%; right: 5%; animation-delay: 4s; font-size: 2.8rem; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+  }
+
+  .brand-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #8B9E6B;
+    border: 1px solid #8B9E6B;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    animation: fadeDown 1s ease-out;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.95;
+    color: #3D2B1F;
+    margin-bottom: 0.3em;
+    animation: fadeDown 1s ease-out 0.15s both;
+  }
+
+  .hero h1 .accent {
+    color: #C4622D;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #A3522A;
+    max-width: 500px;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    animation: fadeDown 1s ease-out 0.3s both;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: #C4622D;
+    color: #FDF6EC;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: fadeDown 1s ease-out 0.45s both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-btn:hover {
+    background: #3D2B1F;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(61,43,31,0.2);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #8B9E6B;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeDown 1s ease-out 0.6s both;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .scroll-hint .arrow {
+    width: 1px;
+    height: 30px;
+    background: #8B9E6B;
+    position: relative;
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.3); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .how-section {
+    padding: 5rem 2rem;
+    background: #2D4A22;
+    color: #F5EDE0;
+    position: relative;
+  }
+
+  .how-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to top, transparent, #FDF6EC);
+    transform: translateY(-79px);
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.5;
+    margin-bottom: 1rem;
+  }
+
+  .how-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+    margin-bottom: 3.5rem;
+    font-weight: 700;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .step {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .step:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #D4A843;
+    margin-bottom: 0.75rem;
+  }
+
+  .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
+  .step p { font-size: 0.85rem; line-height: 1.6; opacity: 0.7; font-weight: 300; }
+
+  .signup-section {
+    padding: 6rem 2rem;
+    background:
+      radial-gradient(ellipse at 30% 70%, rgba(196,98,45,0.06) 0%, transparent 50%),
+      #FDF6EC;
+  }
+
+  .signup-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .signup-section .sub {
+    text-align: center;
+    color: #A3522A;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+
+  .form-container {
+    max-width: 680px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 1px 2px rgba(61,43,31,0.04), 0 4px 16px rgba(61,43,31,0.06), 0 12px 40px rgba(61,43,31,0.04);
+  }
+
+  .form-group { margin-bottom: 1.75rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #3D2B1F;
+    margin-bottom: 0.6rem;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  input[type="text"], input[type="email"], input[type="tel"], textarea {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    border: 1.5px solid #ddd3c7;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #3D2B1F;
+    background: #FDF6EC;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+  }
+
+  input:focus, textarea:focus {
+    border-color: #C4622D;
+    box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
+  }
+
+  textarea { resize: vertical; min-height: 80px; }
+
+  select {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    border: 1.5px solid #ddd3c7;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #3D2B1F;
+    background: #FDF6EC;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%233D2B1F' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.1rem center;
+    padding-right: 2.5rem;
+  }
+
+  select:focus {
+    border-color: #C4622D;
+    box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
+  }
+
+  select:invalid { color: #b5a899; }
+  ::placeholder { color: #b5a899; font-weight: 300; }
+
+  .color-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .color-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid #ddd3c7;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #FDF6EC;
+  }
+
+  .color-option:hover { border-color: #C4622D; background: rgba(196,98,45,0.03); }
+
+  .color-option.selected {
+    border-color: #C4622D;
+    background: rgba(196,98,45,0.06);
+    box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
+  }
+
+  .color-option input[type="radio"] { display: none; }
+  .color-swatches { display: flex; gap: 3px; }
+
+  .swatch {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(61,43,31,0.15);
+  }
+
+  .swatch.orange { background: #E8853B; }
+  .swatch.white { background: #F5F0E8; }
+  .swatch.green { background: #5A7A3A; }
+  .swatch.blue { background: #5B7FA5; }
+  .color-label { font-size: 0.85rem; font-weight: 500; color: #3D2B1F; }
+
+  .count-options {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.6rem;
+    width: 100%;
+    overflow: visible;
+    padding-top: 12px;
+  }
+
+  @media (max-width: 500px) {
+    .count-options { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  }
+
+  .count-option {
+    text-align: center;
+    padding: 0.75rem 0.25rem;
+    border: 1.5px solid #ddd3c7;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #FDF6EC;
+    min-width: 0;
+    overflow: visible;
+    position: relative;
+  }
+
+  .count-option:hover { border-color: #C4622D; }
+
+  .count-option.selected {
+    border-color: #C4622D;
+    background: rgba(196,98,45,0.06);
+    box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
+  }
+
+  .count-option input[type="radio"] { display: none; }
+
+  .count-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+    font-weight: 700;
+    color: #C4622D;
+    line-height: 1;
+  }
+
+  .count-label {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #999;
+    margin-top: 0.15rem;
+    font-weight: 500;
+  }
+
+  .count-price {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #2D4A22;
+    margin-top: 0.35rem;
+    background: rgba(139,158,107,0.12);
+    padding: 0.15rem 0.4rem;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  .count-option.popular {
+    position: relative;
+    border-color: #C4622D;
+    background: rgba(196,98,45,0.04);
+  }
+
+  .popular-tag {
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #C4622D;
+    color: white;
+    font-size: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .intro-badge {
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .intro-badge span {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #2D4A22;
+    background: rgba(139,158,107,0.12);
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+  }
+
+  .includes-line {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #8B9E6B;
+    font-weight: 400;
+    margin-top: 0.75rem;
+    font-style: italic;
+  }
+
+  .addon-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .addon-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid #ddd3c7;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #FDF6EC;
+  }
+
+  .addon-option:hover { border-color: #C4622D; background: rgba(196,98,45,0.03); }
+
+  .addon-option.selected {
+    border-color: #C4622D;
+    background: rgba(196,98,45,0.06);
+    box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
+  }
+
+  .addon-option input[type="checkbox"] { display: none; }
+
+  .addon-check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc3b5;
+    border-radius: 6px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .addon-option.selected .addon-check {
+    background: #C4622D;
+    border-color: #C4622D;
+  }
+
+  .addon-option.selected .addon-check::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .addon-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .addon-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #3D2B1F;
+  }
+
+  .addon-desc {
+    font-size: 0.72rem;
+    color: #999;
+    font-weight: 300;
+  }
+
+  .addon-price {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #2D4A22;
+    background: rgba(139,158,107,0.12);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ddd3c7, transparent);
+    margin: 2rem 0;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 1.1rem;
+    background: #C4622D;
+    color: #FDF6EC;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .submit-btn:hover {
+    background: #3D2B1F;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(61,43,31,0.2);
+  }
+
+  .submit-btn:active { transform: translateY(0); }
+
+  .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 18px; height: 18px;
+    border: 2px solid rgba(253,246,236,0.3);
+    border-top-color: #FDF6EC;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error-message {
+    display: none;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    padding: 0.85rem 1.1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .error-message.visible { display: block; animation: fadeDown 0.4s ease-out; }
+
+  .success-message {
+    display: none;
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .success-message.visible { display: block; animation: fadeDown 0.6s ease-out; }
+
+  .success-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+
+  .success-message h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #2D4A22;
+  }
+
+  .success-message p { color: #A3522A; font-weight: 300; line-height: 1.6; }
+
+  footer {
+    background: #3D2B1F;
+    color: #F5EDE0;
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  footer p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
+
+  .photo-upload {
+    border: 2px dashed #ddd3c7;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #FDF6EC;
+  }
+
+  .photo-upload:hover {
+    border-color: #C4622D;
+    background: rgba(196,98,45,0.03);
+  }
+
+  .photo-upload.has-photo {
+    border-style: solid;
+    border-color: #8B9E6B;
+    padding: 0.5rem;
+  }
+
+  .photo-upload img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .photo-remove {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #A3522A;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .photo-remove:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .form-container { padding: 2rem 1.25rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .color-options { grid-template-columns: 1fr; }
+    .count-options { grid-template-columns: repeat(5, 1fr); gap: 0.4rem; }
+    .count-option { padding: 0.6rem 0.15rem; border-radius: 10px; }
+    .count-label { font-size: 0.55rem; }
+  }
+
+  /* Google Places Autocomplete styling */
+  .pac-container {
+    border-radius: 12px;
+    border: 1.5px solid #ddd3c7;
+    box-shadow: 0 4px 16px rgba(61,43,31,0.1);
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 4px;
+    overflow: hidden;
+  }
+
+  .pac-item {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    color: #3D2B1F;
+    border-top: 1px solid #f0e9df;
+    cursor: pointer;
+  }
+
+  .pac-item:first-child {
+    border-top: none;
+  }
+
+  .pac-item:hover {
+    background: rgba(196,98,45,0.06);
+  }
+
+  .pac-item-selected {
+    background: rgba(196,98,45,0.08);
+  }
+
+  .pac-icon { display: none; }
+
+  .pac-item-query {
+    font-size: 0.9rem;
+    color: #3D2B1F;
+    font-weight: 500;
+  }
 </style>
-
 </head>
 <body>
 
-<nav class="site-nav">
-  <a href="index.html" class="nav-brand">Porchside Drop</a>
-  <div class="nav-links">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="fall.html" class="nav-link">Fall</a>
-    <a href="winter.html" class="nav-link">Winter</a>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="pumpkin-deco">🧡</div>
+  <div class="pumpkin-deco">🍂</div>
+  <div class="pumpkin-deco">🍁</div>
+  <div class="pumpkin-deco">🧡</div>
+  <div class="pumpkin-deco">🍂</div>
+  <div class="pumpkin-deco">🍁</div>
+
+  <span class="brand-tag">Est. 2026 — Seasonal Porch Décor</span>
+  <h1>Porchside<br><span class="accent">Drop</span></h1>
+  <p class="hero-sub">We deliver and artfully arrange beautiful pumpkins on your porch — so you can skip the mess and enjoy the magic of fall.</p>
+  <a href="#signup" class="cta-btn">Reserve Your Porch</a>
+  <div class="scroll-hint">
+    <span>Discover</span>
+    <div class="arrow"></div>
   </div>
-</nav>
+</section>
 
-<div class="page-header">
-  <div class="season-icon">🎃</div>
-  <p class="section-label" style="color: #8B9E6B;">Fall 2026</p>
-  <h1>Reserve Your <span class="accent">Porch</span></h1>
-  <p class="sub">Sign-ups open in early August. Delivery begins the week after Labor Day.</p>
-</div>
+<!-- ── SIGN-UP FORM ── -->
+<section class="signup-section" id="signup">
+  <p class="section-label" style="color: #8B9E6B;">Fall 2026 Sign-Up</p>
+  <h2>Reserve Your Porch</h2>
+  <p class="sub">Orders are open! Delivery begins the first weekend in September.</p>
 
-<section class="signup-section">
   <div class="form-container">
     <form id="signupForm">
 
       <div class="error-message" id="errorMsg">Something went wrong. Please try again or contact us directly.</div>
 
-      <!-- ── NEIGHBORHOOD BUNDLE ── -->
-      <div class="bundle-callout">
-        <div class="bundle-emoji">🏘️</div>
-        <h4>Neighborhood Bundle — Save 15%</h4>
-        <p>3 or more houses on the same street? Everyone saves 15%. Mention your neighbors' names below!</p>
-      </div>
-
-      <!-- ── PACKAGES ── -->
-      <div class="form-group">
-        <label>Choose Your Package</label>
-        <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
-        <div class="package-options">
-
-          <div class="package-option selected" onclick="selectPackage(this)">
-            <input type="radio" name="package" value="Petite Porch" data-price="79" data-tier="petite" checked>
-            <div class="package-radio"></div>
-            <img src="petite.png" class="package-img" alt="Petite Porch">
-            <div class="package-info">
-              <div class="package-header">
-                <span class="package-name">Petite Porch</span>
-                <span class="package-price">$79</span>
-              </div>
-              <p class="package-desc">A charming doorstep arrangement to welcome the season.</p>
-              <ul class="package-includes">
-                <li>Curated pumpkin grouping</li>
-                <li>Up to 2 hay bales</li>
-                <li>Small potted mums</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="package-option" onclick="selectPackage(this)">
-            <input type="radio" name="package" value="Classic Display" data-price="99" data-tier="classic">
-            <div class="package-radio"></div>
-            <img src="classic.png" class="package-img" alt="Classic Display">
-            <div class="package-info">
-              <div class="package-header">
-                <span class="package-name">Classic Display</span>
-                <span class="package-price">$99</span>
-              </div>
-              <p class="package-desc">A beautiful spread that fills your porch with autumn warmth.</p>
-              <ul class="package-includes">
-                <li>Mix of pumpkin sizes</li>
-                <li>Up to 3 hay bales</li>
-                <li>Potted mum arrangement</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="package-option popular" onclick="selectPackage(this)">
-            <div class="popular-tag">Most Popular</div>
-            <input type="radio" name="package" value="Statement Porch" data-price="149" data-tier="statement">
-            <div class="package-radio"></div>
-            <img src="statement.png" class="package-img" alt="Statement Porch">
-            <div class="package-info">
-              <div class="package-header">
-                <span class="package-name">Statement Porch</span>
-                <span class="package-price">$149</span>
-              </div>
-              <p class="package-desc">A head-turning arrangement with assorted pumpkins, gourds & squash.</p>
-              <ul class="package-includes">
-                <li>Assorted pumpkins, gourds & squash</li>
-                <li>Up to 4 hay bales</li>
-                <li>Potted mum arrangement</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="package-option" onclick="selectPackage(this)">
-            <input type="radio" name="package" value="Grand Display" data-price="249" data-tier="grand">
-            <div class="package-radio"></div>
-            <img src="grand.png" class="package-img" alt="Grand Display">
-            <div class="package-info">
-              <div class="package-header">
-                <span class="package-name">Grand Display</span>
-                <span class="package-price">$249</span>
-              </div>
-              <p class="package-desc">Premium heirloom pumpkins, gourds, squash & ornamental accents — our most complete package.</p>
-              <ul class="package-includes">
-                <li>Heirloom pumpkins & ornamentals</li>
-                <li>Up to 5 hay bales</li>
-                <li>Potted mum arrangement</li>
-                <li>Harvest wreath included</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-        <p class="includes-line">All packages include delivery, design, and end-of-season removal.</p>
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- ── COLOR PALETTE ── -->
+      <!-- Pumpkin Count -->
       <div class="form-group">
         <label>Choose Your Color Palette</label>
         <div class="color-options">
@@ -813,11 +834,101 @@ cursor: pointer;
 
       <div class="divider"></div>
 
-      <!-- ── ADD-ONS ── -->
-      <div class="form-group" id="addonsSection">
+      <!-- Pumpkin Count -->
+      <div class="form-group">
+        <label>Number of Pumpkins</label>
+        <div class="intro-badge"><span>Introductory 2026 Season Pricing</span></div>
+        <div class="count-options">
+          <div class="count-option selected" onclick="selectCount(this)">
+            <input type="radio" name="count" value="5-7" data-price="79" checked>
+            <div class="count-num">5-7</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$79</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="7-9" data-price="99">
+            <div class="count-num">7-9</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$99</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="9-11" data-price="119">
+            <div class="count-num">9-11</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$119</div>
+          </div>
+          <div class="count-option popular" onclick="selectCount(this)">
+            <input type="radio" name="count" value="11-14" data-price="149">
+            <div class="popular-tag">Most Popular</div>
+            <div class="count-num">11-14</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$149</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="13-16" data-price="179">
+            <div class="count-num">13-16</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$179</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="15-18" data-price="199">
+            <div class="count-num">15-18</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$199</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="17-20" data-price="229">
+            <div class="count-num">17-20</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$229</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="19-22" data-price="259">
+            <div class="count-num">19-22</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$259</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="21-24" data-price="289">
+            <div class="count-num">21-24</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$289</div>
+          </div>
+          <div class="count-option" onclick="selectCount(this)">
+            <input type="radio" name="count" value="23-26" data-price="319">
+            <div class="count-num">23-26</div>
+            <div class="count-label">pumpkins</div>
+            <div class="count-price">$319</div>
+          </div>
+        </div>
+        <p class="includes-line">All packages include delivery, small hay bales, design, and end-of-season removal. Pumpkin count varies by size and availability.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Add-Ons -->
+      <div class="form-group">
         <label>Extras <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
         <div class="addon-options">
-          <label class="addon-option" id="addon-wreath" onclick="">
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Small Decorative Hay Bale" data-addon-price="25">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Small Decorative Hay Bale</span>
+              <span class="addon-desc">Rustic straw bale styled into your display</span>
+            </div>
+            <span class="addon-price">+$25</span>
+          </label>
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Potted Flower Arrangement" data-addon-price="39">
+            <div class="addon-check"></div>
+            <div class="addon-info">
+              <span class="addon-name">Potted Flower Arrangement</span>
+              <span class="addon-desc">Seasonal mums and florals in a planter</span>
+            </div>
+            <span class="addon-price">+$39</span>
+          </label>
+          <label class="addon-option" onclick="">
             <input type="checkbox" name="addon" value="Harvest Wreath" data-addon-price="49">
             <div class="addon-check"></div>
             <div class="addon-info">
@@ -826,60 +937,59 @@ cursor: pointer;
             </div>
             <span class="addon-price">+$49</span>
           </label>
-          <label class="addon-option" id="addon-extra-wreath" class="hidden" onclick="">
-            <input type="checkbox" name="addon" value="Additional Wreath" data-addon-price="49">
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Additional Potted Mums" data-addon-price="59">
             <div class="addon-check"></div>
             <div class="addon-info">
-              <span class="addon-name">Additional Wreath</span>
-              <span class="addon-desc">A second wreath for a side door, garage, or back porch</span>
+              <span class="addon-name">Additional Potted Mums</span>
+              <span class="addon-desc">Extra potted mum plants to fill out your display</span>
             </div>
-            <span class="addon-price">+$49</span>
+            <span class="addon-price">+$59</span>
           </label>
-          <label class="addon-option" id="addon-arch" onclick="">
-            <input type="checkbox" name="addon" value="Pumpkin Arch" data-addon-price="59">
+          <label class="addon-option" onclick="">
+            <input type="checkbox" name="addon" value="Pumpkin Arch" data-addon-price="89">
             <div class="addon-check"></div>
             <div class="addon-info">
               <span class="addon-name">Pumpkin Arch</span>
-              <span class="addon-desc">Stunning stacked pumpkin archway at your entry</span>
+              <span class="addon-desc">8 ft arch with faux pumpkins, harvest leaves, flowers, and lights</span>
             </div>
-            <span class="addon-price">+$59</span>
+            <span class="addon-price">+$89</span>
           </label>
         </div>
       </div>
 
       <div class="divider"></div>
 
-      <!-- ── DELIVERY WINDOW ── -->
+      <!-- Delivery Window -->
       <div class="form-group">
         <label>Preferred 3-Day Delivery Window</label>
         <select id="deliveryWindow" required>
           <option value="" disabled selected>Select your delivery window...</option>
           <optgroup label="September 2026">
-            <option value="Sep 8-10">Sep 8 – 10 (Week after Labor Day)</option>
-            <option value="Sep 11-13">Sep 11 – 13</option>
-            <option value="Sep 15-17">Sep 15 – 17</option>
-            <option value="Sep 18-20">Sep 18 – 20</option>
-            <option value="Sep 22-24">Sep 22 – 24</option>
-            <option value="Sep 25-27">Sep 25 – 27</option>
-            <option value="Sep 29 - Oct 1">Sep 29 – Oct 1</option>
+            <option value="Sep 4-6">Sep 4 - 6 (First weekend)</option>
+            <option value="Sep 7-9">Sep 7 - 9</option>
+            <option value="Sep 10-12">Sep 10 - 12</option>
+            <option value="Sep 13-15">Sep 13 - 15</option>
+            <option value="Sep 22-24">Sep 22 - 24</option>
+            <option value="Sep 25-27">Sep 25 - 27</option>
           </optgroup>
           <optgroup label="October 2026">
-            <option value="Oct 2-4">Oct 2 – 4</option>
-            <option value="Oct 6-8">Oct 6 – 8</option>
-            <option value="Oct 9-11">Oct 9 – 11</option>
-            <option value="Oct 13-15">Oct 13 – 15</option>
-            <option value="Oct 16-18">Oct 16 – 18</option>
-            <option value="Oct 20-22">Oct 20 – 22</option>
-            <option value="Oct 23-25">Oct 23 – 25</option>
-            <option value="Oct 27-29">Oct 27 – 29</option>
+            <option value="Oct 5-7">Oct 5 - 7</option>
+            <option value="Oct 8-10">Oct 8 - 10</option>
+            <option value="Oct 12-14">Oct 12 - 14</option>
+            <option value="Oct 15-17">Oct 15 - 17</option>
+            <option value="Oct 19-21">Oct 19 - 21</option>
+            <option value="Oct 26-28">Oct 26 - 28</option>
           </optgroup>
         </select>
       </div>
 
       <div class="divider"></div>
 
-      <!-- ── CUSTOMER INFO ── -->
-      <div class="form-group"><label>Your Information</label></div>
+      <!-- Customer Info -->
+      <div class="form-group">
+        <label>Your Information</label>
+      </div>
       <div class="form-row">
         <div class="form-group">
           <label>First Name</label>
@@ -890,6 +1000,7 @@ cursor: pointer;
           <input type="text" id="lastName" placeholder="Appleton" required>
         </div>
       </div>
+
       <div class="form-row">
         <div class="form-group">
           <label>Email</label>
@@ -900,6 +1011,7 @@ cursor: pointer;
           <input type="tel" id="phone" placeholder="(555) 123-4567" required>
         </div>
       </div>
+
       <div class="form-group">
         <label>Delivery Address</label>
         <input type="text" id="address" placeholder="Start typing your address..." autocomplete="off" required>
@@ -907,78 +1019,80 @@ cursor: pointer;
 
       <div class="divider"></div>
 
-      <!-- ── NEIGHBORS ── -->
+      <!-- Porch Photo Upload -->
       <div class="form-group">
-        <label>Neighbors Also Ordering? <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(for 15% neighborhood bundle)</span></label>
-        <textarea id="neighbors" placeholder="List neighbor names or addresses for the bundle discount..."></textarea>
+        <label>Photo of Your Porch <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
+        <p style="font-size: 0.85rem; color: #A3522A; font-weight: 300; margin-bottom: 0.75rem;">Help us start designing! Snap a photo of your porch or upload one from your library.</p>
+        <div class="photo-upload" id="photoUpload" onclick="document.getElementById('porchPhoto').click()">
+          <div class="photo-upload-content" id="photoUploadContent">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div>
+            <span style="font-size: 0.85rem; color: #8B9E6B; font-weight: 500;">Tap to take or upload a photo</span>
+          </div>
+          <input type="file" id="porchPhoto" accept="image/*" capture="environment" style="display: none;" onchange="handlePhotoUpload(this)">
+        </div>
       </div>
 
-      <!-- ── NOTES ── -->
+      <div class="divider"></div>
+
+      <!-- Notes -->
       <div class="form-group">
         <label>Special Instructions <span style="opacity:0.4; text-transform:none; letter-spacing:0; font-weight:300;">(optional)</span></label>
         <textarea id="notes" placeholder="Any porch details, gate codes, or arrangement preferences..."></textarea>
       </div>
 
-      <!-- ── SPOTS COUNTER ── -->
-      <div class="spots-counter">
-        <span>🔥 Only <em>38 spots</em> remaining for Fall 2026</span>
-      </div>
-
       <button type="submit" class="submit-btn" id="submitBtn">Reserve My Porch — $79</button>
     </form>
+
+    <div class="success-message" id="successMsg">
+      <div class="success-icon">🎃</div>
+      <h3>You're on the list!</h3>
+      <p>We'll be in touch as Labor Day approaches with your delivery window details. Get ready for the most beautiful porch on the block.</p>
+    </div>
   </div>
 </section>
 
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-brand">Porchside Drop</div>
   <p>&copy; 2026 — Handcrafted seasonal joy, delivered to your door.</p>
 </footer>
 
 <script>
+  let porchPhotoData = null;
+
+  function handlePhotoUpload(input) {
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        porchPhotoData = e.target.result;
+        const container = document.getElementById('photoUploadContent');
+        container.innerHTML = '<img src="' + e.target.result + '" alt="Your porch"><br><span class="photo-remove" onclick="removePhoto(event)">Remove photo</span>';
+        document.getElementById('photoUpload').classList.add('has-photo');
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function removePhoto(e) {
+    e.stopPropagation();
+    porchPhotoData = null;
+    document.getElementById('porchPhoto').value = '';
+    document.getElementById('photoUploadContent').innerHTML = '<div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div><span style="font-size: 0.85rem; color: #8B9E6B; font-weight: 500;">Tap to take or upload a photo</span>';
+    document.getElementById('photoUpload').classList.remove('has-photo');
+  }
+
   function selectColor(el) {
     document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
     el.querySelector('input').checked = true;
   }
 
-  function selectPackage(el) {
-    document.querySelectorAll('.package-option').forEach(o => o.classList.remove('selected'));
-    el.classList.add('selected');
-    el.querySelector('input').checked = true;
-
-    // Reset addon checkboxes when switching packages
-    document.querySelectorAll('input[name="addon"]').forEach(cb => {
-      cb.checked = false;
-      cb.closest('.addon-option').classList.remove('selected');
-    });
-
-    updateAddons();
-    updateButton();
-  }
-
-  function updateAddons() {
-    const tier = document.querySelector('input[name="package"]:checked').getAttribute('data-tier');
-    const wreathAddon = document.getElementById('addon-wreath');
-    const extraWreathAddon = document.getElementById('addon-extra-wreath');
-
-    if (tier === 'grand') {
-      // Grand includes wreath — hide first wreath, show "additional wreath"
-      wreathAddon.classList.add('hidden');
-      extraWreathAddon.classList.remove('hidden');
-    } else {
-      // All others — show first wreath, hide "additional wreath"
-      wreathAddon.classList.remove('hidden');
-      extraWreathAddon.classList.add('hidden');
-    }
-  }
-
   function getTotal() {
-    const basePrice = parseInt(document.querySelector('input[name="package"]:checked').getAttribute('data-price'));
+    const basePrice = parseInt(document.querySelector('input[name="count"]:checked').getAttribute('data-price'));
     let addonTotal = 0;
     document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
-      if (!cb.closest('.addon-option').classList.contains('hidden')) {
-        addonTotal += parseInt(cb.getAttribute('data-addon-price'));
-      }
+      addonTotal += parseInt(cb.getAttribute('data-addon-price'));
     });
     return basePrice + addonTotal;
   }
@@ -987,6 +1101,14 @@ cursor: pointer;
     document.getElementById('submitBtn').textContent = 'Reserve My Porch — $' + getTotal();
   }
 
+  function selectCount(el) {
+    document.querySelectorAll('.count-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input').checked = true;
+    updateButton();
+  }
+
+  // Listen for addon checkbox changes
   document.querySelectorAll('input[name="addon"]').forEach(cb => {
     cb.addEventListener('change', function() {
       this.closest('.addon-option').classList.toggle('selected', this.checked);
@@ -994,47 +1116,58 @@ cursor: pointer;
     });
   });
 
-  // Initialize addons on load
-  updateAddons();
-
   document.getElementById('signupForm').addEventListener('submit', async function(e) {
     e.preventDefault();
+
     const btn = document.getElementById('submitBtn');
     const errorMsg = document.getElementById('errorMsg');
+
     errorMsg.classList.remove('visible');
-    const selectedPackage = document.querySelector('input[name="package"]:checked');
+
+    const selectedCount = document.querySelector('input[name="count"]:checked');
     const selectedAddons = [];
     document.querySelectorAll('input[name="addon"]:checked').forEach(cb => {
-      if (!cb.closest('.addon-option').classList.contains('hidden')) {
-        selectedAddons.push(cb.value);
-      }
+      selectedAddons.push(cb.value);
     });
+
+    // Collect all form data
     const formData = {
-      firstName: document.getElementById('firstName').value.trim(),
-      lastName: document.getElementById('lastName').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      phone: document.getElementById('phone').value.trim(),
-      address: document.getElementById('address').value.trim(),
+      firstName:    document.getElementById('firstName').value.trim(),
+      lastName:     document.getElementById('lastName').value.trim(),
+      email:        document.getElementById('email').value.trim(),
+      phone:        document.getElementById('phone').value.trim(),
+      address:      document.getElementById('address').value.trim(),
       colorPalette: document.querySelector('input[name="color"]:checked').value,
-      package: selectedPackage.value,
-      addons: selectedAddons.join(', ') || 'None',
-      totalPrice: '$' + getTotal(),
+      pumpkinCount: selectedCount.value,
+      addons:       selectedAddons.join(', ') || 'None',
+      totalPrice:   '$' + getTotal(),
       deliveryWindow: document.getElementById('deliveryWindow').value,
-      neighbors: document.getElementById('neighbors').value.trim(),
-      notes: document.getElementById('notes').value.trim(),
-      submittedAt: new Date().toISOString()
+      notes:        document.getElementById('notes').value.trim(),
+      porchPhoto:   porchPhotoData ? 'Photo uploaded' : 'No photo',
+      submittedAt:  new Date().toISOString()
     };
+
+    // Loading state
     btn.disabled = true;
     btn.innerHTML = '<span class="spinner"></span>Redirecting to payment...';
+
     try {
+      // Send to Netlify Function which creates Stripe Checkout
       const response = await fetch('/.netlify/functions/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
+
       const result = await response.json();
-      if (result.url) { window.location.href = result.url; }
-      else { throw new Error(result.error || 'Failed to create checkout session'); }
+
+      if (result.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = result.url;
+      } else {
+        throw new Error(result.error || 'Failed to create checkout session');
+      }
+
     } catch (err) {
       console.error('Checkout error:', err);
       errorMsg.classList.add('visible');
@@ -1052,13 +1185,15 @@ cursor: pointer;
       componentRestrictions: { country: 'us' },
       fields: ['formatted_address']
     });
+
     autocomplete.addListener('place_changed', function() {
       const place = autocomplete.getPlace();
-      if (place.formatted_address) { addressInput.value = place.formatted_address; }
+      if (place.formatted_address) {
+        addressInput.value = place.formatted_address;
+      }
     });
   }
 </script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr8xSFYzoI4qHcOIkNwGGYpHWV5XiXO8s&libraries=places&callback=initAutocomplete" async defer></script>
 
 </body>
