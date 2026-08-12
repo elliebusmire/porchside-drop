@@ -1028,25 +1028,58 @@
 </footer>
 
 <script>
-  let porchPhotoData = null;
+  let porchPhotoFile = null;
 
-  function handlePhotoUpload(input) {
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
+  // Shrink the photo in the browser before uploading. Phone photos are often
+  // 3-5 MB, which is slow on mobile data and far more detail than we need to
+  // design from.
+  function shrinkPhoto(file, maxDimension) {
+    return new Promise((resolve, reject) => {
       const reader = new FileReader();
+      reader.onerror = () => reject(new Error('Could not read that file'));
       reader.onload = function(e) {
-        porchPhotoData = e.target.result;
-        const container = document.getElementById('photoUploadContent');
-        container.innerHTML = '<img src="' + e.target.result + '" alt="Your porch"><br><span class="photo-remove" onclick="removePhoto(event)">Remove photo</span>';
-        document.getElementById('photoUpload').classList.add('has-photo');
+        const img = new Image();
+        img.onerror = () => reject(new Error('Could not read that image'));
+        img.onload = function() {
+          const scale = Math.min(1, maxDimension / Math.max(img.width, img.height));
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.round(img.width * scale);
+          canvas.height = Math.round(img.height * scale);
+          canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+          canvas.toBlob(
+            blob => (blob ? resolve({ blob: blob, previewUrl: canvas.toDataURL('image/jpeg', 0.7) })
+                          : reject(new Error('Could not process that image'))),
+            'image/jpeg',
+            0.82
+          );
+        };
+        img.src = e.target.result;
       };
       reader.readAsDataURL(file);
+    });
+  }
+
+  async function handlePhotoUpload(input) {
+    if (!input.files || !input.files[0]) return;
+    const container = document.getElementById('photoUploadContent');
+    container.innerHTML = '<span style="font-size: 0.85rem; color: #8B9E6B; font-weight: 500;">Processing photo…</span>';
+
+    try {
+      const result = await shrinkPhoto(input.files[0], 1600);
+      porchPhotoFile = result.blob;
+      container.innerHTML = '<img src="' + result.previewUrl + '" alt="Your porch"><br><span class="photo-remove" onclick="removePhoto(event)">Remove photo</span>';
+      document.getElementById('photoUpload').classList.add('has-photo');
+    } catch (err) {
+      console.error('Photo error:', err);
+      porchPhotoFile = null;
+      input.value = '';
+      container.innerHTML = '<div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div><span style="font-size: 0.85rem; color: #B42828; font-weight: 500;">That image could not be read — try another</span>';
     }
   }
 
   function removePhoto(e) {
     e.stopPropagation();
-    porchPhotoData = null;
+    porchPhotoFile = null;
     document.getElementById('porchPhoto').value = '';
     document.getElementById('photoUploadContent').innerHTML = '<div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div><span style="font-size: 0.85rem; color: #8B9E6B; font-weight: 500;">Tap to take or upload a photo</span>';
     document.getElementById('photoUpload').classList.remove('has-photo');
@@ -1113,7 +1146,6 @@
       totalPrice:   '$' + getTotal(),
       deliveryWindow: document.getElementById('deliveryWindow').value,
       notes:        document.getElementById('notes').value.trim(),
-      porchPhoto:   porchPhotoData ? 'Photo uploaded' : 'No photo',
       submittedAt:  new Date().toISOString()
     };
 
@@ -1132,6 +1164,21 @@
       const result = await response.json();
 
       if (result.url) {
+        // Attach the porch photo to this order before leaving the page. A
+        // failure here must never block the sale — the photo is optional.
+        if (porchPhotoFile && result.sessionId) {
+          btn.innerHTML = '<span class="spinner"></span>Uploading photo...';
+          try {
+            const photoData = new FormData();
+            photoData.append('sessionId', result.sessionId);
+            photoData.append('photo', porchPhotoFile, 'porch.jpg');
+            await fetch('/api/porch-photo', { method: 'POST', body: photoData });
+          } catch (photoErr) {
+            console.error('Photo upload failed:', photoErr);
+          }
+          btn.innerHTML = '<span class="spinner"></span>Redirecting to payment...';
+        }
+
         // Redirect to Stripe Checkout
         window.location.href = result.url;
       } else {

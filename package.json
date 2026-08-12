@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Porchside Drop - Fall Porch Decor Delivery",
   "dependencies": {
+    "@netlify/blobs": "^10.7.12",
     "stripe": "^14.0.0"
   }
 }

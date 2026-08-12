@@ -1,4 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const { buildOrderPayload, sendToZapier } = require('./lib/order-payload');
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -62,30 +63,28 @@ exports.handler = async (event) => {
         addons: data.addons || '',
         deliveryWindow: data.deliveryWindow,
         notes: data.notes || '',
+        submittedAt: data.submittedAt || new Date().toISOString(),
       },
       success_url: `${event.headers.origin || 'https://porchsidedrop.com'}/success.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${event.headers.origin || 'https://porchsidedrop.com'}/#signup`,
     });
 
-    // Also send to Zapier webhook in the background
-    const zapierUrl = process.env.ZAPIER_WEBHOOK_URL;
-    if (zapierUrl) {
-      fetch(zapierUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...data,
-          season: season,
-          stripeSessionId: session.id,
-          paymentStatus: 'pending',
-        }),
-      }).catch(err => console.error('Zapier webhook error:', err));
-    }
+    // Log the order in the Google Sheet. Awaited on purpose: a fire-and-forget
+    // request can be cut off when the function returns, which drops rows.
+    await sendToZapier(
+      buildOrderPayload({
+        ...data,
+        season: season,
+        stripeSessionId: session.id,
+      })
+    );
 
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url: session.url }),
+      // sessionId lets the browser upload the porch photo against this order
+      // before it redirects to Stripe.
+      body: JSON.stringify({ url: session.url, sessionId: session.id }),
     };
   } catch (error) {
     console.error('Stripe error:', error);
