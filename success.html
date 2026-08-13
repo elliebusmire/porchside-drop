@@ -310,19 +310,7 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
     <h2>Help Us Design Your Display</h2>
     <p class="upload-sub">Want us to nail the look? Upload a photo of your front porch and we'll design your arrangement with <em>your space in mind</em>. Totally optional!</p>
 
-    <form id="porchUploadForm" name="porch-photos" method="POST" data-netlify="true" enctype="multipart/form-data">
-      <input type="hidden" name="form-name" value="porch-photos">
-
-      <div class="upload-form-group">
-        <label>Your Name</label>
-        <input type="text" name="name" placeholder="Jane Appleton" required>
-      </div>
-
-      <div class="upload-form-group">
-        <label>Email</label>
-        <input type="email" name="email" placeholder="jane@email.com" required>
-      </div>
-
+    <form id="porchUploadForm" method="POST" enctype="multipart/form-data">
       <div class="drop-zone" id="dropZone">
         <input type="file" name="porch-photo" id="porchPhoto" accept="image/*" required>
         <div class="drop-zone-icon">📸</div>
@@ -381,16 +369,57 @@ footer p { font-size: 0.75rem; opacity: 0.4; font-weight: 300; }
     }
   });
 
-  // Form submit
+  // Shrink the photo in the browser before uploading. Phone photos are often
+  // 3-5 MB, which is slow on mobile data and far more detail than we need.
+  function shrinkPhoto(file, maxDimension) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error('Could not read that file'));
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onerror = () => reject(new Error('Could not read that image'));
+        img.onload = function() {
+          const scale = Math.min(1, maxDimension / Math.max(img.width, img.height));
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.round(img.width * scale);
+          canvas.height = Math.round(img.height * scale);
+          canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+          canvas.toBlob(
+            blob => (blob ? resolve(blob) : reject(new Error('Could not process that image'))),
+            'image/jpeg',
+            0.82
+          );
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Form submit — the photo is filed against this order automatically, using
+  // the Stripe session id Stripe appended to this page's URL.
   document.getElementById('porchUploadForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('uploadBtn');
+    const sessionId = new URLSearchParams(window.location.search).get('session_id');
+    const file = document.getElementById('porchPhoto').files[0];
+
+    if (!sessionId) {
+      alert("We couldn't tell which order this is for. Please reply to your confirmation email with the photo instead.");
+      return;
+    }
+    if (!file) return;
+
     btn.disabled = true;
     btn.innerHTML = '<span class="spinner"></span>Uploading...';
 
     try {
-      const formData = new FormData(this);
-      const response = await fetch('/', {
+      const photo = await shrinkPhoto(file, 1600);
+      const formData = new FormData();
+      formData.append('sessionId', sessionId);
+      formData.append('photo', photo, 'porch.jpg');
+
+      const response = await fetch('/api/porch-photo', {
         method: 'POST',
         body: formData
       });
