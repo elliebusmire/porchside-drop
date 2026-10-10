@@ -12,6 +12,14 @@ exports.handler = async (event) => {
     // Determine season from the page that submitted
     const season = data.package ? 'Winter' : 'Fall';
 
+    // Fall 2026 ordering is closed; reopens August 2027
+    if (season === 'Fall') {
+      return {
+        statusCode: 403,
+        body: JSON.stringify({ error: "Fall ordering is closed. We'll be back with more pumpkins in August 2027!" }),
+      };
+    }
+
     // Build line items description
     let description;
     if (season === 'Winter') {
