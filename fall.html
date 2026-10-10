@@ -771,12 +771,20 @@
 
 <!-- ── SIGN-UP FORM ── -->
 <section class="signup-section" id="signup">
-  <p class="section-label" style="color: #8B9E6B;">Fall 2026 Sign-Up</p>
-  <h2>Reserve Your Porch</h2>
-  <p class="sub">Orders are open!</p>
+  <p class="section-label" style="color: #8B9E6B;">Fall 2026</p>
+  <h2>See You Next Fall</h2>
+  <p class="sub">Fall 2026 ordering is now closed.</p>
 
   <div class="form-container">
-    <form id="signupForm">
+    <div class="success-message visible" id="closedMsg">
+      <div class="success-icon">🍂</div>
+      <h3>Thanks for a wonderful season!</h3>
+      <p>Fall 2026 orders are closed. We'll be back with more pumpkins in August 2027. Happy fall!</p>
+      <p style="margin-top: 1rem;">Questions? Email <a href="mailto:porchsidedrop@gmail.com">porchsidedrop@gmail.com</a>.</p>
+    </div>
+
+    <!-- Fall ordering closed for 2026. Remove the hidden attribute (and the closed message above) to reopen. -->
+    <form id="signupForm" hidden>
 
       <div class="error-message" id="errorMsg">Something went wrong. Please try again or contact us directly.</div>
 
